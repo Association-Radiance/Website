@@ -1,0 +1,76 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello HomeController!{% endblock %}
+
+{% block body %}
+    <header>
+        <nav class="navbar container">
+            <a href="#banner" class="navbar-button">
+                <img src="{{ asset('images/logo.webp') }}" alt="Association Radiance"/>
+            </a>
+            <a href="#about" class="navbar-button">Qui sommes-nous ?</a>
+            <a href="#partners" class="navbar-button">Nos partenaires</a>
+            <a href="#edition-2024" class="navbar-button">Radiance LAN 2024</a>
+            <a href="#edition-2025" class="navbar-button">Radiance LAN 2025</a>
+            <a href="#engagement" class="navbar-button">Nos engagements</a>
+            <a href="#contact" class="navbar-button">Nous contactez</a>
+        </nav>
+    </header>
+
+    <main>
+        <section class="section-banner" id="banner">
+            <div class="container">
+                {{ include('/home/_banner.html.twig') }}
+            </div>
+        </section>
+
+        <section class="section-about" id="about">
+            <div class="background"></div>
+            <div class="container">
+                {{ include('/home/_about.html.twig') }}
+            </div>
+        </section>
+
+        <section class="section-partner" id="partners">
+            <div class="container">
+                {{ include('/home/_partner.html.twig') }}
+            </div>
+        </section>
+
+        <section class="section-edition2024" id="edition-2024">
+            <div class="container">
+                {{ include('/home/_edition2024.html.twig') }}
+            </div>
+        </section>
+
+        <section class="section-edition2025" id="edition-2025">
+            <div class="container">
+                {{ include('/home/_edition2025.html.twig') }}
+            </div>
+        </section>
+
+        <section class="section-engagement" id="engagement">
+            <div class="container">
+                {{ include('/home/_engagement.html.twig') }}
+            </div>
+        </section>
+
+        <section class="section-contact" id="contact">
+            <div class="container">
+                {{ include('/home/_contact.html.twig') }}
+            </div>
+        </section>
+
+        <footer>
+            <div class="container">
+                <a href="https://www.instagram.com/association_radiance" class="footer-link" target="_blank">
+                    <img src="{{ asset('images/icons/instagram-fill.png') }}" alt="Instagram" aria-label="Instagram"/>
+                </a>
+                <a href="https://discord.com/invite/mcdVebJYXb" class="footer-link" target="_blank">
+                    <img src="{{ asset('images/icons/discord-fill.png') }}" alt="Discord" aria-label="Discord"/>
+                </a>
+            </div>
+        </footer>
+    </main>
+
+{% endblock %}

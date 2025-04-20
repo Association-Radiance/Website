@@ -1,0 +1,83 @@
+<h2 class='section-title'>Nous contacter</h2>
+
+<div class="content-container">
+    <div class="content size_2third">
+
+        {{ form_start(form, { 'attr': { 'data-turbo': 'false','class': 'form-container'}}  ) }}
+
+        <div class="form-field">
+            <div class="form-label">
+                {{ form_label(form.name, "Nom") }}
+                {{ form_errors(form.name) }}
+            </div>
+            {{ form_widget(form.name, {'attr': {'class': 'form-input'}}) }}
+        </div>
+
+        <div class="form-field">
+            <div class="form-label">
+                {{ form_label(form.email) }}
+                {{ form_errors(form.email) }}
+            </div>
+            {{ form_widget(form.email, {'attr': {'class': 'form-input'}}) }}
+        </div>
+
+        <div class="form-field">
+            <div class="form-label">
+                {{ form_label(form.telephone) }}
+                {{ form_errors(form.telephone) }}
+            </div>
+            {{ form_widget(form.telephone, {'attr': {'class': 'form-input'}}) }}
+        </div>
+
+        <div class="form-field">
+            <div class="form-label">
+                {{ form_label(form.company, "Société") }}
+                {{ form_errors(form.company) }}
+            </div>
+            {{ form_widget(form.company, {'attr': {'class': 'form-input'}}) }}
+        </div>
+
+        <div class="form-field">
+            <div class="form-label">
+                {{ form_label(form.subject, "Sujet") }}
+                {{ form_errors(form.subject) }}
+            </div>
+            {{ form_widget(form.subject, {'attr': {'class': 'form-input'}}) }}
+        </div>
+
+        <div class="form-field">
+            <div class="form-label">
+                {{ form_label(form.message) }}
+                {{ form_errors(form.message) }}
+            </div>
+            {{ form_widget(form.message, {'attr': {'class': 'form-textarea'}}) }}
+        </div>
+
+        <p class="form-condition">En envoyant ce formulaire, vous acceptez que l’association Radiance stocke et
+            utilise vos données personnelles afin de vous contacter. Nous nous engageons à ne pas communiquer vos
+            coordonnées à des tiers ni à les utiliser à des fins publicitairesé.</p>
+
+        <div class="form-field form-field-submit">
+            <!-- checkbox style inspired by https://moderncss.dev/pure-css-custom-checkbox-style/ -->
+            {{ form_widget(form.terms, {'attr': {'class': 'form-checkbox'}}) }}
+            <div class="form-label">
+                {{ form_label(form.terms, "J’accepte que l’association Radiance puisse me contacter") }}
+                {{ form_errors(form.terms) }}
+            </div>
+
+            {{ form_widget(form.submit, {'attr': {'class': 'form-submit'}, 'label' : 'Envoyer' }) }}
+        </div>
+        
+        {% for label, messages in app.flashes(['success', 'error']) %}
+            {% for message in messages %}
+                <div class="form-field-response">
+                    <span class="form-response flash-{{ label }}">
+                        {{ message }}
+                    </span>
+                </div>
+            {% endfor %}
+        {% endfor %}
+
+        {{ form_end(form) }}
+    </div>
+</div>
