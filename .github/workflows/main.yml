@@ -11,6 +11,10 @@ jobs:
             contents: read
 
         steps:
-          - name: SSH
-            run: |
-              ssh ${{secrets.SSH_USER}}@${{secrets.SSH_HOST}}
+        - name: ls -a via ssh
+          uses: garygrossgarten/github-action-ssh@release
+          with:
+            command: ls -a
+            host: ${{secrets.SSH_HOST}}
+            username: ${{secrets.SSH_USER}}
+            passphrase: ${{ secrets.SSH_PASSWORD }}
