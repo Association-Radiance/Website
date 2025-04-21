@@ -1,23 +1,31 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello HomeController!{% endblock %}
+{% block title %}Association Radiance{% endblock %}
+
+
 
 {% block body %}
+    <script src="{{ asset('handleMenu.js') }}"></script>
+
     <header>
         <nav class="navbar container">
-            <a href="#banner" class="navbar-button">
-                <img src="{{ asset('images/logo.webp') }}" alt="Association Radiance"/>
+            <a href="#banner" class="">
+                <img src="{{ asset('images/logo.webp') }}" alt="Association Radiance" class='logo'/>
             </a>
-            <a href="#about" class="navbar-button">Qui sommes-nous ?</a>
-            <a href="#partners" class="navbar-button">Nos partenaires</a>
-            <a href="#edition-2024" class="navbar-button">Radiance LAN 2024</a>
-            <a href="#edition-2025" class="navbar-button">Radiance LAN 2025</a>
-            <a href="#engagement" class="navbar-button">Nos engagements</a>
-            <a href="#contact" class="navbar-button">Nous contactez</a>
+            <div class="navbar-menu" id="menu">
+                <a href="#about" class="navbar-button">Qui sommes-nous ?</a>
+                <a href="#partners" class="navbar-button">Nos partenaires</a>
+                <a href="#edition-2024" class="navbar-button">Radiance LAN 2024</a>
+                <a href="#edition-2025" class="navbar-button">Radiance LAN 2025</a>
+                <a href="#engagement" class="navbar-button">Nos engagements</a>
+                <a href="#contact" class="navbar-button">Nous contactez</a>
+            </div>
+
+            <img src="{{ asset('images/icons/menu-line.png') }}" alt="" id="menu-button" class="navbar-menu-control"/>
         </nav>
     </header>
 
-    <main>
+    <main id="main">
         <section class="section-banner" id="banner">
             <div class="container">
                 {{ include('/home/_banner.html.twig') }}

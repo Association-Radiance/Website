@@ -58,16 +58,18 @@
             coordonnées à des tiers ni à les utiliser à des fins publicitairesé.</p>
 
         <div class="form-field form-field-submit">
-            <!-- checkbox style inspired by https://moderncss.dev/pure-css-custom-checkbox-style/ -->
-            {{ form_widget(form.terms, {'attr': {'class': 'form-checkbox'}}) }}
-            <div class="form-label">
-                {{ form_label(form.terms, "J’accepte que l’association Radiance puisse me contacter") }}
-                {{ form_errors(form.terms) }}
+            <div class="form-terms">
+                <!-- checkbox style inspired by https://moderncss.dev/pure-css-custom-checkbox-style/ -->
+                {{ form_widget(form.terms, {'attr': {'class': 'form-checkbox'}}) }}
+                <div class="form-label">
+                    {{ form_label(form.terms, "J’accepte que l’association Radiance puisse me contacter") }}
+                    {{ form_errors(form.terms) }}
+                </div>
             </div>
-
+            
             {{ form_widget(form.submit, {'attr': {'class': 'form-submit'}, 'label' : 'Envoyer' }) }}
         </div>
-        
+
         {% for label, messages in app.flashes(['success', 'error']) %}
             {% for message in messages %}
                 <div class="form-field-response">

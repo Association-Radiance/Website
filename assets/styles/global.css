@@ -1,0 +1,55 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Jaro:opsz@6..72&display=swap');
+
+:root {
+    --accent-color: #F49800;
+    --accent-color-light: #F6AD33;
+    --accent-color-dark: #543C00;
+    --background-color: #091018;
+    --background-color-light: #18191F;
+    --text-color-1: #FFFFFF;
+    --text-color-2: #ABBED1;
+    --text-color-3: #000000;
+    --shadow-color: #000000;
+
+    --color-alternate: #1E1E1E;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    color: white;
+    font-family: "Inter", sans-serif;
+}
+
+h1, h2, h3, h4, h5, p, span, li, a, label, input, textarea, button, span {
+    color: white;
+    font-family: "Inter", sans-serif;
+}
+
+p, span, h5 {
+    line-height: 1.5em;
+    font-size: 20px;
+
+    @media screen and (max-width: 1280px) {
+        font-size: 16px;
+    }
+}
+
+li {
+    font-size: 20px;
+    list-style: none;
+}
+
+b {
+    font-weight: 700;
+}
+
+a {
+    text-decoration: none;
+}
+
+.text-center {
+    text-align: center;
+}
+
