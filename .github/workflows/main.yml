@@ -40,7 +40,7 @@ jobs:
       - name: Adding Runner IP to Whitelist
         run: |
           # Adding Runner IP to Whitelist
-          IP_IS_WHITELISTED=$(echo ${{ steps.current_whitelist.outputs.WHITELIST }} | jq '.data.list | any(.address == ${{ steps.runner_ip.outputs.IP }})')
+          IP_IS_WHITELISTED=$(echo "${{ steps.current_whitelist.outputs.WHITELIST }} | jq '.data.list | any(.address == ${{ steps.runner_ip.outputs.IP }})'")
           
           if [["$IP_IS_WHITELISTED == "true" ]]; then
           
