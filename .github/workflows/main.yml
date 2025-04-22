@@ -28,7 +28,7 @@ jobs:
         run: |
           ENDPOINT='frontend/o2switch/o2switch-ssh-whitelist/index.live.php'
           
-          echo "Actual whitelist : "
-          
-          LIST=$(curl -sX GET "https://${{ secrets.SSH_USER }}:${{ steps.encoded.outputs.PASSWORD }}@${{ secrets.SSH_HOST }}:2083/$ENDPOINT?r=list")
-          echo "$LIST" | jq -r '.data.list[]'
+          echo "Get actual whitelisted IPs..."
+          RESPONSE=$(curl -sX GET "https://${{ secrets.REMOTE_USER }}:${{ secrets.URL_ENCODED_PASSWORD }}@${{ secrets.REMOTE_HOST }}:2083/$ENDPOINT?r=list")
+          echo "Response: $RESPONSE"
+          UNIQUE_IPS=$(echo "$RESPONSE" | jq -r '.data.list[] | .address' | sort -u)
