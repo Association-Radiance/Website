@@ -34,4 +34,4 @@ jobs:
           echo "$LIST" | jq -c '.data.list[]'
           
           LIST_LENGTH=$(echo "$LIST" | jq '.data.list | length')
-          echo "Length : $LIST_LENGTH
+          echo "Length : $LIST_LENGTH"
