@@ -40,4 +40,5 @@ jobs:
       - name: Adding Runner IP to Whitelist
         run: |
           # Adding Runner IP to Whitelist
+          echo jq --version
           echo "${{ steps.current_whitelist.outputs.WHITELIST }}" | jq -R "gsub(\"'\"; \"\\\"\") | fromjson"
