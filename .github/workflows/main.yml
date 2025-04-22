@@ -40,4 +40,4 @@ jobs:
       - name: Adding Runner IP to Whitelist
         run: |
           # Adding Runner IP to Whitelist
-          echo "${{ steps.current_whitelist.outputs.WHITELIST }}" | tr "\"'" "'\"" | jq -c '.data.list[]'
+          echo "${{ steps.current_whitelist.outputs.WHITELIST }}" | jq -R "gsub(\"'\"; \"\\\"\") | fromjson"
