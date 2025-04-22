@@ -24,4 +24,4 @@ jobs:
           id: encoded
           run:  |
               encoded=$(printf %s 'U9sV-p5XA-Bhr{' | jq -sRr @uri )
-              echo "encoded=$encoded"> >> $GITHUB_OUTPUT
+              echo "encoded=$encoded" >> $GITHUB_OUTPUT
