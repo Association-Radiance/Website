@@ -25,8 +25,7 @@ jobs:
         id: runner_ip
         run: |
           IP=$(curl https://api.ipify.org)
-          echo "Runner Ip : "
-          echo "$IP"
+          echo "Runner IP : $IP"
           echo "IP=$IP" >> $GITHUB_OUTPUT
 
       - name: Getting Current Whitelist
@@ -61,7 +60,7 @@ jobs:
           
           IP_TO_DELETE=$(echo '${{ steps.current_whitelist.outputs.WHITELIST }}' | jq -r '.data.list[8].address') 
           
-          echo "Deleting last IP from whitelist : "$IP_TO_DELETE" (in & out)"
+          echo "Deleting last IP from whitelist : $IP_TO_DELETE (in & out)"
           
           curl -sX GET "https://${{ secrets.SSH_USER }}:${{ steps.encoded_password.outputs.PASSWORD }}@${{ secrets.SSH_HOST }}:2083/${{ env.ENDPOINT }}?r=remove&address=$IP_TO_DELETE&direction=in&port=22" | jq
           sleep 1
@@ -75,3 +74,20 @@ jobs:
           echo -e
           echo "Adding runner IP to whitelist : ${{ steps.runner_ip.outputs.IP }}"
           curl -sX POST -d 'whitelist[address]="${{ steps.runner_ip.outputs.IP }}"' -d 'whitelist[port]=22' "https://${{ secrets.SSH_USER }}:${{ steps.encoded_password.outputs.PASSWORD }}@${{ secrets.SSH_HOST }}:2083/${{ env.ENDPOINT }}?r=add" | jq
+
+      - name: test
+        run: |
+          mkdir -p ~/.ssh/
+          echo "$SSH_KEY" > ~/.ssh/staging.key
+          chmod 600 ~/.ssh/staging.key
+          cat >>~/.ssh/config <<END
+          Host staging
+            HostName $SSH_HOST
+            User $SSH_USER
+            IdentityFile ~/.ssh/staging.key
+            StrictHostKeyChecking no
+          END
+        env:
+          SSH_USER: ${{ secrets.SSH_USER }}
+          SSH_KEY: ${{ secrets.SSH_KEY }}
+          SSH_HOST: ${{ secrets.SSH_HOST }}
