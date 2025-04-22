@@ -11,6 +11,11 @@ jobs:
       contents: read
 
     steps:
+      - name: test env
+        id: step_two
+        run: |
+          printf '%s\n' "$test_env"
+          
       - name: encode password
         id: encoded
         run: |
@@ -36,3 +41,5 @@ jobs:
           
           echo "Attempt to whitelist IP..."
           curl -sX POST -d 'whitelist[address]=${{ steps.runner_ip.outputs.response }}' -d 'whitelist[port]=22' "https://${{ secrets.SSH_USER }}:${{ steps.encoded.outputs.password }}@${{ secrets.SSH_HOST }}:2083/$ENDPOINT?r=add" | jq
+
+          echo "test_env=bite" >> "$GITHUB_ENV"
