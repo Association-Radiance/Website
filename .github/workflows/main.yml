@@ -31,4 +31,5 @@ jobs:
           echo "Actual whitelist : "
           
           LIST=$(curl -sX GET "https://${{ secrets.SSH_USER }}:${{ steps.encoded.outputs.PASSWORD }}@${{ secrets.SSH_HOST }}:2083/$ENDPOINT?r=list")
-          echo "$LIST" | jq -r '.data.list[]'
+          echo "List: $LIST"
+          UNIQUE_IPS=$(echo "$LIST" | jq -r '.data.list[] | .address')
