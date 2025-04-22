@@ -41,33 +41,3 @@ jobs:
           IP_IS_WHITELISTED=$(echo "${{ steps.current_whitelist.outputs.WHITELIST }}" | jq '.data.list | any(.address == "${{ steps.runner_ip.outputs.IP }}")')
           
           echo "$IP_IS_WHITELISTED"
-          
-          if [ $IP_IS_WHITELISTED == "true" ]; then
-          
-          echo "Runner IP already whitelisted"
-          
-          exit 1;
-          
-          fi
-          
-          LIST_LENGTH=$(echo "${{ steps.current_whitelist.outputs.WHITELIST }}" | jq '.data.list | length')
-          
-          if [ $LIST_LENGTH -eq "10" ]; then 
-          
-          echo "Whitelist full"
-          
-          IP_TO_DELETE=${{ steps.current_whitelist.outputs.WHITELIST }} | jq -r '.data.list[8].address'
-          
-          echo "Deleting last IP from whitelist: $IP_TO_DELETE (in & out)"
-          
-          curl -sX GET "https://${{ secrets.SSH_USER }}:${{ steps.encoded_password.outputs.PASSWORD }}@${{ secrets.SSH_HOST }}:2083/${{ env.ENDPOINT }}?r=remove&address=$IP_TO_DELETE&direction=in&port=22" | jq
-          sleep 3
-          curl -sX GET "https://${{ secrets.SSH_USER }}:${{ steps.encoded_password.outputs.PASSWORD }}@${{ secrets.SSH_HOST }}:2083/${{ env.ENDPOINT }}?r=remove&address=$IP_TO_DELETE&direction=out&port=22" | jq
-          sleep 3
-          
-          echo "IP : $IP_TO_DELETE (in & out) deleted from whitelist";
-          
-          fi
-          
-          echo "Adding runner IP to whitelist"
-          curl -sX POST -d 'whitelist[address]=${{ steps.runner_ip.outputs.IP }}' -d 'whitelist[port]=22' "https://${{ secrets.SSH_USER }}:${{ steps.encoded.outputs.password }}@${{ secrets.SSH_HOST }}:2083/${{ env.ENDPOINT }}?r=add" | jq
