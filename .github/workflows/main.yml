@@ -14,8 +14,8 @@ jobs:
         - name: get runner ip
           id: runner_ip
           run: |
-              response=$(curl https://api.ipify.org)
+              response=$(curl https://api.ipify.org | jq -r '.ip')
               echo "response=$response" >> $GITHUB_OUTPUT
 
         - name: display runner ip
-          run: echo ${{steps.id.outputs.response}}
+          run: echo ${{needs.id.outputs.response}}
