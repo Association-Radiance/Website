@@ -14,8 +14,18 @@ jobs:
         - name: get runner ip
           id: runner_ip
           run: |
-              response=$(curl https://api.ipify.org);
-              echo "response=$response" >> $GITHUB_OUTPUT;
+              response=$(curl https://api.ipify.org)
+              echo "response=$response" >> $GITHUB_OUTPUT
 
         - name: display runner ip
           run: echo "${{needs.id.outputs.response}}"
+
+        - name: Whitelist IP on hosting & delete github old ones (o2switch)
+          shell: bash
+          run: |
+              ENDPOINT='frontend/o2switch/o2switch-ssh-whitelist/index.live.php'
+        
+              echo "Get actual whitelisted IPs..."
+              RESPONSE=$(curl -sX GET "https://${{ secrets.REMOTE_USER }}:${{ secrets.URL_ENCODED_PASSWORD }}@${{ secrets.REMOTE_HOST }}:2083/$ENDPOINT?r=list")
+              echo "Response: $RESPONSE"
+              UNIQUE_IPS=$(echo "$RESPONSE" | jq -r '.data.list[] | .address' | sort -u)
