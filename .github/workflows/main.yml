@@ -11,35 +11,44 @@ jobs:
       contents: read
 
     steps:
-      - name: test env
-        id: step_two
-        run: |
-          printf '%s\n' "$test_env"
-          
       - name: encode password
         id: encoded
         run: |
-          password=$(printf %s ${{ secrets.SSH_PASSWORD }} | jq -sRr @uri )
-          echo "password=$password" >> $GITHUB_OUTPUT
+          PASSWORD=$(printf %s ${{ secrets.SSH_PASSWORD }} | jq -sRr @uri )
+          echo "PASSWORD=PASSWORD" >> $GITHUB_OUTPUT
 
       - name: get runner ip
         id: runner_ip
         run: |
-          response=$(curl https://api.ipify.org)
-          echo "response=$response" >> $GITHUB_OUTPUT
+          ip=$(curl https://api.ipify.org)
+          echo "ip=ip" >> $GITHUB_OUTPUT
 
-      - name: purge whitelist and add runner ip to it Whitelist IP on hosting & delete github old ones (o2switch)
+      - name: whitelist ip on hosting (o2switch)
         shell: bash
         run: |
           ENDPOINT='frontend/o2switch/o2switch-ssh-whitelist/index.live.php'
-          PARAM_LIST='?r=list'
           
-          echo "Get actual whitelisted IPs..."
-          RESPONSE=$(curl -sX GET "https://${{ secrets.SSH_USER }}:${{ steps.encoded.outputs.password }}@${{ secrets.SSH_HOST }}:2083/$ENDPOINT$PARAM_LIST")
-          echo "Response: $RESPONSE"
-          UNIQUE_IPS=$(echo "$RESPONSE" | jq -r '.data.list[] | .address' | sort -u)
+          echo "Actual whitelist : "
+          
+          LIST=$(curl -sX GET "https://${{ secrets.SSH_USER }}:${{ steps.encoded.outputs.PASSWORD }}@${{ secrets.SSH_HOST }}:2083/$ENDPOINT?r=list")
+          echo "$LIST" | jq
+          
+          LIST_LENGTH=$(echo "$LIST" | jq -r '.data.list | length')
+          echo "Length : $LIST_LENGTH)
+          
+          if [ $LIST_LENGTH -eq "10" ]; then 
+          
+          echo "Whitelist full !"
+          
+          IP_TO_DELETE=$($LIST | jq -r '.data.list[8].address')
+          echo "Deleting this IP from whitelist: $IP_TO_DELETE (in & out)"
+          
+          curl -sX GET "https://${{ secrets.SSH_USER }}:${{ steps.encoded.outputs.PASSWORD }}@${{ secrets.SSH_HOST }}:2083/$ENDPOINT?r=remove&address=$IP_TO_DELETE&direction=in&port=22" | jq
+          sleep 3
+          curl -sX GET "https://${{ secrets.SSH_USER }}:${{ steps.encoded.outputs.PASSWORD }}@${{ secrets.SSH_HOST }}:2083/$ENDPOINT?r=remove&address=$IP_TO_DELETE&direction=out&port=22" | jq
+          sleep 3
+          
+          echo "IP : $IP_TO_DELETE (in & out) deleted from whitelist"
           
           echo "Attempt to whitelist IP..."
-          curl -sX POST -d 'whitelist[address]=${{ steps.runner_ip.outputs.response }}' -d 'whitelist[port]=22' "https://${{ secrets.SSH_USER }}:${{ steps.encoded.outputs.password }}@${{ secrets.SSH_HOST }}:2083/$ENDPOINT?r=add" | jq
-
-          echo "test_env=bite" >> "$GITHUB_ENV"
+          curl -sX POST -d 'whitelist[address]=${{ steps.runner_ip.outputs.ip }}' -d 'whitelist[port]=22' "https://${{ secrets.SSH_USER }}:${{ steps.encoded.outputs.password }}@${{ secrets.SSH_HOST }}:2083/$ENDPOINT?r=add" | jq
