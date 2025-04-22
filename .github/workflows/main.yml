@@ -62,7 +62,7 @@ jobs:
           
           echo "Whitelist full"
           
-          IP_TO_DELETE=${{ steps.current_whitelist.outputs.WHITELIST }} | jq -r '.data.list[8].address'
+          IP_TO_DELETE=$(echo "$WHITELIST" | jq -r '.data.list[8].address') 
           
           echo "Deleting last IP from whitelist: $IP_TO_DELETE (in & out)"
           
