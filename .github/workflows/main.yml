@@ -1,34 +1,46 @@
 name: test
 on:
-    push:
-        branches: [main]
+  push:
+    branches: [main]
 
 jobs:
-    deploy:
-        runs-on: ubuntu-latest
-        permissions:
-            packages: write
-            contents: read
+  deploy:
+    runs-on: ubuntu-latest
+    permissions:
+      packages: write
+      contents: read
+    
+    steps:
+      - name: get runner ip
+        id: runner_ip
+        run: |
+          response=$(curl https://api.ipify.org)
+          echo "response=$response" >> $GITHUB_OUTPUT
 
-        steps:
-        - name: get runner ip
-          id: runner_ip
-          run: |
-              response=$(curl https://api.ipify.org)
-              echo "response=$response" >> $GITHUB_OUTPUT
+      - name: encode password
+        id: encoded
+        run:  |
+          password=$(printf %s ${{ secrets.SSH_PASSWORD }} | jq -sRr @uri )
+          echo "password=$password" >> $GITHUB_OUTPUT
 
-        - name: encode password
-          id: encoded
-          run:  |
-              password=$(printf %s ${{ secrets.SSH_PASSWORD }} | jq -sRr @uri )
-              echo "password=$password" >> $GITHUB_OUTPUT
-
-        - name: Whitelist IP on hosting & delete github old ones (o2switch)
-          shell: bash
-          run: |
-              ENDPOINT='frontend/o2switch/o2switch-ssh-whitelist/index.live.php'
-        
-              echo "Get actual whitelisted IPs..."
-              RESPONSE=$(curl -sX GET "https://${{ secrets.SSH_USER }}:${{ steps.encoded.outputs.password }}@${{ secrets.SSH_HOST }}:2083/$ENDPOINT?r=list")
-              echo "Response: $RESPONSE"
-              UNIQUE_IPS=$(echo "$RESPONSE" | jq -r '.data.list[] | .address' | sort -u)
+      - name: Whitelist IP on hosting & delete github old ones (o2switch)
+        shell: bash
+        run: |
+          ENDPOINT='frontend/o2switch/o2switch-ssh-whitelist/index.live.php'
+          
+          echo "Get actual whitelisted IPs..."
+          RESPONSE=$(curl -sX GET "https://${{ secrets.SSH_USER }}:${{ steps.encoded.outputs.password }}@${{ secrets.SSH_HOST }}:2083/$ENDPOINT?r=list")
+          echo "Response: $RESPONSE"
+          UNIQUE_IPS=$(echo "$RESPONSE" | jq -r '.data.list[] | .address' | sort -u)
+          
+          for address in $UNIQUE_IPS; do
+          echo "Delete this github IP: $address (in & out)"
+          curl -sX GET "https://${{ secrets.SSH_USER }}:${{ steps.encoded.outputs.password }}@${{ secrets.SSH_HOST }}:2083/$ENDPOINT?r=remove&address=$address&direction=in&port=22" | jq
+          sleep 3
+          curl -sX GET "https://${{ secrets.SSH_USER }}:${{ steps.encoded.outputs.password }}@${{ secrets.SSH_HOST }}:2083/$ENDPOINT?r=remove&address=$address&direction=out&port=22" | jq
+          sleep 3
+          done
+          echo "All non-whitelisted IPs deleted!"
+          
+          echo "Attempt to whitelist IP..."
+          curl -sX POST -d 'whitelist[address]=${{ steps.runner_ip.outputs.response }}' -d 'whitelist[port]=22' "https://${{ secrets.SSH_USER }}:${{ steps.encoded.outputs.password }}@${{ secrets.SSH_HOST }}:2083/$ENDPOINT?r=add" | jq
