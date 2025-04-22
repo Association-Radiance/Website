@@ -32,25 +32,3 @@ jobs:
           
           LIST=$(curl -sX GET "https://${{ secrets.SSH_USER }}:${{ steps.encoded.outputs.PASSWORD }}@${{ secrets.SSH_HOST }}:2083/$ENDPOINT?r=list")
           echo "$LIST"
-          
-          LIST_LENGTH=$(echo "$LIST" | jq -r '.data.list | length')
-          echo "Length : $LIST_LENGTH)
-          
-          if [ $LIST_LENGTH -eq "10" ]; then 
-          
-          echo "Whitelist full !"
-          
-          IP_TO_DELETE=$($LIST | jq -r '.data.list[8].address')
-          echo "Deleting this IP from whitelist: $IP_TO_DELETE (in & out)"
-          
-          curl -sX GET "https://${{ secrets.SSH_USER }}:${{ steps.encoded.outputs.PASSWORD }}@${{ secrets.SSH_HOST }}:2083/$ENDPOINT?r=remove&address=$IP_TO_DELETE&direction=in&port=22" | jq
-          sleep 3
-          curl -sX GET "https://${{ secrets.SSH_USER }}:${{ steps.encoded.outputs.PASSWORD }}@${{ secrets.SSH_HOST }}:2083/$ENDPOINT?r=remove&address=$IP_TO_DELETE&direction=out&port=22" | jq
-          sleep 3
-          
-          echo "IP : $IP_TO_DELETE (in & out) deleted from whitelist";
-          
-          fi
-          
-          echo "Attempt to whitelist IP..."
-          curl -sX POST -d 'whitelist[address]=${{ steps.runner_ip.outputs.ip }}' -d 'whitelist[port]=22' "https://${{ secrets.SSH_USER }}:${{ steps.encoded.outputs.password }}@${{ secrets.SSH_HOST }}:2083/$ENDPOINT?r=add" | jq
