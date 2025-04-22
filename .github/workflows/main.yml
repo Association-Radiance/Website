@@ -34,7 +34,7 @@ jobs:
           echo "Actual whitelist : "
           
           WHITELIST=$(curl -sX GET "https://${{ secrets.SSH_USER }}:${{ steps.encoded_password.outputs.PASSWORD }}@${{ secrets.SSH_HOST }}:2083/${{ env.ENDPOINT }}?r=list")
-          echo "$WHITELIST" | jq -c '.data.list[]'
+          echo "$WHITELIST" | jq -r '.data.list[]'
           echo "WHITELIST=$WHITELIST" >> $GITHUB_OUTPUT
 
       - name: Adding Runner IP to Whitelist
