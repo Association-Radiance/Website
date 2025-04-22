@@ -31,7 +31,7 @@ jobs:
           echo "Actual whitelist : "
           
           LIST=$(curl -sX GET "https://${{ secrets.SSH_USER }}:${{ steps.encoded.outputs.PASSWORD }}@${{ secrets.SSH_HOST }}:2083/$ENDPOINT?r=list")
-          echo "$LIST" | jq -r
+          echo "$LIST" | jq -r '.data.list[]'
           
           LIST_LENGTH=$(echo "$LIST" | jq -r '.data.list | length')
           echo "Length : $LIST_LENGTH)
@@ -49,7 +49,7 @@ jobs:
           sleep 3
           
           echo "IP : $IP_TO_DELETE (in & out) deleted from whitelist";
-
+          
           fi
           
           echo "Attempt to whitelist IP..."
