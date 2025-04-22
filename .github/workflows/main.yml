@@ -20,8 +20,8 @@ jobs:
       - name: get runner ip
         id: runner_ip
         run: |
-          ip=$(curl https://api.ipify.org)
-          echo "ip=ip" >> $GITHUB_OUTPUT
+          IP=$(curl https://api.ipify.org)
+          echo "IP=$IP" >> $GITHUB_OUTPUT
 
       - name: whitelist ip on hosting (o2switch)
         shell: bash
