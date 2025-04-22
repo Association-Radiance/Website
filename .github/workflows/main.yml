@@ -39,5 +39,6 @@ jobs:
 
       - name: test variable
         run: |
-          IP_IS_WHITELISTED=$(echo ${{ steps.current_whitelist.outputs.WHITELIST }} | jq '.data.list | any(.address == ${{ steps.runner_ip.outputs.IP }})')
+          echo "${{ steps.current_whitelist.outputs.WHITELIST }}" | jq
+          IP_IS_WHITELISTED=$(echo "${{ steps.current_whitelist.outputs.WHITELIST }}" | jq '.data.list | any(.address == "${{ steps.runner_ip.outputs.IP }}")')
           echo "$IP_IS_WHITELISTED"
