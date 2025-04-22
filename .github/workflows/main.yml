@@ -42,7 +42,7 @@ jobs:
           # Adding Runner IP to Whitelist
           IP_IS_WHITELISTED=$(echo "${{ steps.current_whitelist.outputs.WHITELIST }}" | jq '.data.list | any(.address == "${{ steps.runner_ip.outputs.IP }}")')
           
-          if [["$IP_IS_WHITELISTED == "true" ]]; then
+          if [[ "$IP_IS_WHITELISTED" == "true" ]]; then
           
           echo "Runner IP already whitelisted"
           
@@ -52,7 +52,7 @@ jobs:
           
           LIST_LENGTH=$(echo "${{ steps.current_whitelist.outputs.WHITELIST }}" | jq '.data.list | length')
           
-          if [[ $LIST_LENGTH" -eq "10 ]]; then 
+          if [[ "$LIST_LENGTH" -eq "10" ]]; then 
           
           echo "Whitelist full"
           
