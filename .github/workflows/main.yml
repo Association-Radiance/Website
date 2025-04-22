@@ -92,4 +92,5 @@ jobs:
           SSH_KEY: ${{ secrets.SSH_KEY }}
           SSH_HOST: ${{ secrets.SSH_HOST }}
 
-
+      - name: test2
+        run: ssh staging 'cd radiance && touch test.txt'
