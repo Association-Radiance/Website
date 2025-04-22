@@ -15,7 +15,7 @@ jobs:
         id: encoded
         run: |
           PASSWORD=$(printf %s ${{ secrets.SSH_PASSWORD }} | jq -sRr @uri )
-          echo "PASSWORD=PASSWORD" >> $GITHUB_OUTPUT
+          echo "PASSWORD=$PASSWORD" >> $GITHUB_OUTPUT
 
       - name: get runner ip
         id: runner_ip
@@ -29,6 +29,7 @@ jobs:
           ENDPOINT="frontend/o2switch/o2switch-ssh-whitelist/index.live.php"
           
           echo "Actual whitelist : "
+          
           LIST=$(curl -sX GET "https://${{ secrets.SSH_USER }}:${{ steps.encoded.outputs.PASSWORD }}@${{ secrets.SSH_HOST }}:2083/$ENDPOINT?r=list")
           echo "$LIST" | jq '.data.list[]'
-          
+              
