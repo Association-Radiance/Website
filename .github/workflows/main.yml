@@ -20,12 +20,8 @@ jobs:
         - name: display runner ip
           run: echo "${{needs.id.outputs.response}}"
 
-        - name: Whitelist IP on hosting & delete github old ones (o2switch)
-          shell: bash
-          run: |
-              ENDPOINT='frontend/o2switch/o2switch-ssh-whitelist/index.live.php'
-        
-              echo "Get actual whitelisted IPs..."
-              RESPONSE=$(curl -sX GET "https://${{ secrets.SSH_USER }}:${{ secrets.SSH_PASSWORD }}@${{ secrets.SSH_HOST }}:2083/$ENDPOINT?r=list")
-              echo "Response: $RESPONSE"
-              UNIQUE_IPS=$(echo "$RESPONSE" | jq -r '.data.list[] | .address' | sort -u)
+        - name: encode password
+          id: encoded
+          run:  |
+              encoded=$(printf %s 'U9sV-p5XA-Bhr{' | jq -sRr @uri )
+              echo "encoded=$encoded"> >> $GITHUB_OUTPUT
