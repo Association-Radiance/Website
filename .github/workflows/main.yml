@@ -34,7 +34,14 @@ jobs:
           echo "$LIST" | jq -c '.data.list[]'
           
           LIST_LENGTH=$(echo "$LIST" | jq '.data.list | length')
-          echo "Length : $LIST_LENGTH"
+          
+          IP_IS_WHITELISTED=$(echo "$LIST" | jq '.data.list | any(.address == "${{ steps.runner_ip.outputs.IP }}")')
+          
+          if [ $IP_IS_WHITELISTED == "true" ]; then
+          
+          exit 1;
+          
+          fi
           
           if [ $LIST_LENGTH -eq "10" ]; then 
           
