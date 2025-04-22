@@ -30,6 +30,7 @@ jobs:
       - name: Getting Current Whitelist
         id: current_whitelist
         run: |
+          # Getting Current Whitelist
           echo "Actual whitelist : "
           
           WHITELIST=$(curl -sX GET "https://${{ secrets.SSH_USER }}:${{ steps.encoded_password.outputs.PASSWORD }}@${{ secrets.SSH_HOST }}:2083/${{ env.ENDPOINT }}?r=list")
