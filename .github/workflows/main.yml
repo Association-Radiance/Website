@@ -26,9 +26,9 @@ jobs:
       - name: whitelist ip on hosting (o2switch)
         shell: bash
         run: |
-          ENDPOINT='frontend/o2switch/o2switch-ssh-whitelist/index.live.php'
+          ENDPOINT="frontend/o2switch/o2switch-ssh-whitelist/index.live.php"
           
-          echo "Get actual whitelisted IPs..."
-          RESPONSE=$(curl -sX GET "https://${{ secrets.SSH_USER }}:${{ steps.encoded.outputs.PASSWORD }}@${{ secrets.SSH_HOST }}:2083/$ENDPOINT?r=list")
-          echo "Response: $RESPONSE"
-          UNIQUE_IPS=$(echo "$RESPONSE" | jq -r '.data.list[] | .address' | sort -u)
+          echo "Actual whitelist : "
+          LIST=$(curl -sX GET "https://${{ secrets.SSH_USER }}:${{ steps.encoded.outputs.PASSWORD }}@${{ secrets.SSH_HOST }}:2083/$ENDPOINT?r=list")
+          echo "$LIST" | jq '.data.list[]'
+          
