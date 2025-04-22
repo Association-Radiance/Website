@@ -11,10 +11,7 @@ jobs:
             contents: read
 
         steps:
-        - name: ls -a via ssh
-          uses: garygrossgarten/github-action-ssh@release
-          with:
-            command: ls -a
-            host: ${{secrets.SSH_HOST}}
-            username: ${{secrets.SSH_USER}}
-            password: ${{ secrets.SSH_PASSWORD }}
+        - name: get runner ip
+          run: |
+              response = $(curl https://api.ipify.org);
+              echo "response=$response" >> $GITHUB_OUTPUT
