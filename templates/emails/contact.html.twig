@@ -1,18 +1,8 @@
-{% apply inline_css %}
-    <head>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Contact Email</title>
-    </head>
+<h1>Nouvelle demande de contact</h1>
 
-    <body>
-    <h1>Nouvelle demande de contact</h1>
-
-    <p>Nom : {{ contact.name }}</p>
-    <p>Email : {{ contact.email }}</p>
-    <p>Telephone : {{ contact.telephone }}</p>
-    <p>Societe : {{ contact.company }}</p>
-    <p>Sujet : {{ contact.subject }}</p>
-    <p>Message : {{ contact.message }}</p>
-    </body>
-{% endapply %}
+<p>Nom : {{ contact.name }}</p>
+<p>Email : {{ contact.email }}</p>
+<p>Telephone : {{ contact.telephone }}</p>
+<p>Societe : {{ contact.company }}</p>
+<p>Sujet : {{ contact.subject }}</p>
+<p>Message : {{ contact.message }}</p>
