@@ -91,4 +91,4 @@ jobs:
           SSH_HOST: ${{ secrets.SSH_HOST }}
 
       - name: test2
-        run: ssh staging 'cd radiance && touch test.txt'
+        run: ssh viki3846@cerfeuil.o2switch.net
