@@ -91,4 +91,9 @@ jobs:
           SSH_HOST: ${{ secrets.SSH_HOST }}
 
       - name: test2
-        run: ssh viki3846@cerfeuil.o2switch.net -tt
+        uses: garygrossgarten/github-action-ssh@release
+        with:
+          command: ls -a
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USER }}
+          privateKey: ${{ secrets.SSH_KEY}}
