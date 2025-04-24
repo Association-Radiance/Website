@@ -4,17 +4,16 @@ namespace App\Service;
 
 use App\Entity\Contact;
 use Symfony\Bridge\Twig\Mime\TemplatedEmail;
-use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
 use Symfony\Component\Mailer\Exception\TransportExceptionInterface;
 use Symfony\Component\Mailer\MailerInterface;
 
-readonly class MailerService
+class MailerService
 {
 
     private string $contact_sender_address;
     private string $contact_recipient_address;
 
-    public function __construct(private MailerInterface $mailerInterface, string $contact_sender_address, string $contact_recipient_address)
+    public function __construct(private readonly MailerInterface $mailerInterface, string $contact_sender_address, string $contact_recipient_address)
     {
         $this->contact_sender_address = $contact_sender_address;
         $this->contact_recipient_address = $contact_recipient_address;
