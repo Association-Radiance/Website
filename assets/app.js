@@ -8,5 +8,3 @@ import './bootstrap.js';
 import './styles/normalize.css';
 import './styles/global.css';
 import './styles/style.css'
-
-console.log('This log comes from assets/app.js - welcome to AssetMapper! 🎉');

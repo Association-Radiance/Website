@@ -7,17 +7,24 @@ use Symfony\Bridge\Twig\Mime\TemplatedEmail;
 use Symfony\Component\Mailer\Exception\TransportExceptionInterface;
 use Symfony\Component\Mailer\MailerInterface;
 
-readonly class MailerService
+class MailerService
 {
-    public function __construct(private MailerInterface $mailerInterface)
+
+    private mixed $contact_sender_address;
+    private mixed $contact_recipient_address;
+
+    public function __construct($contact_sender_address, $contact_recipient_address, private MailerInterface $mailerInterface)
     {
+        $this->contact_sender_address = $contact_sender_address;
+        $this->contact_recipient_address = $contact_recipient_address;
+        $this->mailerInterface = $mailerInterface;
     }
 
     public function sendContactEmail(Contact $contact): array
     {
         $email = (new TemplatedEmail())
-            ->from($_ENV['CONTACT_SENDER_ADDRESS'])
-            ->to($_ENV['CONTACT_RECIPIENT_ADDRESS'])
+            ->from($this->contact_sender_address)
+            ->to($this->contact_recipient_address)
             ->subject("Nouvelle demande de contact de " . $contact->getName())
             ->htmlTemplate('emails/contact.html.twig')
             ->locale('fr')
@@ -32,3 +39,4 @@ readonly class MailerService
         return ['status' => 'success', 'message' => 'Demande de contact envoyé'];
     }
 }
+
