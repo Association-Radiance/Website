@@ -1,8 +1,6 @@
 name: test
 
-on:
-  push:
-    branches: [ main ]
+on: workflow_dispatch
 
 env:
   ENDPOINT: frontend/o2switch/o2switch-ssh-whitelist/index.live.php
