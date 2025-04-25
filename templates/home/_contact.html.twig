@@ -7,9 +7,16 @@
 
         <div class="form-field">
             <div class="form-label">
+                <p>Les champs marqués d'un * sont obligatoires.</p>
+            </div>
+        </div>
+
+        <div class="form-field">
+            <div class="form-label">
                 {{ form_label(form.name, "Nom") }}
                 {{ form_errors(form.name) }}
             </div>
+
             {{ form_widget(form.name, {'attr': {'class': 'form-input'}}) }}
         </div>
 
@@ -55,7 +62,7 @@
 
         <p class="form-condition">En envoyant ce formulaire, vous acceptez que l’association Radiance stocke et
             utilise vos données personnelles afin de vous contacter. Nous nous engageons à ne pas communiquer vos
-            coordonnées à des tiers ni à les utiliser à des fins publicitairesé.</p>
+            coordonnées à des tiers ni à les utiliser à des fins publicitaires.</p>
 
         <div class="form-field form-field-submit">
             <div class="form-terms">
@@ -66,7 +73,7 @@
                     {{ form_errors(form.terms) }}
                 </div>
             </div>
-            
+
             {{ form_widget(form.submit, {'attr': {'class': 'form-submit'}, 'label' : 'Envoyer' }) }}
         </div>
 
