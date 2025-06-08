@@ -191,11 +191,11 @@ main {
 }
 
 .section-banner::before {
-    background: var(--accent-color-dark);
+    background: var(--accent-color);
     content: '';
     width: 100%;
     height: 100%;
-    opacity: 0.8;
+    opacity: 0.5;
     position: absolute;
 }
 
@@ -261,6 +261,10 @@ main {
     @media screen and (max-width: 1024px) {
         font-size: 36px;
     }
+}
+
+.title-accent {
+    color: var(--accent-color);
 }
 
 .section-subtitle {
@@ -640,6 +644,7 @@ main {
     justify-content: center;
     align-items: center;
     box-shadow: 2px 2px 8px var(--shadow-color);
+    gap: 16px;
 
     @media screen and (max-width: 1280px) {
         padding: 8px 32px;
@@ -650,9 +655,21 @@ main {
     }
 }
 
-.announcement > p {
+.announcement > p, li {
     color: var(--text-color-3);
     font-weight: 700;
+}
+
+.announcement-link {
+    font-size: 20px;
+    font-weight: 700;
+    border-radius: 8px;
+    background-color: var(--accent-color);
+    padding: 12px 24px;
+}
+
+.announcement-link:hover {
+    background-color: var(--accent-color-light);
 }
 
 .form-container {
