@@ -24,3 +24,7 @@
 /public/assets/
 /assets/vendor/
 ###< symfony/asset-mapper ###
+
+Makefile
+o2switch_radiance
+o2switch_radiance.pub
