@@ -1,856 +1,878 @@
 body {
-    background-color: var(--background-color);
-    display: flex;
-    flex-direction: column;
-    height: 100vh;
+	background-color: var(--background-color);
+	display: flex;
+	flex-direction: column;
+	height: 100vh;
 }
 
-header, section, footer {
-    display: flex;
-    justify-content: center;
-    width: 100%;
-    position: relative;
+header,
+section,
+footer {
+	display: flex;
+	justify-content: center;
+	width: 100%;
+	position: relative;
 }
 
 header {
-    box-shadow: 0 2px 8px var(--shadow-color);
-    z-index: 10;
+	box-shadow: 0 2px 8px var(--shadow-color);
+	z-index: 10;
 }
 
 .logo {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 48px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 48px;
 
-    @media screen and (max-width: 896px) {
-        height: 32px;
-    }
+	@media screen and (max-width: 896px) {
+		height: 32px;
+	}
 }
 
 .container {
-    max-width: 1440px;
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    margin: 64px 0;
-    padding: 16px;
-    gap: 32px;
-    z-index: 1;
+	max-width: 1440px;
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+	margin: 64px 0;
+	padding: 16px;
+	gap: 32px;
+	z-index: 1;
 
-    @media screen and (max-width: 1280px) {
-        margin: 48px 0;
-        gap: 24px;
-    }
+	@media screen and (max-width: 1280px) {
+		margin: 48px 0;
+		gap: 24px;
+	}
 
-    @media screen and (max-width: 1024px) {
-        margin: 32px 0;
-        gap: 16px;
-    }
+	@media screen and (max-width: 1024px) {
+		margin: 32px 0;
+		gap: 16px;
+	}
 
-    @media screen and (max-width: 896px) {
-        margin: 16px 0;
-        padding: 8px;
-    }
+	@media screen and (max-width: 896px) {
+		margin: 16px 0;
+		padding: 8px;
+	}
 }
 
 .navbar {
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    margin: 8px 0;
-    padding: 0 16px;
-    height: 48px;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+	margin: 8px 0;
+	padding: 0 16px;
+	height: 48px;
 
-    @media screen and (max-width: 896px) {
-        height: 32px;
-    }
+	@media screen and (max-width: 896px) {
+		height: 32px;
+	}
 }
 
 .navbar-menu {
-    display: flex;
-    flex-direction: row;
-    width: 100%;
-    height: 48px;
-    justify-content: space-between;
+	display: flex;
+	flex-direction: row;
+	width: 100%;
+	height: 48px;
+	justify-content: space-between;
 
-    @media screen and (max-width: 1024px) {
-        display: none;
-        flex-direction: column;
-        height: auto;
-        position: absolute;
-        top: 64px;
-        right: 0;
-        box-shadow: 0 2px 8px var(--shadow-color);
-    }
+	@media screen and (max-width: 1024px) {
+		display: none;
+		flex-direction: column;
+		height: auto;
+		position: absolute;
+		top: 64px;
+		right: 0;
+		box-shadow: 0 2px 8px var(--shadow-color);
+	}
 
-    @media screen and (max-width: 896px) {
-        top: 48px;
-    }
+	@media screen and (max-width: 896px) {
+		top: 48px;
+	}
 }
 
 .active {
-    display: flex;
+	display: flex;
 }
 
 .navbar-button {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 16px;
-    font-weight: 500;
-    background-color: var(--background-color);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-size: 16px;
+	font-weight: 500;
+	background-color: var(--background-color);
 
-    @media screen and (max-width: 1280px) {
-        font-size: 14px;
-    }
+	@media screen and (max-width: 1280px) {
+		font-size: 14px;
+	}
 
-    @media screen and (max-width: 1024px) {
-        height: 64px;
-        border-top: 1px solid var(--text-color-1);
-    }
+	@media screen and (max-width: 1024px) {
+		height: 64px;
+		border-top: 1px solid var(--text-color-1);
+	}
 
-    @media screen and (max-width: 896px) {
-        height: 48px;
-    }
+	@media screen and (max-width: 896px) {
+		height: 48px;
+	}
 }
 
 .navbar-button:hover {
-    color: var(--accent-color);
+	color: var(--accent-color);
 }
 
 .navbar-menu-control {
-    display: none;
-    cursor: pointer;
+	display: none;
+	cursor: pointer;
 
-    @media screen and (max-width: 1024px) {
-        display: block;
-        height: 48px;
-        width: 48px;
-        padding: 8px;
-    }
+	@media screen and (max-width: 1024px) {
+		display: block;
+		height: 48px;
+		width: 48px;
+		padding: 8px;
+	}
 
-    @media screen and (max-width: 896px) {
-        display: block;
-        height: 32px;
-        width: 32px;
-        padding: 4px;
-    }
+	@media screen and (max-width: 896px) {
+		display: block;
+		height: 32px;
+		width: 32px;
+		padding: 4px;
+	}
 }
 
 main {
-    position: relative;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    overflow-y: scroll;
-    overflow-x: hidden;
+	position: relative;
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	overflow-y: scroll;
+	overflow-x: hidden;
 }
 
 .content-container {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    gap: 32px;
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	gap: 32px;
 
-    @media screen and (max-width: 1440px) {
-        gap: 16px;
-    }
+	@media screen and (max-width: 1440px) {
+		gap: 16px;
+	}
 
-    @media screen and (max-width: 896px) {
-        flex-direction: column;
-    }
+	@media screen and (max-width: 896px) {
+		flex-direction: column;
+	}
 }
 
 .content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 16px;
-    gap: 32px;
-    height: 100%;
-    width: 100%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	padding: 16px;
+	gap: 32px;
+	height: 100%;
+	width: 100%;
 
-    @media screen and (max-width: 1024px) {
-        padding: 8px;
-        gap: 16px;
-    }
+	@media screen and (max-width: 1024px) {
+		padding: 8px;
+		gap: 16px;
+	}
 }
 
 .content-fit {
-    width: fit-content;
+	width: fit-content;
 }
 
 .section-banner {
-    background-image: url("../images/background/background-banner.webp");
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-size: cover;
-    background-position: center;
+	background-image: url('../images/background/background-banner.webp');
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-size: cover;
+	background-position: center;
 }
 
 .section-banner::before {
-    background: var(--accent-color-dark);
-    content: '';
-    width: 100%;
-    height: 100%;
-    opacity: 0.8;
-    position: absolute;
+	background: var(--accent-color-dark);
+	content: '';
+	width: 100%;
+	height: 100%;
+	opacity: 0.8;
+	position: absolute;
 }
 
 .section-banner > .container {
-    margin: 128px 0;
+	margin: 128px 0;
 
-    @media screen and (max-width: 1024px) {
-        margin: 64px 0;
-    }
+	@media screen and (max-width: 1024px) {
+		margin: 64px 0;
+	}
 }
 
 .banner-title {
-    font-size: 64px;
-    font-weight: 700;
-    margin: 0;
-    text-align: center;
+	font-size: 64px;
+	font-weight: 700;
+	margin: 0;
+	text-align: center;
 
-    @media screen and (max-width: 1024px) {
-        font-size: 48px;
-    }
+	@media screen and (max-width: 1024px) {
+		font-size: 48px;
+	}
 }
 
 .section-partner {
-    background-image: url("../images/background/background-partner.webp");
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-size: cover;
-    background-position: center;
+	background-image: url('../images/background/background-partner.webp');
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-size: cover;
+	background-position: center;
 }
 
 .section-edition2025 {
-    background-image: url("../images/background/background-lan2025.webp");
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-size: cover;
-    background-position: center;
+	background-image: url('../images/background/background-lan2025.webp');
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-size: cover;
+	background-position: center;
 }
 
 .section-contact {
-    background-image: url("../images/background/background-contact.webp");
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-size: cover;
-    background-position: center;
+	background-image: url('../images/background/background-contact.webp');
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-size: cover;
+	background-position: center;
 }
 
-.section-partner::before, .section-edition2025::before, .section-contact::before {
-    background: var(--background-color);
-    content: '';
-    width: 100%;
-    height: 100%;
-    opacity: 0.8;
-    position: absolute;
+.section-partner::before,
+.section-edition2025::before,
+.section-contact::before {
+	background: var(--background-color);
+	content: '';
+	width: 100%;
+	height: 100%;
+	opacity: 0.8;
+	position: absolute;
 }
 
 .section-title {
-    display: flex;
-    justify-content: center;
-    font-size: 48px;
-    text-align: center;
-    color: var(--text-color-2);
+	display: flex;
+	justify-content: center;
+	font-size: 48px;
+	text-align: center;
+	color: var(--text-color-2);
 
-    @media screen and (max-width: 1024px) {
-        font-size: 36px;
-    }
+	@media screen and (max-width: 1024px) {
+		font-size: 36px;
+	}
 }
 
 .title-accent {
-    color: var(--accent-color);
+	color: var(--accent-color);
 }
 
 .section-subtitle {
-    display: flex;
-    justify-content: center;
-    font-size: 36px;
-    text-align: center;
-    color: var(--text-color-2);
+	display: flex;
+	justify-content: center;
+	font-size: 36px;
+	text-align: center;
+	color: var(--text-color-2);
 
-    @media screen and (max-width: 1024px) {
-        font-size: 24px;
-    }
+	@media screen and (max-width: 1024px) {
+		font-size: 24px;
+	}
 }
 
 /*About*/
 .discord {
-    display: flex;
-    flex-direction: row;
-    width: 100%;
-    height: 100%;
-    gap: 16px;
+	display: flex;
+	flex-direction: row;
+	width: 100%;
+	height: 100%;
+	gap: 16px;
 }
 
 .discord-qrcode {
-    display: flex;
+	display: flex;
 }
 
 .discord-qrcode > img {
-    width: 256px;
-    height: 312px;
+	width: 256px;
+	height: 312px;
 
-    @media screen and (max-width: 1024px) {
-        width: 192px;
-        height: 234px;
-    }
-
+	@media screen and (max-width: 1024px) {
+		width: 192px;
+		height: 234px;
+	}
 }
 
 .discord-content {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-    width: 100%;
+	display: flex;
+	flex-direction: column;
+	gap: 8px;
+	width: 100%;
 
-    @media screen and (max-width: 1280px) {
-        gap: 4px;
-        max-width: 196px;
-    }
+	@media screen and (max-width: 1280px) {
+		gap: 4px;
+		max-width: 196px;
+	}
 }
 
 .discord-infos {
-    font-size: 28px;
-    font-weight: 700;
+	font-size: 28px;
+	font-weight: 700;
 
-    @media screen and (max-width: 1024px) {
-        font-size: 24px;
-    }
+	@media screen and (max-width: 1024px) {
+		font-size: 24px;
+	}
 }
 
 .discord-join {
-    display: flex;
-    flex-direction: column;
-    font-size: 20px;
-    margin-top: 16px;
+	display: flex;
+	flex-direction: column;
+	font-size: 20px;
+	margin-top: 16px;
 
-    @media screen and (max-width: 1280px) {
-        margin-top: 4px;
-    }
+	@media screen and (max-width: 1280px) {
+		margin-top: 4px;
+	}
 }
 
 /*Partner*/
 .partner-logo {
-    display: flex;
-    justify-content: space-around;
-    width: 100%;
+	display: flex;
+	justify-content: space-around;
+	width: 100%;
 }
 
 .partner-logo > img {
-    height: 128px;
+	height: 128px;
 
-    @media screen and (max-width: 1280px) {
-        height: 96px;
-    }
+	@media screen and (max-width: 1280px) {
+		height: 96px;
+	}
 
-    @media screen and (max-width: 1024px) {
-        height: 64px;
-    }
+	@media screen and (max-width: 1024px) {
+		height: 64px;
+	}
 }
 
 /*Edition 2024*/
 .event-resume {
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-    gap: 16px;
+	display: flex;
+	flex-direction: column;
+	height: 100%;
+	gap: 16px;
 
-    @media screen and (max-width: 896px) {
-        align-items: center;
-        justify-content: center;
-        flex-direction: row;
-        flex-wrap: wrap;
-    }
+	@media screen and (max-width: 896px) {
+		align-items: center;
+		justify-content: center;
+		flex-direction: row;
+		flex-wrap: wrap;
+	}
 }
 
 .event-item {
-    display: flex;
-    flex-direction: row;
-    width: fit-content;
-    gap: 16px;
-    padding: 8px 16px;
-    border-radius: 8px;
-    background-color: var(--text-color-1);
+	display: flex;
+	flex-direction: row;
+	width: fit-content;
+	gap: 16px;
+	padding: 8px 16px;
+	border-radius: 8px;
+	background-color: var(--text-color-1);
 }
 
 .event-item > img {
-    width: 32px;
-    height: 32px;
+	width: 32px;
+	height: 32px;
 
-    @media screen and (max-width: 1280px) {
-        width: 24px;
-        height: 24px;
-    }
+	@media screen and (max-width: 1280px) {
+		width: 24px;
+		height: 24px;
+	}
 }
 
 .event-item > p {
-    color: var(--text-color-3);
-    font-weight: 700;
-    text-wrap: nowrap;
+	color: var(--text-color-3);
+	font-weight: 700;
+	text-wrap: nowrap;
 }
 
 .team-container {
-    display: flex;
-    flex-direction: row;
-    gap: 32px;
-    border-radius: 8px;
-    padding: 16px;
-    width: 100%;
-    box-shadow: 2px 2px 8px var(--shadow-color);
+	display: flex;
+	flex-direction: row;
+	gap: 32px;
+	border-radius: 8px;
+	padding: 16px;
+	width: 100%;
+	box-shadow: 2px 2px 8px var(--shadow-color);
 
-    @media screen and (max-width: 1280px) {
-        gap: 24px;
-        padding: 12px;
-    }
+	@media screen and (max-width: 1280px) {
+		gap: 24px;
+		padding: 12px;
+	}
 
-    @media screen and (max-width: 1024px) {
-        gap: 16px;
-        padding: 8px;
-    }
+	@media screen and (max-width: 1024px) {
+		gap: 16px;
+		padding: 8px;
+	}
 }
 
 .team-first {
-    background-color: var(--accent-color);
+	background-color: var(--accent-color);
 
-    @media screen and (max-width: 896px) {
-        max-width: 500px;
-    }
+	@media screen and (max-width: 896px) {
+		max-width: 500px;
+	}
 }
 
 .team-other {
-    background-color: var(--background-color-light);
+	background-color: var(--background-color-light);
 
-    @media screen and (max-width: 1024px) {
-        max-width: 500px;
-    }
-
+	@media screen and (max-width: 1024px) {
+		max-width: 500px;
+	}
 }
 
-.team-recap, .team-detail {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
+.team-recap,
+.team-detail {
+	display: flex;
+	flex-direction: column;
+	gap: 16px;
 }
 
 .team-recap {
-    width: 256px;
+	width: 256px;
 
-    @media screen and (max-width: 1280px) {
-        width: 192px;
-    }
+	@media screen and (max-width: 1280px) {
+		width: 192px;
+	}
 
-    @media screen and (max-width: 1024px) {
-        width: 160px;
-    }
+	@media screen and (max-width: 1024px) {
+		width: 160px;
+	}
 
-    @media screen and (max-width: 896px) {
-        width: 140px;
-    }
+	@media screen and (max-width: 896px) {
+		width: 140px;
+	}
 }
 
 .team-detail {
-    flex: 1 1 50%;
+	flex: 1 1 50%;
 }
 
-.team-placement, .team-name {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 44px;
-    text-transform: uppercase;
-    font-weight: 700;
+.team-placement,
+.team-name {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 44px;
+	text-transform: uppercase;
+	font-weight: 700;
 
-    @media screen and (max-width: 1280px) {
-        height: 32px;
-    }
+	@media screen and (max-width: 1280px) {
+		height: 32px;
+	}
 }
 
 .team-placement {
-    background-color: var(--color-alternate);
-    border-radius: 8px;
-    font-size: 24px;
-    color: var(--text-color-1);
-    box-shadow: 2px 2px 8px var(--shadow-color);
+	background-color: var(--color-alternate);
+	border-radius: 8px;
+	font-size: 24px;
+	color: var(--text-color-1);
+	box-shadow: 2px 2px 8px var(--shadow-color);
 
-    @media screen and (max-width: 1280px) {
-        font-size: 16px;
-    }
+	@media screen and (max-width: 1280px) {
+		font-size: 16px;
+	}
 }
 
 .team-name {
-    font-size: 36px;
-    font-family: Jaro, sans-serif;
+	font-size: 36px;
+	font-family: Jaro, sans-serif;
 
-    @media screen and (max-width: 1280px) {
-        font-size: 28px;
-    }
+	@media screen and (max-width: 1280px) {
+		font-size: 28px;
+	}
 
-    @media screen and (max-width: 1024px) {
-        font-size: 24px;
-    }
+	@media screen and (max-width: 1024px) {
+		font-size: 24px;
+	}
 
-    @media screen and (max-width: 896px) {
-        font-size: 20px;
-    }
+	@media screen and (max-width: 896px) {
+		font-size: 20px;
+	}
 }
 
 .team-logo {
-    aspect-ratio: 1/1;
-    border-radius: 8px;
-    box-shadow: 2px 2px 8px var(--shadow-color);
+	aspect-ratio: 1/1;
+	border-radius: 8px;
+	box-shadow: 2px 2px 8px var(--shadow-color);
 }
 
 .team-composition {
-    display: flex;
-    width: 100%;
-    gap: 16px;
+	display: flex;
+	width: 100%;
+	gap: 16px;
 
-    @media screen and (max-width: 1280px) {
-        gap: 12px;
-    }
+	@media screen and (max-width: 1280px) {
+		gap: 12px;
+	}
 
-    @media screen and (max-width: 1024px) {
-        gap: 8px;
-    }
+	@media screen and (max-width: 1024px) {
+		gap: 8px;
+	}
 }
 
 .team-first > .team-detail > .team-composition {
-    flex-direction: row;
+	flex-direction: row;
 
-    @media screen and (max-width: 896px) {
-        flex-direction: column;
-    }
+	@media screen and (max-width: 896px) {
+		flex-direction: column;
+	}
 }
 
 .team-other > .team-detail > .team-composition {
-    flex-direction: column;
+	flex-direction: column;
 }
 
 .player-card {
-    display: flex;
-    flex-direction: column;
-    width: 20%;
-    gap: 4px;
+	display: flex;
+	flex-direction: column;
+	width: 20%;
+	gap: 4px;
 
-    @media screen and (max-width: 896px) {
-        width: 100%;
-    }
+	@media screen and (max-width: 896px) {
+		width: 100%;
+	}
 }
 
 .player-image {
-    aspect-ratio: 1/1;
-    border-radius: 8px;
-    background-color: var(--accent-color-light);
-    overflow: hidden;
-    display: flex;
+	aspect-ratio: 1/1;
+	border-radius: 8px;
+	background-color: var(--accent-color-light);
+	overflow: hidden;
+	display: flex;
 
-    @media screen and (max-width: 896px) {
-        display: none;
-    }
+	@media screen and (max-width: 896px) {
+		display: none;
+	}
 }
 
 .player-image > img {
-    width: 100%;
+	width: 100%;
 }
 
 .player-info {
-    display: flex;
-    width: 100%;
+	display: flex;
+	width: 100%;
 }
 
 .player-info-vertical {
-    align-items: center;
-    flex-direction: column;
+	align-items: center;
+	flex-direction: column;
 
-    @media screen and (max-width: 896px) {
-        flex-direction: row;
-        gap: 8px;
-        justify-content: space-between;
-    }
+	@media screen and (max-width: 896px) {
+		flex-direction: row;
+		gap: 8px;
+		justify-content: space-between;
+	}
 }
 
 .player-info-horizontal {
-    flex-direction: row;
-    gap: 8px;
-    justify-content: space-between;
+	flex-direction: row;
+	gap: 8px;
+	justify-content: space-between;
 }
 
 .player-name {
-    text-transform: uppercase;
-    font-weight: 700;
-    font-size: 18px;
+	text-transform: uppercase;
+	font-weight: 700;
+	font-size: 18px;
 
-    @media screen and (max-width: 1280px) {
-        font-size: 14px;
-    }
+	@media screen and (max-width: 1280px) {
+		font-size: 14px;
+	}
 }
 
 .player-info-vertical > .player-role {
-    justify-content: center;
+	justify-content: center;
 }
 
 .player-info-horizontal > .player-role {
-    justify-content: left;
+	justify-content: left;
 }
 
 .player-role {
-    display: flex;
-    align-items: center;
-    width: 140px;
-    gap: 8px;
+	display: flex;
+	align-items: center;
+	width: 140px;
+	gap: 8px;
 
-    @media screen and (max-width: 1280px) {
-        width: 120px;
-    }
+	@media screen and (max-width: 1280px) {
+		width: 120px;
+	}
 
-    @media screen and (max-width: 896px) {
-        width: fit-content;
-    }
+	@media screen and (max-width: 896px) {
+		width: fit-content;
+	}
 }
 
 .player-role > img {
-    height: 24px;
-    width: 24px;
+	height: 24px;
+	width: 24px;
 
-    @media screen and (max-width: 896px) {
-        height: 16px;
-        width: 16px;
-    }
+	@media screen and (max-width: 896px) {
+		height: 16px;
+		width: 16px;
+	}
 }
 
 .player-role > span {
-    font-size: 16px;
-    @media screen and (max-width: 1280px) {
-        font-size: 12px;
-    }
+	font-size: 16px;
+	@media screen and (max-width: 1280px) {
+		font-size: 12px;
+	}
 
-    @media screen and (max-width: 400px) {
-        display: none;
-    }
+	@media screen and (max-width: 400px) {
+		display: none;
+	}
 }
 
 .announcement {
-    background-color: var(--text-color-1);
-    padding: 16px 64px;
-    border-radius: 8px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    box-shadow: 2px 2px 8px var(--shadow-color);
-    gap: 16px;
+	background-color: var(--text-color-1);
+	padding: 16px 64px;
+	border-radius: 8px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	box-shadow: 2px 2px 8px var(--shadow-color);
+	gap: 16px;
 
-    @media screen and (max-width: 1280px) {
-        padding: 8px 32px;
-    }
+	@media screen and (max-width: 1280px) {
+		padding: 8px 32px;
+	}
 
-    @media screen and (max-width: 896px) {
-        padding: 8px 16px;
-    }
+	@media screen and (max-width: 896px) {
+		padding: 8px 16px;
+	}
 }
 
-.announcement > p, li {
-    color: var(--text-color-3);
-    font-weight: 700;
+.announcement > p,
+li {
+	color: var(--text-color-3);
+	font-weight: 700;
 }
 
 .announcement-link {
-    font-size: 20px;
-    font-weight: 700;
-    border-radius: 8px;
-    background-color: var(--accent-color);
-    padding: 12px 24px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 8px;
+	font-size: 20px;
+	font-weight: 700;
+	border-radius: 8px;
+	background-color: var(--accent-color);
+	padding: 0 24px;
+	height: 48px;
 }
 
 .announcement-link:hover {
-    background-color: var(--accent-color-light);
+	background-color: var(--accent-color-light);
 }
 
 .form-container {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    gap: 16px;
-    padding: 16px;
-    border-radius: 8px;
-    background-color: var(--background-color);
-    box-shadow: 2px 2px 8px var(--shadow-color);
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+	gap: 16px;
+	padding: 16px;
+	border-radius: 8px;
+	background-color: var(--background-color);
+	box-shadow: 2px 2px 8px var(--shadow-color);
 }
 
 .form-field {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    justify-content: start;
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+	justify-content: start;
 }
 
 .form-label {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    padding: 4px 8px;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+	padding: 4px 8px;
 }
 
-.form-label > *, .form-input, .form-textarea, .form-condition {
-    font-size: 16px;
+.form-label > *,
+.form-input,
+.form-textarea,
+.form-condition {
+	font-size: 16px;
 
-    @media screen and (max-width: 896px) {
-        font-size: 14px;
-    }
+	@media screen and (max-width: 896px) {
+		font-size: 14px;
+	}
 }
 
 .form-label > ul > li {
-    font-size: 12px;
-    display: flex;
-    justify-content: center;
-    color: var(--accent-color);
+	font-size: 12px;
+	display: flex;
+	justify-content: center;
+	color: var(--accent-color);
 
-    @media screen and (max-width: 896px) {
-        font-size: 10px;
-    }
+	@media screen and (max-width: 896px) {
+		font-size: 10px;
+	}
 }
 
 .form-label > .required:after {
-    content: '*';
-    margin-left: 8px;
+	content: '*';
+	margin-left: 8px;
 }
 
-.form-input, .form-textarea, .form-checkbox, .form-submit {
-    border: 2px solid var(--text-color-2);
-    border-radius: 8px;
-    background-color: var(--background-color-light);
-    padding: 8px;
+.form-input,
+.form-textarea,
+.form-checkbox,
+.form-submit {
+	border: 2px solid var(--text-color-2);
+	border-radius: 8px;
+	background-color: var(--background-color-light);
+	padding: 8px;
 }
 
-.form-input:hover, .form-textarea:hover, .form-checkbox:hover, .form-submit:hover {
-    border-color: var(--accent-color-dark);
+.form-input:hover,
+.form-textarea:hover,
+.form-checkbox:hover,
+.form-submit:hover {
+	border-color: var(--accent-color-dark);
 }
 
-.form-input:focus, .form-textarea:focus, .form-checkbox:focus, .form-submit:focus {
-    border-color: var(--accent-color);
-    outline: none;
+.form-input:focus,
+.form-textarea:focus,
+.form-checkbox:focus,
+.form-submit:focus {
+	border-color: var(--accent-color);
+	outline: none;
 }
 
 .form-textarea {
-    resize: vertical;
-    min-height: 44px;
-    height: 88px;
+	resize: vertical;
+	min-height: 44px;
+	height: 88px;
 }
 
-.form-condition, .form-response {
-    padding: 0 8px;
+.form-condition,
+.form-response {
+	padding: 0 8px;
 
-    @media screen and (max-width: 896px) {
-        font-size: 14px;
-    }
+	@media screen and (max-width: 896px) {
+		font-size: 14px;
+	}
 }
 
-input[type="checkbox"] {
-    -webkit-appearance: none;
-    appearance: none;
-    width: 40px;
-    height: 40px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+input[type='checkbox'] {
+	-webkit-appearance: none;
+	appearance: none;
+	width: 40px;
+	height: 40px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }
 
-input[type="checkbox"]::before {
-    content: "";
-    width: 20px;
-    height: 20px;
-    clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
-    transform: scale(0);
-    transform-origin: center;
-    transition: 120ms transform ease-in-out;
-    box-shadow: inset 1em 1em var(--text-color-1);
+input[type='checkbox']::before {
+	content: '';
+	width: 20px;
+	height: 20px;
+	clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
+	transform: scale(0);
+	transform-origin: center;
+	transition: 120ms transform ease-in-out;
+	box-shadow: inset 1em 1em var(--text-color-1);
 }
 
-input[type="checkbox"]:checked::before {
-    transform: scale(1);
+input[type='checkbox']:checked::before {
+	transform: scale(1);
 }
 
 .form-terms {
-    display: flex;
-    flex-direction: row;
-    width: 100%;
+	display: flex;
+	flex-direction: row;
+	width: 100%;
 }
 
 .form-submit {
-    width: 160px;
-    height: 40px;
-
+	width: 160px;
+	height: 40px;
 }
 
 .form-field-submit {
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    gap: 16px;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	gap: 16px;
 
-    @media screen and (max-width: 896px) {
-        flex-direction: column;
-    }
+	@media screen and (max-width: 896px) {
+		flex-direction: column;
+	}
 }
 
 .form-response {
-    display: flex;
-    justify-content: right;
-    align-items: center;
+	display: flex;
+	justify-content: right;
+	align-items: center;
 }
 
 .flash-success {
-    color: green;
+	color: green;
 }
 
 .flash-success:before {
-    margin-right: 8px;
-    content: "\002713";
+	margin-right: 8px;
+	content: '\002713';
 }
 
 .flash-error {
-    color: red;
+	color: red;
 }
 
 .flash-error:before {
-    margin-right: 8px;
-    content: "\002716";
+	margin-right: 8px;
+	content: '\002716';
 }
 
 footer > .container {
-    display: flex;
-    flex-direction: row;
-    margin: 16px 0;
-    justify-content: center;
+	display: flex;
+	flex-direction: row;
+	margin: 16px 0;
+	justify-content: center;
 }
 
 .footer-link {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    padding: 8px;
-    gap: 16px;
-    border-radius: 8px;
-    background-color: var(--background-color-light);
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: center;
+	padding: 8px;
+	gap: 16px;
+	border-radius: 8px;
+	background-color: var(--background-color-light);
 }
 
 .footer-link:hover {
-    background-color: var(--accent-color-dark);
+	background-color: var(--accent-color-dark);
 }
 
 .footer-link:active {
-    background-color: var(--accent-color);
+	background-color: var(--accent-color);
 }
 
 .footer-link > img {
-    width: 32px;
-    height: 32px;
+	width: 32px;
+	height: 32px;
 }
