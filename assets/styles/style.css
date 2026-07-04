@@ -228,7 +228,7 @@ main {
 	background-position: center;
 }
 
-.section-edition2025 {
+.section-edition2026 {
 	background-image: url('../images/background/background-lan2025.webp');
 	background-repeat: no-repeat;
 	background-attachment: fixed;
@@ -245,7 +245,7 @@ main {
 }
 
 .section-partner::before,
-.section-edition2025::before,
+.section-edition2026::before,
 .section-contact::before {
 	background: var(--background-color);
 	content: '';

@@ -7,13 +7,13 @@
 
     <header>
         <nav class="navbar container">
-            <a href="#banner" class="">
+            <a href="" class="">
                 <img src="{{ asset('images/logo.webp') }}" alt="Association Radiance" class='logo'/>
             </a>
             <div class="navbar-menu" id="menu">
                 <a href="#about" class="navbar-button">Qui sommes-nous ?</a>
-                <a href="#edition-2025" class="navbar-button">Radiance LAN 2025</a>
-                <a href="#edition-2024" class="navbar-button">Radiance LAN 2024</a>
+                <a href="#edition-2026" class="navbar-button">Radiance LAN 2026</a>
+                <a href="#editions-precedentes" class="navbar-button">Éditions précédentes</a>
                 <a href="#partners" class="navbar-button">Nos partenaires</a>
                 <a href="#engagement" class="navbar-button">Nos engagements</a>
                 <a href="#contact" class="navbar-button">Nous contacter</a>
@@ -37,13 +37,19 @@
             </div>
         </section>
 
-        <section class="section-edition2025" id="edition-2025">
+        <section class="section-edition2026" id="edition-2026">
+            <div class="container">
+                {{ include('/home/_edition2026.html.twig') }}
+            </div>
+        </section>
+
+        <section class="section-edition2025" id="editions-precedentes">
             <div class="container">
                 {{ include('/home/_edition2025.html.twig') }}
             </div>
         </section>
 
-        <section class="section-edition2024" id="edition-2024">
+        <section class="section-edition2024">
             <div class="container">
                 {{ include('/home/_edition2024.html.twig') }}
             </div>
