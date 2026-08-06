@@ -45,6 +45,7 @@ final class NotificationController extends AbstractController
         $donation = new Donation();
         $donation->setHelloAssoId($data->id);
         $donation->setAmount($data->amount);
+        $donation->setDate($data->date);
 
         $this->entityManager->persist($donation);
         $this->entityManager->flush();
