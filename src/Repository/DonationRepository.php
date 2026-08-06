@@ -16,6 +16,14 @@ class DonationRepository extends ServiceEntityRepository
         parent::__construct($registry, Donation::class);
     }
 
+    public function getTotalDonation()
+    {
+        return $this->createQueryBuilder('d')
+            ->select('SUM(d.amount)')
+            ->getQuery()
+            ->getSingleScalarResult();
+    }
+
     //    /**
     //     * @return Donation[] Returns an array of Donation objects
     //     */
