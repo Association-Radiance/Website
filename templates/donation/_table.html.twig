@@ -11,12 +11,7 @@
 
         <tbody>
             {% for donation in donations %}
-                <tr class="table-row">
-                    <td class="table-cell text-left">{{ donation.id }}</td>
-                    <td class="table-cell text-left">{{ donation.helloAssoId }}</td>
-                    <td class="table-cell text-left">{{ donation.date|date('d/m/Y H:i', timezone: 'Europe/Paris') }}</td>
-                    <td class="table-cell text-right">{{ (donation.amount / 100)|number_format(2) }} €</td>
-                </tr>
+                {% include 'donation/_row.html.twig' %}
             {% endfor %}
         </tbody>
 

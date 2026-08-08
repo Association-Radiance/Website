@@ -14,7 +14,7 @@ class Donation
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\Column(unique: true)]
+    #[ORM\Column(unique: true, nullable: true)]
     private ?int $helloAssoId = null;
 
     #[ORM\Column]

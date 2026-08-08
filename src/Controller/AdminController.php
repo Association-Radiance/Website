@@ -20,7 +20,6 @@ final class AdminController extends AbstractController
         $total = $this->donationRepository->getTotalDonation();
 
         return $this->render('admin/index.html.twig', [
-            'controller_name' => 'AdminController',
             'total' => $total,
             'donations' => $donations
         ]);
