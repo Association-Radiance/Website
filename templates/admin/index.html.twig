@@ -1,28 +1,17 @@
 {% extends 'base.html.twig' %}
 
+{% block stylesheets %}
+    <link href="{{ asset('styles/admin.css') }}" rel="stylesheet" />
+{% endblock %}
+
 {% block title %}
-    Hello AdminController!
+    Administration | Association Radiance
 {% endblock %}
 
 {% block body %}
-    {% for donation in donations %}
-        <div style="display: flex; border:1px solid white; gap:32px">
-            <p>
-                {{ donation.id }}
-            </p>
-            <p>
-                {{ donation.helloAssoId }}
-            </p>
-            <p>
-                {{ (donation.amount / 100)|number_format(2) }} €
-            </p>
-            <p>
-                {{ donation.date|date('d/m/Y H:i', timezone: 'Europe/Paris') }}
-            </p>
+    <main class="admin-main">
+        <div class="admin-container">
+            {{ include('/admin/_donation_table.html.twig') }}
         </div>
-    {% endfor %}
-
-    <p>
-        {{ (total / 100)|number_format(2) }} €
-    </p>
+    </main>
 {% endblock %}

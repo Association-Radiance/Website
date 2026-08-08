@@ -1,17 +1,18 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Jaro:opsz@6..72&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Jaro:opsz@6..72&display=swap");
 
 :root {
-    --accent-color: #F49800;
-    --accent-color-light: #F6AD33;
-    --accent-color-dark: #543C00;
+    --accent-color: #f49800;
+    --accent-color-light: #f6ad33;
+    --accent-color-dark: #543c00;
     --background-color: #091018;
-    --background-color-light: #18191F;
-    --text-color-1: #FFFFFF;
-    --text-color-2: #ABBED1;
+    --background-color-light: #18191f;
+    --background-color-lighter: #16273b;
+    --text-color-1: #ffffff;
+    --text-color-2: #abbed1;
     --text-color-3: #000000;
     --shadow-color: #000000;
 
-    --color-alternate: #1E1E1E;
+    --color-alternate: #1e1e1e;
 }
 
 * {
@@ -22,12 +23,27 @@
     font-family: "Inter", sans-serif;
 }
 
-h1, h2, h3, h4, h5, p, span, li, a, label, input, textarea, button, span {
+h1,
+h2,
+h3,
+h4,
+h5,
+p,
+span,
+li,
+a,
+label,
+input,
+textarea,
+button,
+span {
     color: white;
     font-family: "Inter", sans-serif;
 }
 
-p, span, h5 {
+p,
+span,
+h5 {
     line-height: 1.5em;
     font-size: 20px;
 
@@ -52,4 +68,3 @@ a {
 .text-center {
     text-align: center;
 }
-

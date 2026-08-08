@@ -1,0 +1,30 @@
+<div class="table-container">
+    <table>
+        <thead class="table-head">
+            <tr class="table-row">
+                <th class="table-cell text-left">Id</th>
+                <th class="table-cell text-left">Id HelloAsso</th>
+                <th class="table-cell text-left">Date</th>
+                <th class="table-cell text-right">Montant</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            {% for donation in donations %}
+                <tr class="table-row">
+                    <td class="table-cell text-left">{{ donation.id }}</td>
+                    <td class="table-cell text-left">{{ donation.helloAssoId }}</td>
+                    <td class="table-cell text-left">{{ donation.date|date('d/m/Y H:i', timezone: 'Europe/Paris') }}</td>
+                    <td class="table-cell text-right">{{ (donation.amount / 100)|number_format(2) }} €</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+
+        <tfoot>
+            <tr class="table-row">
+                <td class="table-cell text-left" colspan="3">Total</td>
+                <td class="table-cell text-right">{{ (total / 100)|number_format(2) }} €</td>
+            </tr>
+        </tfoot>
+    </table>
+</div>

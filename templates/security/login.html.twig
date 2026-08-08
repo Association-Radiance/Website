@@ -1,33 +1,39 @@
-{% extends 'base.html.twig' %} {% block title %} Log in! {% endblock %} {% block body %}
+{% extends 'base.html.twig' %}
 
-<main id="main">
-    <section>
-        <div class="container">
-            <form method="post" class="form-container login-form">
-                <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
+{% block title %}
+    Log in!
+{% endblock %}
 
-                <div class="form-field">
-                    <label for="username">Username</label>
-                    <input type="text" name="_username" id="username" class="form-input" autocomplete="username" required autofocus />
-                </div>
+{% block body %}
+    <main id="main">
+        <section>
+            <div class="container">
+                <form method="post" class="form-container login-form">
+                    <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
 
-                <div class="form-field">
-                    <label for="password">Password</label>
-                    <input type="password" name="_password" id="password" class="form-input" autocomplete="current-password" required />
-                </div>
+                    <div class="form-field">
+                        <label for="username">Username</label>
+                        <input type="text" name="_username" id="username" class="form-input" autocomplete="username" required autofocus />
+                    </div>
 
-                <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}" />
+                    <div class="form-field">
+                        <label for="password">Password</label>
+                        <input type="password" name="_password" id="password" class="form-input" autocomplete="current-password" required />
+                    </div>
 
-                <div>
-                    {% if error %}
-                    <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
-                    {% endif %}
+                    <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}" />
 
-                    <button class="form-submit" type="submit">Connexion</button>
-                </div>
-            </form>
-        </div>
-    </section>
-</main>
+                    <div>
+                        {% if error %}
+                            <div class="alert alert-danger">
+                                {{ error.messageKey|trans(error.messageData, 'security') }}
+                            </div>
+                        {% endif %}
 
+                        <button class="form-submit" type="submit">Connexion</button>
+                    </div>
+                </form>
+            </div>
+        </section>
+    </main>
 {% endblock %}
