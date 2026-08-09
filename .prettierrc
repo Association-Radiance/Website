@@ -1,3 +1,3 @@
 {
-  "plugins": ["@zackad/prettier-plugin-twig"]
+  "plugins": ["@zackad/prettier-plugin-twig", "@prettier/plugin-php"]
 }

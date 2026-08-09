@@ -16,21 +16,20 @@ class DonationType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('helloAssoId', IntegerType::class)
+            ->add("helloAssoId", IntegerType::class, ["required" => false])
 
-            ->add('date', DateTimeType::class, [
-                'constraints' => new NotBlank(['message' => 'Ce champ est requis'])
+            ->add("date", DateTimeType::class, [
+                "constraints" => new NotBlank(["message" => "Ce champ est requis"]),
             ])
-            ->add('amount', IntegerType::class, [
-                'constraints' => new Positive(['message' => 'Le montant doit être supérieur à 0'])
-            ])
-        ;
+            ->add("amount", IntegerType::class, [
+                "constraints" => new Positive(["message" => "Le montant doit être supérieur à 0"]),
+            ]);
     }
 
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
-            'data_class' => Donation::class,
+            "data_class" => Donation::class,
         ]);
     }
 }

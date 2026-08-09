@@ -33,7 +33,7 @@ class Donation
         return $this->helloAssoId;
     }
 
-    public function setHelloAssoId(int $helloAssoId): static
+    public function setHelloAssoId(?int $helloAssoId): static
     {
         $this->helloAssoId = $helloAssoId;
 
