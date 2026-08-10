@@ -19,7 +19,7 @@ export default class extends Controller {
 
       console.log(html);
 
-      //      this.dialogContentTarget.innerHTML = html;
+      this.dialogContentTarget.innerHTML = html;
     } catch (error) {
       console.log(error);
     }

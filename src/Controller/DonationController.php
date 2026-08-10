@@ -18,7 +18,7 @@ final class DonationController extends AbstractController
     public function __construct(private readonly DonationRepository $donationRepository, private readonly EntityManagerInterface $entityManager) {}
 
     #[Route("/new", name: "donation_new", methods: ["GET"])]
-    public function new(): JsonResponse
+    public function new(): Response
     {
         $donation = new Donation();
 
