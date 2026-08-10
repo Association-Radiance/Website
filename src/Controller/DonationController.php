@@ -20,7 +20,17 @@ final class DonationController extends AbstractController
     #[Route("/new", name: "donation_new", methods: ["GET"])]
     public function new(): JsonResponse
     {
-        return $this->json(["donation" => ["id" => null, "helloAssoId" => null, "amount" => null, "date" => null]]);
+        $donation = new Donation();
+
+        $form = $this->createForm(DonationType::class, $donation, [
+            "action" => $this->generateUrl("donation_create"),
+            "method" => "POST",
+        ]);
+
+        return $this->render("donation/_form.html.twig", [
+            "donation" => $donation,
+            "form" => $form,
+        ]);
     }
 
     #[Route("/create", name: "donation_create", methods: ["POST"])]

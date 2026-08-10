@@ -1,0 +1,17 @@
+<div class="donation-container" data-controller="donation">
+    <div class="donation-header">
+        <h2>Donations</h2>
+
+        <button type="button" class="button" data-action="click->donation#new" data-donation-new-url-value="{{ path('donation_new') }} ">
+            Ajouter une donation
+        </button>
+    </div>
+
+    {% include 'donation/_table.html.twig' %}
+
+    <dialog data-donation-target='dialog' data-action="click->donation#closeOnBackdrop">
+        <div class="dialog-content" data-donation-target="dialogContent">
+            BITE
+        </div>
+    </dialog>
+</div>

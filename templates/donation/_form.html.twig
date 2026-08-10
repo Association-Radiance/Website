@@ -1,0 +1,42 @@
+<div class="modal-header">
+    <h2>{{ donation.id ? 'Edit donation' : 'New donation' }}</h2>
+
+    <button type="button" data-action="click->donation#close" aria-label="Close">×</button>
+</div>
+
+{{
+    form_start(
+        form,
+        {
+            attr: {
+                'data-action': 'submit->donation#submit'
+            }
+        }
+    )
+}}
+
+<div>
+    {{ form_label(form.helloAssoId) }}
+    {{ form_widget(form.helloAssoId) }}
+    {{ form_errors(form.helloAssoId) }}
+</div>
+
+<div>
+    {{ form_label(form.amount) }}
+    {{ form_widget(form.amount) }}
+    {{ form_errors(form.amount) }}
+</div>
+
+<div>
+    {{ form_label(form.date) }}
+    {{ form_widget(form.date) }}
+    {{ form_errors(form.date) }}
+</div>
+
+<div class="modal-actions">
+    <button type="button" data-action="click->donation#close">Cancel</button>
+
+    <button type="submit">{{ donation.id ? 'Save changes' : 'Create donation' }}</button>
+</div>
+
+{{ form_end(form) }}
