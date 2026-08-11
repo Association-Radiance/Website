@@ -20,7 +20,7 @@ final class NotificationController extends AbstractController
         private readonly SerializerInterface $serializer,
         private readonly DenormalizerInterface $denormalizer,
         private readonly EntityManagerInterface $entityManager,
-        private readonly DonationRepository $donationRepository
+        private readonly DonationRepository $donationRepository,
     ) {}
 
     #[Route("/notification", name: "app_notification", methods: ["POST"])]
@@ -28,18 +28,18 @@ final class NotificationController extends AbstractController
     {
         $webhook = $this->serializer->deserialize($request->getContent(), WebhookDTO::class, "json");
 
-        if ($webhook->eventType !== 'Payment') {
-            return $this->json('not a donation');
+        if ($webhook->eventType !== "Payment") {
+            return $this->json("not a donation");
         }
 
         $data = $this->denormalizer->denormalize($webhook->data, DonationDataDTO::class);
 
-        if ($data->order->formType !== 'Donation') {
-            return $this->json('not a donation');
+        if ($data->order->formType !== "Donation") {
+            return $this->json("not a donation");
         }
 
-        if ($this->donationRepository->findOneBy(['helloAssoId' => $data->id])) {
-            return $this->json('donation already registered');
+        if ($this->donationRepository->findOneBy(["helloAssoId" => $data->id])) {
+            return $this->json("donation already registered");
         }
 
         $donation = new Donation();
@@ -50,6 +50,6 @@ final class NotificationController extends AbstractController
         $this->entityManager->persist($donation);
         $this->entityManager->flush();
 
-        return $this->json('donation registered');
+        return $this->json("donation registered");
     }
 }

@@ -14,8 +14,10 @@ use Symfony\Component\Routing\Attribute\Route;
 #[Route("/donations")]
 final class DonationController extends AbstractController
 {
+    public function __construct(private readonly EntityManagerInterface $entityManager, private readonly DonationRepository $donationRepository) {}
+
     #[Route("/new", name: "donation_new", methods: ["GET", "POST"])]
-    public function new(Request $request, EntityManagerInterface $entityManager, DonationRepository $donationRepository): Response
+    public function new(Request $request): Response
     {
         $donation = new Donation();
 
@@ -27,12 +29,12 @@ final class DonationController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $entityManager->persist($donation);
-            $entityManager->flush();
+            $this->entityManager->persist($donation);
+            $this->entityManager->flush();
 
             $response = $this->render("donation/success.stream.html.twig", [
-                "donations" => $donationRepository->findAll(),
-                "total" => $donationRepository->getTotalDonation(),
+                "donations" => $this->donationRepository->findAll(),
+                "total" => $this->donationRepository->getTotalDonation(),
             ]);
 
             $response->headers->set("Content-Type", "text/vnd.turbo-stream.html");
@@ -47,7 +49,7 @@ final class DonationController extends AbstractController
     }
 
     #[Route("/{id}/edit", name: "donation_edit", methods: ["GET", "POST"])]
-    public function edit(Donation $donation, Request $request, EntityManagerInterface $entityManager, DonationRepository $donationRepository): Response
+    public function edit(Donation $donation, Request $request): Response
     {
         $form = $this->createForm(DonationType::class, $donation, [
             "action" => $this->generateUrl("donation_edit", ["id" => $donation->getId()]),
@@ -57,11 +59,11 @@ final class DonationController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $entityManager->flush();
+            $this->entityManager->flush();
 
             $response = $this->render("donation/success.stream.html.twig", [
-                "donations" => $donationRepository->findAll(),
-                "total" => $donationRepository->getTotalDonation(),
+                "donations" => $this->donationRepository->findAll(),
+                "total" => $this->donationRepository->getTotalDonation(),
             ]);
 
             $response->headers->set("Content-Type", "text/vnd.turbo-stream.html");
@@ -76,14 +78,14 @@ final class DonationController extends AbstractController
     }
 
     #[Route("/{id}/delete", name: "donation_delete", methods: ["DELETE"])]
-    public function delete(Donation $donation, Request $request, EntityManagerInterface $entityManager, DonationRepository $donationRepository): Response
+    public function delete(Donation $donation): Response
     {
-        $entityManager->remove($donation);
-        $entityManager->flush();
+        $this->entityManager->remove($donation);
+        $this->entityManager->flush();
 
         $response = $this->render("donation/table.stream.html.twig", [
-            "donations" => $donationRepository->findAll(),
-            "total" => $donationRepository->getTotalDonation(),
+            "donations" => $this->donationRepository->findAll(),
+            "total" => $this->donationRepository->getTotalDonation(),
         ]);
 
         $response->headers->set("Content-Type", "text/vnd.turbo-stream.html");
