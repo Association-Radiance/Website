@@ -2,14 +2,12 @@
     <div class="donation-header">
         <h2>Donations</h2>
 
-        <button type="button" class="button" data-action="click->donation#new" data-donation-new-url-value="{{ path('donation_new') }} ">
-            Ajouter une donation
-        </button>
+        <a href="{{ path('donation_new') }}" data-turbo-frame="donation_modal" class="button">+ Nouvelle donation</a>
     </div>
 
-    {% include 'donation/_table.html.twig' %}
+    <turbo-frame id="donation_table">
+        {% include 'donation/_table.html.twig' %}
+    </turbo-frame>
 
-    <dialog data-donation-target='dialog' data-action="click->donation#closeOnBackdrop">
-        <div class="dialog-content" data-donation-target="dialogContent"></div>
-    </dialog>
+    <turbo-frame id="donation_modal"></turbo-frame>
 </div>

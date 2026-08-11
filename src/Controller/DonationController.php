@@ -17,95 +17,35 @@ final class DonationController extends AbstractController
 {
     public function __construct(private readonly DonationRepository $donationRepository, private readonly EntityManagerInterface $entityManager) {}
 
-    #[Route("/new", name: "donation_new", methods: ["GET"])]
-    public function new(): Response
+    #[Route("/new", name: "donation_new", methods: ["GET", "POST"])]
+    public function new(Request $request, EntityManagerInterface $entityManager, DonationRepository $donationRepository): Response
     {
         $donation = new Donation();
 
         $form = $this->createForm(DonationType::class, $donation, [
-            "action" => $this->generateUrl("donation_create"),
-            "method" => "POST",
-        ]);
-
-        return $this->render("donation/_form.html.twig", [
-            "donation" => $donation,
-            "form" => $form,
-        ]);
-    }
-
-    #[Route("/create", name: "donation_create", methods: ["POST"])]
-    public function create(Request $request): Response
-    {
-        $donation = new Donation();
-
-        $form = $this->createForm(DonationType::class, $donation, [
-            "action" => $this->generateUrl("donation_create"),
+            "action" => $this->generateUrl("donation_new"),
             "method" => "POST",
         ]);
 
         $form->handleRequest($request);
 
-        if (!$form->isSubmitted() || !$form->isValid()) {
-            return $this->render("donation/_form.html.twig", ["donation" => $donation, "form" => $form], new Response("", Response::HTTP_UNPROCESSABLE_ENTITY));
+        if ($form->isSubmitted() && $form->isValid()) {
+            $entityManager->persist($donation);
+            $entityManager->flush();
+
+            $response = $this->render("donation/success.stream.html.twig", [
+                "donations" => $donationRepository->findAll(),
+                "total" => $donationRepository->getTotalDonation(),
+            ]);
+
+            $response->headers->set("Content-Type", "text/vnd.turbo-stream.html");
+
+            return $response;
         }
-
-        $this->entityManager->persist($donation);
-        $this->entityManager->flush();
-
-        return $this->render("donation/_row.html.twig", [
-            "donation" => $donation,
-        ]);
-    }
-
-    #[Route("/{id}/edit", name: "donation_edit", methods: ["GET"])]
-    public function edit(Donation $donation): Response
-    {
-        $form = $this->createForm(DonationType::class, $donation, [
-            "action" => $this->generateUrl("donation_update", ["id" => $donation->getId()]),
-            "method" => "PATCH",
-        ]);
 
         return $this->render("donation/_form.html.twig", [
-            "donation" => $donation,
             "form" => $form,
-        ]);
-    }
-
-    #[Route("/{id}", name: "donation_update", methods: ["PATCH"])]
-    public function update(Donation $donation, Request $request): Response
-    {
-        $form = $this->createForm(DonationType::class, $donation, [
-            "action" => $this->generateUrl("donation_update", ["id" => $donation->getId()]),
-            "method" => "PATCH",
-        ]);
-
-        $form->handleRequest($request);
-
-        if (!$form->isSubmitted() || !$form->isValid()) {
-            return $this->render("donation/_form.html.twig", ["donation" => $donation, "form" => $form], new Response("", Response::HTTP_UNPROCESSABLE_ENTITY));
-        }
-
-        $this->entityManager->flush();
-
-        return $this->render("donation/_row.html.twig", [
-            "donation" => $donation,
-        ]);
-    }
-
-    #[Route("/{id}", name: "donation_delete", methods: ["DELETE"])]
-    public function delete(Donation $donation, Request $request): JsonResponse
-    {
-        $data = json_decode($request->getContent(), true);
-
-        if (!$this->isCsrfTokenValid("delete" . $donation->getId(), $data["token"] ?? "")) {
-            return $this->json(["success" => false, "message" => "Invalid CSRF token."], Response::HTTP_FORBIDDEN);
-        }
-
-        $this->entityManager->remove($donation);
-        $this->entityManager->flush();
-
-        return $this->json([
-            "success" => true,
+            "title" => "Nouvelle donation",
         ]);
     }
 }
