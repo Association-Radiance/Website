@@ -1,6 +1,7 @@
 
 ###> symfony/framework-bundle ###
 .idea
+.zed
 /.env.local
 /.env.local.php
 /.env.*.local
@@ -26,5 +27,3 @@
 ###< symfony/asset-mapper ###
 
 Makefile
-o2switch_radiance
-o2switch_radiance.pub

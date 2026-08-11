@@ -11,7 +11,7 @@ final class AdminController extends AbstractController
 {
     public function __construct(private readonly DonationRepository $donationRepository) {}
 
-    #[Route("/admin", name: "app_admin")]
+    #[Route("/admin", name: "admin_index")]
     public function index(): Response
     {
         $donations = $this->donationRepository->findBy([], ["date" => "DESC"]);

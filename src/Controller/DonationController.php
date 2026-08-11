@@ -10,8 +10,10 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
+use Symfony\Component\Security\Http\Attribute\IsGranted;
 
 #[Route("/donations")]
+#[IsGranted("ROLE_ADMIN")]
 final class DonationController extends AbstractController
 {
     public function __construct(private readonly EntityManagerInterface $entityManager, private readonly DonationRepository $donationRepository) {}
@@ -19,6 +21,10 @@ final class DonationController extends AbstractController
     #[Route("/new", name: "donation_new", methods: ["GET", "POST"])]
     public function new(Request $request): Response
     {
+        if ($response = $this->redirectIfNotTurboFrame($request)) {
+            return $response;
+        }
+
         $donation = new Donation();
 
         $form = $this->createForm(DonationType::class, $donation, [
@@ -91,5 +97,14 @@ final class DonationController extends AbstractController
         $response->headers->set("Content-Type", "text/vnd.turbo-stream.html");
 
         return $response;
+    }
+
+    private function redirectIfNotTurboFrame(Request $request): ?Response
+    {
+        if ($request->isMethod("GET") && !$request->headers->has("Turbo-Frame")) {
+            return $this->redirectToRoute("admin_index");
+        }
+
+        return null;
     }
 }
