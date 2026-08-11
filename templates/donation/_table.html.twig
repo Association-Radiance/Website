@@ -1,9 +1,8 @@
 <table>
     <thead class="table-head">
         <tr class="table-row">
-            <th class="table-cell text-left">Id</th>
-            <th class="table-cell text-left">Id HelloAsso</th>
             <th class="table-cell text-left">Date</th>
+            <th class="table-cell text-left">Id HelloAsso</th>
             <th class="table-cell text-right">Montant</th>
             <th class="table-cell text-right">Action</th>
         </tr>
@@ -12,9 +11,8 @@
     <tbody>
         {% for donation in donations %}
             <tr class="table-row" id="donation_{{ donation.id }}">
-                <td class="table-cell text-left">{{ donation.id }}</td>
-                <td class="table-cell text-left">{{ donation.helloAssoId }}</td>
                 <td class="table-cell text-left">{{ donation.date|date('d/m/Y H:i', timezone: 'Europe/Paris') }}</td>
+                <td class="table-cell text-left">{{ donation.helloAssoId }}</td>
                 <td class="table-cell text-right">{{ (donation.amount / 100)|number_format(2) }} €</td>
                 <td class="table-cell text-right" style="width: 0">
                     <a href="{{ path('donation_edit', { id: donation.id }) }}" data-turbo-frame="donation_modal" class="button" style="margin-right: 4px">
@@ -30,7 +28,7 @@
 
     <tfoot>
         <tr class="table-row">
-            <td class="table-cell text-left" colspan="3">Total</td>
+            <td class="table-cell text-left" colspan="2">Total</td>
             <td class="table-cell text-right">{{ (total / 100)|number_format(2) }} €</td>
             <td class="table-cell"></td>
         </tr>

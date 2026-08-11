@@ -9,19 +9,17 @@ use Symfony\Component\Routing\Attribute\Route;
 
 final class AdminController extends AbstractController
 {
-    public function __construct(
-        private readonly DonationRepository $donationRepository
-    ) {}
+    public function __construct(private readonly DonationRepository $donationRepository) {}
 
-    #[Route('/admin', name: 'app_admin')]
+    #[Route("/admin", name: "app_admin")]
     public function index(): Response
     {
-        $donations = $this->donationRepository->findAll();
+        $donations = $this->donationRepository->findBy([], ["date" => "DESC"]);
         $total = $this->donationRepository->getTotalDonation();
 
-        return $this->render('admin/index.html.twig', [
-            'total' => $total,
-            'donations' => $donations
+        return $this->render("admin/index.html.twig", [
+            "total" => $total,
+            "donations" => $donations,
         ]);
     }
 }

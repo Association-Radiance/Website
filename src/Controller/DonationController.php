@@ -33,7 +33,7 @@ final class DonationController extends AbstractController
             $this->entityManager->flush();
 
             $response = $this->render("donation/success.stream.html.twig", [
-                "donations" => $this->donationRepository->findAll(),
+                "donations" => $this->donationRepository->findBy([], ["date" => "DESC"]),
                 "total" => $this->donationRepository->getTotalDonation(),
             ]);
 
@@ -62,7 +62,7 @@ final class DonationController extends AbstractController
             $this->entityManager->flush();
 
             $response = $this->render("donation/success.stream.html.twig", [
-                "donations" => $this->donationRepository->findAll(),
+                "donations" => $this->donationRepository->findBy([], ["date" => "DESC"]),
                 "total" => $this->donationRepository->getTotalDonation(),
             ]);
 
@@ -84,7 +84,7 @@ final class DonationController extends AbstractController
         $this->entityManager->flush();
 
         $response = $this->render("donation/table.stream.html.twig", [
-            "donations" => $this->donationRepository->findAll(),
+            "donations" => $this->donationRepository->findBy([], ["date" => "DESC"]),
             "total" => $this->donationRepository->getTotalDonation(),
         ]);
 
