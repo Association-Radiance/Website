@@ -1,3 +1,4 @@
 {
-  "plugins": ["@zackad/prettier-plugin-twig", "@prettier/plugin-php"]
+    "plugins": ["@zackad/prettier-plugin-twig", "@prettier/plugin-php"],
+    "twigAlwaysBreakObjects": false
 }

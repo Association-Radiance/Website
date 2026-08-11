@@ -11,7 +11,18 @@
 
     <tbody>
         {% for donation in donations %}
-            {% include 'donation/_row.html.twig' %}
+            <tr class="table-row" id="donation_{{ donation.id }}">
+                <td class="table-cell text-left">{{ donation.id }}</td>
+                <td class="table-cell text-left">{{ donation.helloAssoId }}</td>
+                <td class="table-cell text-left">{{ donation.date|date('d/m/Y H:i', timezone: 'Europe/Paris') }}</td>
+                <td class="table-cell text-right">{{ (donation.amount / 100)|number_format(2) }} €</td>
+                <td class="table-cell text-right" style="width: 0">
+                    <a href="{{ path('donation_edit', { id: donation.id }) }}" data-turbo-frame="donation_modal" class="button" style="margin-right: 4px">
+                        Modifier
+                    </a>
+                    <button type="button" class="button">Supprimer</button>
+                </td>
+            </tr>
         {% endfor %}
     </tbody>
 
