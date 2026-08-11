@@ -74,4 +74,20 @@ final class DonationController extends AbstractController
             "title" => "Modifier la donation",
         ]);
     }
+
+    #[Route("/{id}/delete", name: "donation_delete", methods: ["DELETE"])]
+    public function delete(Donation $donation, Request $request, EntityManagerInterface $entityManager, DonationRepository $donationRepository): Response
+    {
+        $entityManager->remove($donation);
+        $entityManager->flush();
+
+        $response = $this->render("donation/table.stream.html.twig", [
+            "donations" => $donationRepository->findAll(),
+            "total" => $donationRepository->getTotalDonation(),
+        ]);
+
+        $response->headers->set("Content-Type", "text/vnd.turbo-stream.html");
+
+        return $response;
+    }
 }

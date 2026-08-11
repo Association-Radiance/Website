@@ -20,7 +20,9 @@
                     <a href="{{ path('donation_edit', { id: donation.id }) }}" data-turbo-frame="donation_modal" class="button" style="margin-right: 4px">
                         Modifier
                     </a>
-                    <button type="button" class="button">Supprimer</button>
+                    <form method="delete" action="{{ path('donation_delete', { id: donation.id }) }}">
+                        <button type="submit" class="button" data-turbo-confirm="Supprimer cette donation ?">Supprimer</button>
+                    </form>
                 </td>
             </tr>
         {% endfor %}
