@@ -11,9 +11,11 @@
 {% block body %}
     <main class="admin-main">
         <div class="admin-container">
-            {% include 'donation/_container.html.twig' with {
-                donations: donations
-            } %}
+            {% include 'donation/_container.html.twig' with { donations: donations } %}
+        </div>
+
+        <div class="admin-container">
+            {% include 'donation_goal/_container.html.twig' with { donationGoals: donationGoals } %}
         </div>
     </main>
 {% endblock %}

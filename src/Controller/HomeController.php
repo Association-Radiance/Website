@@ -12,14 +12,9 @@ use Symfony\Component\Routing\Attribute\Route;
 
 final class HomeController extends AbstractController
 {
+    public function __construct(private readonly MailerService $mailerService) {}
 
-    public function __construct(
-        private readonly MailerService $mailerService
-    )
-    {
-    }
-
-    #[Route('/', name: 'app_home')]
+    #[Route("/", name: "app_home")]
     public function index(Request $request): Response
     {
         $contact = new Contact();
@@ -33,13 +28,13 @@ final class HomeController extends AbstractController
 
             $response = $this->mailerService->sendContactEmail($contact);
 
-            $this->addFlash($response['status'], $response['message']);
+            $this->addFlash($response["status"], $response["message"]);
 
-            return $this->redirectToRoute('app_home', ["_fragment" => 'contact']);
+            return $this->redirectToRoute("app_home", ["_fragment" => "contact"]);
         }
 
-        return $this->render('home/index.html.twig', [
-            'form' => $form
+        return $this->render("home/index.html.twig", [
+            "form" => $form,
         ]);
     }
 }

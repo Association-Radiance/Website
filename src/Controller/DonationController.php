@@ -12,11 +12,14 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Component\Security\Http\Attribute\IsGranted;
 
-#[Route("/donations")]
+#[Route("/donation")]
 #[IsGranted("ROLE_ADMIN")]
 final class DonationController extends AbstractController
 {
-    public function __construct(private readonly EntityManagerInterface $entityManager, private readonly DonationRepository $donationRepository) {}
+    public function __construct(
+        private readonly EntityManagerInterface $entityManager,
+        private readonly DonationRepository $donationRepository
+    ) {}
 
     #[Route("/new", name: "donation_new", methods: ["GET", "POST"])]
     public function new(Request $request): Response
@@ -29,7 +32,7 @@ final class DonationController extends AbstractController
 
         $form = $this->createForm(DonationType::class, $donation, [
             "action" => $this->generateUrl("donation_new"),
-            "method" => "POST",
+            "method" => "POST"
         ]);
 
         $form->handleRequest($request);
@@ -40,7 +43,7 @@ final class DonationController extends AbstractController
 
             $response = $this->render("donation/success.stream.html.twig", [
                 "donations" => $this->donationRepository->findBy([], ["date" => "DESC"]),
-                "total" => $this->donationRepository->getTotalDonation(),
+                "total" => $this->donationRepository->getTotalDonation()
             ]);
 
             $response->headers->set("Content-Type", "text/vnd.turbo-stream.html");
@@ -50,7 +53,7 @@ final class DonationController extends AbstractController
 
         return $this->render("donation/_form.html.twig", [
             "form" => $form,
-            "title" => "Nouvelle donation",
+            "title" => "Nouvelle donation"
         ]);
     }
 
@@ -58,8 +61,10 @@ final class DonationController extends AbstractController
     public function edit(Donation $donation, Request $request): Response
     {
         $form = $this->createForm(DonationType::class, $donation, [
-            "action" => $this->generateUrl("donation_edit", ["id" => $donation->getId()]),
-            "method" => "POST",
+            "action" => $this->generateUrl("donation_edit", [
+                "id" => $donation->getId()
+            ]),
+            "method" => "POST"
         ]);
 
         $form->handleRequest($request);
@@ -69,7 +74,7 @@ final class DonationController extends AbstractController
 
             $response = $this->render("donation/success.stream.html.twig", [
                 "donations" => $this->donationRepository->findBy([], ["date" => "DESC"]),
-                "total" => $this->donationRepository->getTotalDonation(),
+                "total" => $this->donationRepository->getTotalDonation()
             ]);
 
             $response->headers->set("Content-Type", "text/vnd.turbo-stream.html");
@@ -79,7 +84,7 @@ final class DonationController extends AbstractController
 
         return $this->render("donation/_form.html.twig", [
             "form" => $form,
-            "title" => "Modifier la donation",
+            "title" => "Modifier la donation"
         ]);
     }
 
@@ -91,7 +96,7 @@ final class DonationController extends AbstractController
 
         $response = $this->render("donation/table.stream.html.twig", [
             "donations" => $this->donationRepository->findBy([], ["date" => "DESC"]),
-            "total" => $this->donationRepository->getTotalDonation(),
+            "total" => $this->donationRepository->getTotalDonation()
         ]);
 
         $response->headers->set("Content-Type", "text/vnd.turbo-stream.html");

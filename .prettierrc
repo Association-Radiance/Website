@@ -1,4 +1,6 @@
 {
     "plugins": ["@zackad/prettier-plugin-twig", "@prettier/plugin-php"],
-    "twigAlwaysBreakObjects": false
+    "twigAlwaysBreakObjects": false,
+    "trailingCommaPHP": false,
+    "printWidth": 120
 }

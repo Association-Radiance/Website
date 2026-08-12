@@ -1,0 +1,15 @@
+<div class="donation-container">
+    <div class="donation-header">
+        <h2>Palliers de donation</h2>
+
+        <a href="{{ path('donation_goal_new') }}" data-turbo-frame="donation_goal_modal" class="button">
+            + Nouvelle donation
+        </a>
+    </div>
+
+    <turbo-frame id="donation_goal_table">
+        {% include 'donation_goal/_table.html.twig' %}
+    </turbo-frame>
+
+    <turbo-frame id="donation_goal_modal"></turbo-frame>
+</div>
