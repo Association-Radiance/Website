@@ -37,7 +37,7 @@ final class DonationGoalController extends AbstractController
             $this->entityManager->persist($donationGoal);
             $this->entityManager->flush();
 
-            $response = $this->render("donation/success.stream.html.twig", [
+            $response = $this->render("donation_goal/success.stream.html.twig", [
                 "donationGoals" => $this->donationGoalRepository->findBy([], ["amount" => "ASC"])
             ]);
 

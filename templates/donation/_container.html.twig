@@ -1,13 +1,13 @@
-<div class="donation-container">
-    <div class="donation-header">
-        <h2>Donations</h2>
+<div class="donation-header">
+    <h2>Donations</h2>
 
-        <a href="{{ path('donation_new') }}" data-turbo-frame="donation_modal" class="button">+ Nouvelle donation</a>
-    </div>
-
-    <turbo-frame id="donation_table">
-        {% include 'donation/_table.html.twig' %}
-    </turbo-frame>
-
-    <turbo-frame id="donation_modal"></turbo-frame>
+    <a href="{{ path('donation_new') }}" data-turbo-frame="donation_modal" class="button">
+        {{ include('svg/add.svg.twig') }}
+    </a>
 </div>
+
+<turbo-frame id="donation_table">
+    {% include 'donation/_table.html.twig' %}
+</turbo-frame>
+
+<turbo-frame id="donation_modal"></turbo-frame>

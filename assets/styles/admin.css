@@ -1,23 +1,29 @@
 .admin-main {
     display: flex;
     flex-direction: row;
-    height: 100%;
+    flex-wrap: wrap;
+    padding: 16px;
+    gap: 16px;
+    height: fit-content;
+
+    @media screen and (max-width: 640px) {
+        padding: 12px;
+    }
 }
 
 .admin-container {
-    display: flex;
-    width: 50%;
-    padding: 16px;
-}
-
-.donation-container {
-    width: 100%;
-    height: fit-content;
     padding: 16px;
     border-radius: 8px;
     background-color: var(--background-color-lighter);
     border: 1px solid var(--background-color-light);
-    overflow-x: auto;
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 40%;
+    height: fit-content;
+
+    @media screen and (max-width: 640px) {
+        padding: 12px;
+    }
 }
 
 .donation-header {
@@ -30,28 +36,39 @@ table {
     border-collapse: collapse;
     width: 100%;
     height: fit-content;
+    flex-shrink: 0;
+    font-size: 16px;
+    border-radius: 4px;
+    overflow: hidden;
+
+    @media screen and (max-width: 640px) {
+        font-size: 14px;
+    }
 }
 
-tbody,
-tfoot > .tr:last-child {
+tr {
+    border-top: 1px solid rgba(255, 255, 255, 25%);
+}
+
+tr:hover {
+    background-color: var(--background-color-light);
+}
+
+thead > tr,
+tbody > not tr:first-child,
+tfoot > not tr:first-child {
     border: none;
 }
 
 tfoot {
+    margin-top: auto;
     background-color: var(--background-color);
 }
 
-.table-row {
-    border-bottom: 1px solid var(--background-color-light);
-}
-
-.table-row:hover {
-    background-color: var(--background-color-light);
-}
-
 .table-cell {
-    padding: 8px;
-    white-space: nowrap;
+    padding: 4px 8px;
+    height: 40px;
+    line-height: 0.85;
 }
 
 .text-left {
@@ -62,16 +79,33 @@ tfoot {
     text-align: right;
 }
 
-.button {
-    height: 32px;
-    border-radius: 4px;
-    background-color: var(--background-color);
-    border: none;
-    padding: 0 8px;
+.table-action {
+    display: flex;
+    width: fit-content;
+    gap: 8px;
 }
 
-.button:hover {
-    background-color: var(--accent-color);
+.table-cell-fixed {
+    width: 0;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+
+    @media screen and (max-width: 640px) {
+        max-width: 120px;
+        hite-space: wrap;
+    }
+}
+
+.table-cell-flexible {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    max-width: 0px;
+
+    @media screen and (max-width: 640px) {
+        opacity: 0;
+    }
 }
 
 dialog {

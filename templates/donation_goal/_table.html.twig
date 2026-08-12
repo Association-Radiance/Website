@@ -1,33 +1,36 @@
 <table>
     <thead class="table-head">
         <tr class="table-row">
-            <th class="table-cell text-left">Montant</th>
-            <th class="table-cell text-left">Titre</th>
-            <th class="table-cell text-right">Description</th>
-            <th class="table-cell text-right">Action</th>
+            <th class="table-cell text-left table-cell-fixed">Titre</th>
+            <th class="table-cell text-left table-cell-flexible">Description</th>
+            <th class="table-cell text-right table-cell-fixed">Montant</th>
+            <th class="table-cell text-right"></th>
         </tr>
     </thead>
 
     <tbody>
         {% for donation_goal in donationGoals %}
             <tr class="table-row" id="donation_goal_{{ donation_goal.id }}">
-                <td class="table-cell text-right">{{ (donation_goal.amount / 100)|number_format(2) }} €</td>
-                <td class="table-cell text-left">{{ donation_goal.title }}</td>
-                <td class="table-cell text-left">{{ donation_goal.description }}</td>
-                <td class="table-cell text-right" style="width: 0">
-                    <a
-                        href="{{ path('donation_goal_edit', { id: donation_goal.id }) }}"
-                        data-turbo-frame="donation_goal_modal"
-                        class="button"
-                        style="margin-right: 4px"
-                    >
-                        Modifier
-                    </a>
-                    <form method="delete" action="{{ path('donation_goal_delete', { id: donation_goal.id }) }}">
-                        <button type="submit" class="button" data-turbo-confirm="Supprimer cette donation ?">
-                            Supprimer
-                        </button>
-                    </form>
+                <td class="table-cell text-left table-cell-fixed">{{ donation_goal.title }}</td>
+                <td class="table-cell text-left table-cell-flexible">{{ donation_goal.description }}</td>
+                <td class="table-cell text-right table-cell-fixed">
+                    {{ (donation_goal.amount / 100)|number_format(2) }} €
+                </td>
+                <td class="table-cell text-right table-cell-fixed">
+                    <div class="table-action">
+                        <a
+                            href="{{ path('donation_goal_edit', { id: donation_goal.id }) }}"
+                            data-turbo-frame="donation_goal_modal"
+                            class="button"
+                        >
+                            {{ include('svg/edit.svg.twig') }}
+                        </a>
+                        <form method="delete" action="{{ path('donation_goal_delete', { id: donation_goal.id }) }}">
+                            <button type="submit" class="button" data-turbo-confirm="Supprimer cette donation ?">
+                                {{ include('svg/delete.svg.twig') }}
+                            </button>
+                        </form>
+                    </div>
                 </td>
             </tr>
         {% endfor %}
