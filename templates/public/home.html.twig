@@ -7,20 +7,26 @@
 {% block main %}
     <section class="section-banner" id="banner">
         <div class="container">
-            {{ include('/home/_banner.html.twig') }}
+            {{ include('/public/home/_banner.html.twig') }}
         </div>
     </section>
 
     <section class="section-about" id="about">
         <div class="background"></div>
         <div class="container">
-            {{ include('/home/_about.html.twig') }}
+            {{ include('/public/home/_about.html.twig') }}
         </div>
     </section>
 
-    <section class="section-edition2026" id="edition-2026">
+    <section class="section-partner" id="partners">
         <div class="container">
-            {{ include('/home/_edition2026.html.twig') }}
+            {{ include('/public/home/_partner.html.twig') }}
+        </div>
+    </section>
+
+    <section class="section-engagement" id="engagement">
+        <div class="container">
+            {{ include('/public/home/_engagement.html.twig') }}
         </div>
     </section>
 {% endblock %}
