@@ -23,7 +23,7 @@
                             data-turbo-frame="donation_modal"
                             class="button button-primary"
                         >
-                            {{ include('svg/edit.svg.twig') }}
+                            {{ include('svg/icons/pencil-line.svg.twig') }}
                         </a>
                         <form method="delete" action="{{ path('donation_delete', { id: donation.id }) }}">
                             <button
@@ -31,7 +31,7 @@
                                 class="button button-primary"
                                 data-turbo-confirm="Supprimer cette donation ?"
                             >
-                                {{ include('svg/delete.svg.twig') }}
+                                {{ include('svg/icons/delete-bin-line.svg.twig') }}
                             </button>
                         </form>
                     </div>

@@ -5,28 +5,33 @@
 {% endblock %}
 
 {% block main %}
-    <section class="section-banner" id="banner">
-        <div class="container">
-            {{ include('/public/home/_banner.html.twig') }}
+    <section
+        class="section section-background-accent"
+        style="background-image: url({{ asset('images/background/background-banner.webp') }})"
+    >
+        <div class="section-container">
+            {{ include('/public/_home/_banner.html.twig') }}
         </div>
     </section>
 
-    <section class="section-about" id="about">
-        <div class="background"></div>
-        <div class="container">
-            {{ include('/public/home/_about.html.twig') }}
+    <section class="section">
+        <div class="section-container">
+            {{ include('/public/_home/_about.html.twig') }}
         </div>
     </section>
 
-    <section class="section-partner" id="partners">
-        <div class="container">
-            {{ include('/public/home/_partner.html.twig') }}
+    <section
+        class="section section-background"
+        style="background-image: url({{ asset('images/background/background-partner.webp') }})"
+    >
+        <div class="section-container">
+            {{ include('/public/_home/_partner.html.twig') }}
         </div>
     </section>
 
-    <section class="section-engagement" id="engagement">
-        <div class="container">
-            {{ include('/public/home/_engagement.html.twig') }}
+    <section class="section">
+        <div class="section-container">
+            {{ include('/public/_home/_engagement.html.twig') }}
         </div>
     </section>
 {% endblock %}

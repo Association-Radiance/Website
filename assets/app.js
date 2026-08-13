@@ -7,6 +7,8 @@ import "./stimulus.js";
  */
 import "./styles/normalize.css";
 import "./styles/global.css";
+import "./styles/base.css";
+import "./styles/layout.css";
 import "./styles/style.css";
 import "./styles/button.css";
 import "./styles/dialog.css";

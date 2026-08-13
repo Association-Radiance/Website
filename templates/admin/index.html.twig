@@ -5,11 +5,11 @@
 {% endblock %}
 
 {% block title %}
-    Administration | Association Radiance
+    Admin - Association Radiance
 {% endblock %}
 
-{% block body %}
-    <main class="admin-main">
+{% block main %}
+    <div class="admin-main">
         <div class="admin-container">
             {% include 'donation/_container.html.twig' with { donations: donations } %}
         </div>

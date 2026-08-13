@@ -32,7 +32,7 @@ final class PublicController extends AbstractController
         return $this->render("public/previous-editions.html.twig");
     }
 
-    #[Route("/donation", name: "public_previous_editions")]
+    #[Route("/donation", name: "public_donation")]
     public function donations(): Response
     {
         return $this->render("public/donation.html.twig");
