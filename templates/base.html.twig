@@ -16,6 +16,7 @@
                 Association Radiance
             {% endblock %}
         </title>
+
         {% block stylesheets %}
 
         {% endblock %}
@@ -24,12 +25,55 @@
             {% block importmap %}
                 {{ importmap('app') }}
             {% endblock %}
+
+            <script src="{{ asset('handleMenu.js') }}"></script>
         {% endblock %}
     </head>
 
     <body>
-        {% block body %}
+        <header class="header">
+            <nav class="navbar container">
+                <a href="/" class="">
+                    <img src="{{ asset('images/logo.webp') }}" alt="Association Radiance" class='logo' />
+                </a>
 
-        {% endblock %}
+                <div class="navbar-menu" id="menu">
+                    <a href="#about" class="navbar-button">Qui sommes-nous ?</a>
+                    <a href="#edition-2026" class="navbar-button">Radiance LAN 2026</a>
+                    <a href="#editions-precedentes" class="navbar-button">Éditions précédentes</a>
+                    <a href="#partners" class="navbar-button">Nos partenaires</a>
+                    <a href="#engagement" class="navbar-button">Nos engagements</a>
+                    <a href="#contact" class="navbar-button">Nous contacter</a>
+                </div>
+
+                <img
+                    src="{{ asset('images/icons/menu-line.png') }}"
+                    alt=""
+                    id="menu-button"
+                    class="navbar-menu-control"
+                />
+            </nav>
+        </header>
+
+        <main id="main">
+            {% block main %}
+
+            {% endblock %}
+
+            <footer class="footer">
+                <div class="container">
+                    <a href="https://www.instagram.com/association_radiance" class="footer-link" target="_blank">
+                        <img
+                            src="{{ asset('images/icons/instagram-fill.png') }}"
+                            alt="Instagram"
+                            aria-label="Instagram"
+                        />
+                    </a>
+                    <a href="https://discord.com/invite/mcdVebJYXb" class="footer-link" target="_blank">
+                        <img src="{{ asset('images/icons/discord-fill.png') }}" alt="Discord" aria-label="Discord" />
+                    </a>
+                </div>
+            </footer>
+        </main>
     </body>
 </html>

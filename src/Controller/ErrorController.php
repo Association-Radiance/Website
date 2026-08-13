@@ -8,9 +8,9 @@ use Symfony\Component\Routing\Attribute\Route;
 
 final class ErrorController extends AbstractController
 {
-    #[Route('/error', name: 'app_error')]
+    #[Route("/error", name: "app_error")]
     public function show(): Response
     {
-        return $this->redirectToRoute('app_home');
+        return $this->redirectToRoute("public_home");
     }
 }

@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    Association Radiance
+{% endblock %}
+
+{% block main %}
+    <section class="section-banner" id="banner">
+        <div class="container">
+            {{ include('/home/_banner.html.twig') }}
+        </div>
+    </section>
+
+    <section class="section-about" id="about">
+        <div class="background"></div>
+        <div class="container">
+            {{ include('/home/_about.html.twig') }}
+        </div>
+    </section>
+
+    <section class="section-edition2026" id="edition-2026">
+        <div class="container">
+            {{ include('/home/_edition2026.html.twig') }}
+        </div>
+    </section>
+{% endblock %}

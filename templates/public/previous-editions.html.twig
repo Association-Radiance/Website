@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    Association Radiance
+{% endblock %}
+
+{% block main %}
+    <section class="section-edition2025" id="editions-precedentes">
+        <div class="container">
+            {{ include('/public/previous_editions/_edition2025.html.twig') }}
+        </div>
+    </section>
+
+    <section class="section-edition2024">
+        <div class="container">
+            {{ include('/public/previous_editions/_edition2024.html.twig') }}
+        </div>
+    </section>
+{% endblock %}
