@@ -107,15 +107,3 @@ tfoot {
         opacity: 0;
     }
 }
-
-dialog {
-    margin: auto;
-    background-color: var(--background-color);
-    border: 1px solid var(--background-color-light);
-    border-radius: 8px;
-    padding: 8px;
-}
-
-dialog::backdrop {
-    background: rgb(0 0 0 / 50%);
-}

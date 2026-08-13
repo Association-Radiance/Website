@@ -1,14 +1,16 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Association Radiance{% endblock %}
+{% block title %}
+    Association Radiance
+{% endblock %}
 
 {% block body %}
     <script src="{{ asset('handleMenu.js') }}"></script>
 
-    <header>
+    <header class="header">
         <nav class="navbar container">
             <a href="" class="">
-                <img src="{{ asset('images/logo.webp') }}" alt="Association Radiance" class='logo'/>
+                <img src="{{ asset('images/logo.webp') }}" alt="Association Radiance" class='logo' />
             </a>
             <div class="navbar-menu" id="menu">
                 <a href="#about" class="navbar-button">Qui sommes-nous ?</a>
@@ -19,7 +21,7 @@
                 <a href="#contact" class="navbar-button">Nous contacter</a>
             </div>
 
-            <img src="{{ asset('images/icons/menu-line.png') }}" alt="" id="menu-button" class="navbar-menu-control"/>
+            <img src="{{ asset('images/icons/menu-line.png') }}" alt="" id="menu-button" class="navbar-menu-control" />
         </nav>
     </header>
 
@@ -73,16 +75,15 @@
             </div>
         </section>
 
-        <footer>
+        <footer class="footer">
             <div class="container">
                 <a href="https://www.instagram.com/association_radiance" class="footer-link" target="_blank">
-                    <img src="{{ asset('images/icons/instagram-fill.png') }}" alt="Instagram" aria-label="Instagram"/>
+                    <img src="{{ asset('images/icons/instagram-fill.png') }}" alt="Instagram" aria-label="Instagram" />
                 </a>
                 <a href="https://discord.com/invite/mcdVebJYXb" class="footer-link" target="_blank">
-                    <img src="{{ asset('images/icons/discord-fill.png') }}" alt="Discord" aria-label="Discord"/>
+                    <img src="{{ asset('images/icons/discord-fill.png') }}" alt="Discord" aria-label="Discord" />
                 </a>
             </div>
         </footer>
     </main>
-
 {% endblock %}

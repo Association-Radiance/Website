@@ -1,40 +1,56 @@
 <turbo-frame id="donation_goal_modal">
-    <dialog class="donation-dialog" data-controller="dialog" data-dialog-target="dialog" data-action="click->dialog#closeOnBackdrop">
-        <div class="dialog-header">
+    <dialog class="dialog" data-controller="dialog" data-dialog-target="dialog" data-action="click->dialog#closeOnBackdrop">
+        <header class="dialog-header">
             <h2 class="dialog-title">{{ title }}</h2>
 
-            <button type="button" class="dialog-close" aria-label="Fermer" data-action="dialog#close">&times;</button>
-        </div>
+            <button type="button" class="button button-primary dialog-close" aria-label="Fermer" data-action="dialog#close">
+                {{ include('svg/close.svg.twig') }}
+            </button>
+        </header>
 
         {{ form_start(form, {attr: {'data-turbo-stream': 'true'}}) }}
 
         <div class="dialog-body">
             {{ form_errors(form) }}
 
-            <div class="form-group">
-                {{ form_label(form.amount) }}
-                {{ form_widget( form.amount, { attr: { class: 'form-input', min: 1 } } ) }}
-                {{ form_errors(form.amount) }}
-            </div>
+            <div class="form">
+                <div class="form-field">
+                    <div class="form-label">
+                        {{ form_label(form.amount) }}
 
-            <div class="form-group">
-                {{ form_label(form.title) }}
-                {{ form_widget( form.title,{attr: {class: 'form-input'}}) }}
-                {{ form_errors(form.title) }}
-            </div>
+                        {{ form_errors(form.amount) }}
+                    </div>
 
-            <div class="form-group">
-                {{ form_label(form.description) }}
-                {{ form_widget( form.description, { attr: { class: 'form-input' } } ) }}
-                {{ form_errors(form.description) }}
+                    {{ form_widget( form.amount, { attr: { class: 'form-input' } } ) }}
+                </div>
+
+                <div class="form-field">
+                    <div class="form-label">
+                        {{ form_label(form.title) }}
+
+                        {{ form_errors(form.title) }}
+                    </div>
+
+                    {{ form_widget( form.title, { attr: { class: 'form-input' } } ) }}
+                </div>
+
+                <div class="form-field">
+                    <div class="form-label">
+                        {{ form_label(form.description) }}
+
+                        {{ form_errors(form.description) }}
+                    </div>
+
+                    {{ form_widget( form.description, { attr: { class: 'form-textarea' } } ) }}
+                </div>
             </div>
         </div>
 
-        <div class="dialog-footer">
-            <button type="button" class="btn btn-secondary" data-action="dialog#close">Annuler</button>
+        <footer class="dialog-footer">
+            <button type="button" class="button button-primary" data-action="dialog#close">Annuler</button>
 
-            <button type="submit" class="btn btn-primary">Enregistrer</button>
-        </div>
+            <button type="submit" class="button button-primary">Enregistrer</button>
+        </footer>
 
         {{ form_end(form) }}
     </dialog>

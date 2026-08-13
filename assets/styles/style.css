@@ -5,16 +5,16 @@ body {
     height: 100vh;
 }
 
-header,
+.header,
 section,
-footer {
+.footer {
     display: flex;
     justify-content: center;
     width: 100%;
     position: relative;
 }
 
-header {
+.header {
     box-shadow: 0 2px 8px var(--shadow-color);
     z-index: 10;
 }
@@ -708,17 +708,6 @@ li {
     padding: 4px 8px;
 }
 
-.form-label > *,
-.form-input,
-.form-textarea,
-.form-condition {
-    font-size: 16px;
-
-    @media screen and (max-width: 896px) {
-        font-size: 14px;
-    }
-}
-
 .form-label > ul > li {
     font-size: 12px;
     display: flex;
@@ -728,42 +717,6 @@ li {
     @media screen and (max-width: 896px) {
         font-size: 10px;
     }
-}
-
-.form-label > .required:after {
-    content: "*";
-    margin-left: 8px;
-}
-
-.form-input,
-.form-textarea,
-.form-checkbox,
-.form-submit {
-    border: 2px solid var(--text-color-2);
-    border-radius: 8px;
-    background-color: var(--background-color-light);
-    padding: 8px;
-}
-
-.form-input:hover,
-.form-textarea:hover,
-.form-checkbox:hover,
-.form-submit:hover {
-    border-color: var(--accent-color-dark);
-}
-
-.form-input:focus,
-.form-textarea:focus,
-.form-checkbox:focus,
-.form-submit:focus {
-    border-color: var(--accent-color);
-    outline: none;
-}
-
-.form-textarea {
-    resize: vertical;
-    min-height: 44px;
-    height: 88px;
 }
 
 .form-condition,
@@ -846,7 +799,7 @@ input[type="checkbox"]:checked::before {
     content: "\002716";
 }
 
-footer > .container {
+.footer > .container {
     display: flex;
     flex-direction: row;
     margin: 16px 0;

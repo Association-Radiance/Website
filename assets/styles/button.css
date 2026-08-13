@@ -2,13 +2,13 @@
     height: 32px;
     min-width: 32px;
     border-radius: 4px;
-    background-color: var(--background-color);
     border: none;
     display: flex;
     justify-content: center;
     align-items: center;
     font-size: 16px;
     font-weight: 600;
+    padding: 4px 8px;
 }
 
 .button > svg {
@@ -17,6 +17,18 @@
     fill: white;
 }
 
-.button:hover {
+.button-primary {
+    background-color: var(--background-color);
+}
+
+.button-primary:hover {
     background-color: var(--accent-color);
+}
+
+.button-destructive {
+    background-color: color-mix(in oklab, var(--destructive) 75%, transparent);
+}
+
+.button-destructive:hover {
+    background-color: color-mix(in oklab, var(--destructive) 100%, transparent);
 }
