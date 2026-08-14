@@ -5,21 +5,26 @@
 {% endblock %}
 
 {% block main %}
-    <section class="section-edition2026" id="edition-2026">
-        <div class="container">
+    <section
+        class="section section-background section-full-height"
+        style="background-image: url({{ asset('images/background/background-lan2025.webp') }});"
+    >
+        <div class="section-container">
             <h2 class="section-title title-accent">Radiance LAN 2026</h2>
 
-            <div class="content-container">
-                <div class="content size_2third">
+            <div class="section-content">
+                <div class="content">
                     <img
                         src="{{ asset('images/radiance-lan.webp') }}"
                         alt="Radiance LAN"
-                        width="256px"
-                        height="256px"
+                        width="200px"
+                        height="200px"
                     />
+
                     <p class="text-center">
                         Le plus grand tournoi Dota 2 francophone, en format LAN !
                     </p>
+
                     <ul class="announcement">
                         <li>Évenement du 24 au 25 octobre 2026</li>
                         <li>Au CRIJ Centre-Val de Loire, 3 Rue de la Cholerie, Orléans</li>
@@ -30,10 +35,12 @@
                     <p class="text-center">
                         Les inscriptions seront ouvertes du <b>10 août au 7 septembre 2026</b> !
                     </p>
+
                     <a
                         href="https://www.helloasso.com/associations/radiance/evenements/billetterie-en-ligne-radiance-lan-2026"
-                        class="announcement-link"
+                        class="button button-accent button-lg"
                     >
+                        {{ include('svg/icons/coupon-fill.svg.twig') }}
                         Inscription
                     </a>
                 </div>

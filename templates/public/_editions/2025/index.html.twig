@@ -1,0 +1,60 @@
+<h2 class="section-title">Radiance LAN 2025</h2>
+
+<div class="section-content" style="grid-template-columns : 1fr 1fr">
+    <div class="content" style="grid-column: span 2">
+        <p>
+            La <b>Radiance LAN 2025</b> est un tournoi en réseau local qui s’est déroulé <b>du 17 au 19 octobre 2024</b> au
+            CRIJ Centre-Val de Loire, à Orléans.
+        </p>
+
+        <ul class="event-resume">
+            <li class="event-item">
+                {{ include('svg/icons/user-fill.svg.twig') }}
+                70 joueurs
+            </li>
+            <li class="event-item">
+                {{ include('svg/icons/trophy-fill.svg.twig') }}
+                900€ de prize pool
+            </li>
+            <li class="event-item">
+                {{ include('svg/icons/calendar-event-fill.svg.twig') }}
+                2 jours de compétition
+            </li>
+        </ul>
+
+        <p class="text-center">
+            Vous pouvez revoir les matchs sur <b>YouTube</b> et voir les résultats sur <b>Liquipedia</b>
+        </p>
+
+        <div style="display: flex; gap: 32px">
+            <a
+                href="https://www.youtube.com/playlist?list=PLGksIE1v4I4SpvkSAYHdqq3k6ZB58gGHj"
+                class="button button-accent button-lg"
+                target="_blank"
+            >
+                {{ include('svg/socials/youtube-fill.svg.twig') }}
+                Youtube
+            </a>
+            <a
+                href="https://liquipedia.net/dota2/Association_Radiance/Radiance_LAN/2025"
+                class="button button-accent button-lg"
+                target="_blank"
+            >
+                {{ include('svg/icons/file-chart-fill.svg.twig') }}
+                Liquipedia
+            </a>
+        </div>
+    </div>
+
+    <div class="content" style="grid-column: span 2">
+        {{ include('/public/_editions/2025/_1-place.html.twig') }}
+    </div>
+
+    <div class="content">
+        {{ include('/public/_editions/2025/_2-place.html.twig') }}
+    </div>
+
+    <div class="content">
+        {{ include('/public/_editions/2025/_3-place.html.twig') }}
+    </div>
+</div>

@@ -5,20 +5,17 @@
 {% endblock %}
 
 {% block main %}
-    <section class="section-contact" id="contact">
-        <div class="container">
+<section
+    class="section section-background section-full-height"
+    style="background-image: url({{ asset('images/background/background-contact.webp') }});"
+>
+    <div class="section-container">
             <h2 class='section-title'>Nous contacter</h2>
 
-            <div class="content-container">
-                <div class="content size_2third">
+            <div class="section-content">
+                <div class="content">
 
                     {{ form_start(form, { 'attr': { 'data-turbo': 'false','class': 'form-container'}}  ) }}
-
-                    <div class="form-field">
-                        <div class="form-label">
-                            <p>Les champs marqués d'un * sont obligatoires.</p>
-                        </div>
-                    </div>
 
                     <div class="form-field">
                         <div class="form-label">

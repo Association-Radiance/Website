@@ -23,41 +23,6 @@
     }
 }
 
-.content-container {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    gap: 32px;
-
-    @media screen and (max-width: 1440px) {
-        gap: 16px;
-    }
-
-    @media screen and (max-width: 896px) {
-        flex-direction: column;
-    }
-}
-
-.content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 16px;
-    gap: 32px;
-    height: 100%;
-    width: 100%;
-
-    @media screen and (max-width: 1024px) {
-        padding: 8px;
-        gap: 16px;
-    }
-}
-
-.content-fit {
-    width: fit-content;
-}
-
 .section-banner > .container {
     margin: 128px 0;
 
@@ -74,53 +39,6 @@
 
     @media screen and (max-width: 1024px) {
         font-size: 48px;
-    }
-}
-
-.section-partner {
-    background-image: url("../images/background/background-partner.webp");
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-size: cover;
-    background-position: center;
-}
-
-.section-edition2026 {
-    background-image: url("../images/background/background-lan2025.webp");
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-size: cover;
-    background-position: center;
-}
-
-.section-contact {
-    background-image: url("../images/background/background-contact.webp");
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-size: cover;
-    background-position: center;
-}
-
-.section-partner::before,
-.section-edition2026::before,
-.section-contact::before {
-    background: var(--background-color);
-    content: "";
-    width: 100%;
-    height: 100%;
-    opacity: 0.8;
-    position: absolute;
-}
-
-.section-title {
-    display: flex;
-    justify-content: center;
-    font-size: 48px;
-    text-align: center;
-    color: var(--text-color-2);
-
-    @media screen and (max-width: 1024px) {
-        font-size: 36px;
     }
 }
 
@@ -188,11 +106,17 @@
     display: flex;
     flex-direction: column;
     font-size: 20px;
-    margin-top: 16px;
+    margin-top: 64px;
 
     @media screen and (max-width: 1280px) {
         margin-top: 4px;
     }
+}
+
+.discord-join > svg {
+    height: 32px;
+    width: 32px;
+    margin-top: 4px;
 }
 
 /*Partner*/
@@ -214,17 +138,12 @@
     }
 }
 
-/*Edition 2024*/
 .event-resume {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     height: 100%;
     gap: 16px;
-
     @media screen and (max-width: 896px) {
-        align-items: center;
-        justify-content: center;
-        flex-direction: row;
         flex-wrap: wrap;
     }
 }
@@ -235,18 +154,16 @@
     width: fit-content;
     gap: 16px;
     padding: 8px 16px;
+    background-color: var(--foreground-color);
     border-radius: 8px;
-    background-color: var(--text-color-1);
+    font-size: 20px;
+    color: var(--background-color);
 }
 
-.event-item > img {
-    width: 32px;
-    height: 32px;
-
-    @media screen and (max-width: 1280px) {
-        width: 24px;
-        height: 24px;
-    }
+.event-item > svg {
+    width: 24px;
+    height: 24px;
+    fill: var(--background-color);
 }
 
 .event-item > p {

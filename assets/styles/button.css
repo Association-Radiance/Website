@@ -9,6 +9,7 @@
     font-size: 16px;
     font-weight: 600;
     padding: 4px 8px;
+    gap: 4px;
 }
 
 .button > svg {
@@ -17,12 +18,35 @@
     fill: white;
 }
 
+.button-lg {
+    height: 40px;
+    min-width: 40px;
+    padding: 8px 16px;
+    border-radius: 8px;
+    gap: 8px;
+    font-size: 16px;
+}
+
+.button > svg {
+    width: 24px;
+    height: 24px;
+    fill: white;
+}
+
+.button-accent {
+    background-color: var(--accent-color);
+}
+
+.button-accent:hover {
+    background-color: color-mix(in oklab, var(--accent-color) 90%, oklch(1 0 0));
+}
+
 .button-primary {
     background-color: var(--background-color);
 }
 
 .button-primary:hover {
-    background-color: var(--accent-color);
+    background-color: color-mix(in oklab, var(--background-color) 90%, oklch(1 0 0));
 }
 
 .button-destructive {

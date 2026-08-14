@@ -7,6 +7,7 @@
     --background-color: #091018;
     --background-color-light: #18191f;
     --background-color-lighter: #16273b;
+    --foreground-color: #fff;
     --text-color-1: #ffffff;
     --text-color-2: #abbed1;
     --text-color-3: #000000;
@@ -23,40 +24,6 @@
     padding: 0;
     color: white;
     font-family: "Inter", sans-serif;
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-p,
-span,
-li,
-a,
-label,
-input,
-textarea,
-button,
-span {
-    color: white;
-    font-family: "Inter", sans-serif;
-}
-
-p,
-span,
-h5 {
-    line-height: 1.5em;
-    font-size: 20px;
-
-    @media screen and (max-width: 1280px) {
-        font-size: 16px;
-    }
-}
-
-li {
-    font-size: 20px;
-    list-style: none;
 }
 
 b {
