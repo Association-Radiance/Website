@@ -14,8 +14,8 @@
 .admin-container {
     padding: 16px;
     border-radius: 8px;
-    background-color: var(--background-color-lighter);
-    border: 1px solid var(--background-color-light);
+    background-color: color-mix(in oklab, var(--foreground-color) 5%, transparent);
+    border: 1px solid var(--border-color);
     display: flex;
     flex-direction: column;
     flex: 1 1 40%;
@@ -47,11 +47,11 @@ table {
 }
 
 tr {
-    border-top: 1px solid rgba(255, 255, 255, 25%);
+    border-top: 1px solid var(--border-color);
 }
 
 tr:hover {
-    background-color: var(--background-color-light);
+    background-color: color-mix(in oklab, var(--background-color) 80%, oklch(1 0 0));
 }
 
 thead > tr,

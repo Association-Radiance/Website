@@ -5,48 +5,55 @@
 {% endblock %}
 
 {% block main %}
-    <section>
-        <div class="container">
-            <form method="post" class="form-container login-form">
-                <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
+    <section class="section">
+        <div class="section-container">
+            <div class="section">
+                <form method="post" class="form-container" style="max-width: 360px">
+                    <h1 class="h3 mb-3 font-weight-normal">Connexion</h1>
 
-                <div class="form-field">
-                    <label for="username">Username</label>
+                    <div class="form-field">
+                        <label for="username" class="form-label">Username</label>
+                        <input
+                            type="text"
+                            name="_username"
+                            id="username"
+                            class="form-input"
+                            autocomplete="username"
+                            required
+                            autofocus
+                        />
+                    </div>
+
+                    <div class="form-field">
+                        <label for="password" class="form-label">Password</label>
+                        <input
+                            type="password"
+                            name="_password"
+                            id="password"
+                            class="form-input"
+                            autocomplete="current-password"
+                            required
+                        />
+                    </div>
+
                     <input
-                        type="text"
-                        name="_username"
-                        id="username"
-                        class="form-input"
-                        autocomplete="username"
-                        required
-                        autofocus
+                        type="hidden"
+                        name="_csrf_token"
+                        data-controller="csrf-protection"
+                        value="{{ csrf_token('authenticate') }}"
                     />
-                </div>
 
-                <div class="form-field">
-                    <label for="password">Password</label>
-                    <input
-                        type="password"
-                        name="_password"
-                        id="password"
-                        class="form-input"
-                        autocomplete="current-password"
-                        required
-                    />
-                </div>
+                    <div class="form-action">
+                        {% if error %}
+                            <div class="alert alert-danger">
+                                {{ error.messageKey|trans(error.messageData, 'security') }}
+                            </div>
+                        {% endif %}
 
-                <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}" />
-
-                <div>
-                    {% if error %}
-                        <div class="alert alert-danger">
-                            {{ error.messageKey|trans(error.messageData, 'security') }}
-                        </div>
-                    {% endif %}
-
-                    <button class="form-submit" type="submit">Connexion</button>
-                </div>
-            </form>
+                        <button class="button button-accent" type="submit">Connexion</button>
+                    </div>
+                </form>
+            </div>
         </div>
     </section>
 {% endblock %}

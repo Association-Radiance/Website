@@ -2,7 +2,11 @@
     <div class="donation-header">
         <h2>Palliers de donation</h2>
 
-        <a href="{{ path('donation_goal_new') }}" data-turbo-frame="donation_goal_modal" class="button button-primary">
+        <a
+            href="{{ path('donation_goal_new') }}"
+            data-turbo-frame="donation_goal_modal"
+            class="button button-primary button-outline"
+        >
             {{ include('svg/icons/add-line.svg.twig') }}
         </a>
     </div>

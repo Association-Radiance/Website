@@ -1,8 +1,8 @@
 .dialog {
-    margin: 32px auto;
-    background-color: var(--background-color-lighter);
+    margin: 128px auto;
+    background-color: var(--background-color);
     border-radius: 8px;
-    border: 1px solid oklch(1 0 0 / 10%);
+    border: 1px solid var(--border-color);
     width: calc(100% - 64px);
     max-width: 960px;
     max-height: calc(100% - 64px);
@@ -22,7 +22,7 @@
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    border-bottom: 1px solid oklch(1 0 0 / 20%);
+    border-bottom: 1px solid var(--border-color);
 }
 
 .dialog-title {
@@ -38,6 +38,7 @@
 .dialog-body {
     display: flex;
     height: 100%;
+    padding: 16px 8px;
 }
 
 .dialog-footer {
@@ -46,11 +47,10 @@
     align-items: center;
     justify-content: flex-end;
     gap: 8px;
-    border-top: 1px solid oklch(1 0 0 / 20%);
+    border-top: 1px solid var(--border-color);
 }
 
 .dialog-header,
-.dialog-body,
 .dialog-footer {
     padding: 8px;
 }

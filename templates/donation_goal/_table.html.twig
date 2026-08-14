@@ -21,14 +21,14 @@
                         <a
                             href="{{ path('donation_goal_edit', { id: donation_goal.id }) }}"
                             data-turbo-frame="donation_goal_modal"
-                            class="button button-primary"
+                            class="button button-primary button-outline"
                         >
                             {{ include('svg/icons/pencil-line.svg.twig') }}
                         </a>
                         <form method="delete" action="{{ path('donation_goal_delete', { id: donation_goal.id }) }}">
                             <button
                                 type="submit"
-                                class="button button-destructive"
+                                class="button button-primary button-outline"
                                 data-turbo-confirm="Supprimer cette donation ?"
                             >
                                 {{ include('svg/icons/delete-bin-line.svg.twig') }}

@@ -27,10 +27,18 @@
     font-size: 16px;
 }
 
-.button > svg {
+.button-lg > svg {
     width: 24px;
     height: 24px;
     fill: white;
+}
+
+.button-link {
+    text-decoration: underline;
+}
+
+.button-link:hover {
+    color: var(--accent-color);
 }
 
 .button-accent {
@@ -47,6 +55,18 @@
 
 .button-primary:hover {
     background-color: color-mix(in oklab, var(--background-color) 90%, oklch(1 0 0));
+}
+
+.button-secondary {
+    background-color: var(--background-color-muted);
+}
+
+.button-secondary:hover {
+    background-color: color-mix(in oklab, var(--background-color-muted) 90%, oklch(1 0 0));
+}
+
+.button-outline {
+    border: 1px solid var(--border-color);
 }
 
 .button-destructive {

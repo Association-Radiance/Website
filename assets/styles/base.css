@@ -67,7 +67,7 @@ body {
 .navbar-link:hover,
 .navbar-logo:hover {
     border-radius: 4px;
-    background-color: oklch(1 0 0 / 5%);
+    background-color: color-mix(in oklab, var(--foreground-color) 3%);
     color: var(--accent-color);
 }
 
@@ -78,7 +78,7 @@ body {
 }
 
 .base-main > :not(:last-child) {
-    border-bottom: 1px solid oklch(1 0 0);
+    border-bottom: 1px solid var(--foreground-color);
 }
 
 .base-footer {
