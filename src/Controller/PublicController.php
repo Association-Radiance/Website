@@ -48,13 +48,13 @@ final class PublicController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $contact = $form->getData();
+            $mailer = $this->mailerService->sendContactEmail($contact);
 
-            $response = $this->mailerService->sendContactEmail($contact);
+            $this->addFlash($mailer["status"], $mailer["message"]);
 
-            $this->addFlash($response["status"], $response["message"]);
-
-            return $this->redirectToRoute("public_contact", ["_fragment" => "contact"]);
+            if ($mailer["status"] === "success") {
+                return $this->redirectToRoute("public_contact");
+            }
         }
 
         return $this->render("public/contact.html.twig", [

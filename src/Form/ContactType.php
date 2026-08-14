@@ -20,31 +20,30 @@ class ContactType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('name', TextType::class, [
-                'constraints' => new NotBlank(['message' => 'Ce champ est requis'])
+            ->add("name", TextType::class, [
+                "label" => "Nom",
+                "constraints" => new NotBlank(["message" => "Ce champ est requis"])
             ])
-            ->add('email', EmailType::class, [
-                'constraints' => new NotBlank(['message' => 'Ce champ est requis'])
+            ->add("email", EmailType::class, [
+                "label" => "Email",
+                "constraints" => new NotBlank(["message" => "Ce champ est requis"])
             ])
-            ->add('telephone', TelType::class, ['required' => false])
-            ->add('company', TextType::class, ['required' => false])
-            ->add('subject', TextType::class, [
-                'constraints' => new NotBlank(['message' => 'Ce champ est requis'])
+            ->add("telephone", TelType::class, ["label" => "Téléphone", "required" => false])
+            ->add("company", TextType::class, ["label" => "Société", "required" => false])
+            ->add("subject", TextType::class, [
+                "label" => "Sujet",
+                "constraints" => new NotBlank(["message" => "Ce champ est requis"])
             ])
-            ->add('message', TextareaType::class, [
-                'constraints' => new NotBlank(['message' => 'Ce champ est requis'])
-            ])
-            ->add('terms', CheckboxType::class, [
-                'mapped' => false,
-                'constraints' => new isTrue(['message' => 'Vous devez accepter les conditions si vous voulez nous contactez'])
-            ])
-            ->add('submit', SubmitType::class);
+            ->add("message", TextareaType::class, [
+                "label" => "Message",
+                "constraints" => new NotBlank(["message" => "Ce champ est requis"])
+            ]);
     }
 
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
-            'data_class' => Contact::class,
+            "data_class" => Contact::class
         ]);
     }
 }

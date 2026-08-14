@@ -4,6 +4,9 @@
     Contact - Association Radiance
 {% endblock %}
 
+{% set successMessages = app.flashes('success') %}
+{% set errorMessages = app.flashes('error') %}
+
 {% block main %}
 <section
     class="section section-background section-full-height"
@@ -14,89 +17,88 @@
 
             <div class="section-content">
                 <div class="content">
+                    <turbo-frame id="contact-form">
+                        {{ form_start(form, { 'attr': { 'class': 'form-container', 'autocomplete' : 'off'}}  ) }}
+                            <div class="form-field">
+                                <div class="form-label">
+                                    {{ form_label(form.name) }}
+                                    {{ form_errors(form.name) }}
+                                </div>
 
-                    {{ form_start(form, { 'attr': { 'data-turbo': 'false','class': 'form-container'}}  ) }}
-
-                    <div class="form-field">
-                        <div class="form-label">
-                            {{ form_label(form.name, "Nom") }}
-                            {{ form_errors(form.name) }}
-                        </div>
-
-                        {{ form_widget(form.name, {'attr': {'class': 'form-input'}}) }}
-                    </div>
-
-                    <div class="form-field">
-                        <div class="form-label">
-                            {{ form_label(form.email) }}
-                            {{ form_errors(form.email) }}
-                        </div>
-                        {{ form_widget(form.email, {'attr': {'class': 'form-input'}}) }}
-                    </div>
-
-                    <div class="form-field">
-                        <div class="form-label">
-                            {{ form_label(form.telephone) }}
-                            {{ form_errors(form.telephone) }}
-                        </div>
-                        {{ form_widget(form.telephone, {'attr': {'class': 'form-input'}}) }}
-                    </div>
-
-                    <div class="form-field">
-                        <div class="form-label">
-                            {{ form_label(form.company, "Société") }}
-                            {{ form_errors(form.company) }}
-                        </div>
-                        {{ form_widget(form.company, {'attr': {'class': 'form-input'}}) }}
-                    </div>
-
-                    <div class="form-field">
-                        <div class="form-label">
-                            {{ form_label(form.subject, "Sujet") }}
-                            {{ form_errors(form.subject) }}
-                        </div>
-                        {{ form_widget(form.subject, {'attr': {'class': 'form-input'}}) }}
-                    </div>
-
-                    <div class="form-field">
-                        <div class="form-label">
-                            {{ form_label(form.message) }}
-                            {{ form_errors(form.message) }}
-                        </div>
-                        {{ form_widget(form.message, {'attr': {'class': 'form-textarea'}}) }}
-                    </div>
-
-                    <p class="form-condition">En envoyant ce formulaire, vous acceptez que l’association Radiance stocke et
-                        utilise vos données personnelles afin de vous contacter. Nous nous engageons à ne pas communiquer vos
-                        coordonnées à des tiers ni à les utiliser à des fins publicitaires.</p>
-
-                    <div class="form-field form-field-submit">
-                        <div class="form-terms">
-                            <!-- checkbox style inspired by https://moderncss.dev/pure-css-custom-checkbox-style/ -->
-                            {{ form_widget(form.terms, {'attr': {'class': 'form-checkbox'}}) }}
-                            <div class="form-label">
-                                {{ form_label(form.terms, "J’accepte que l’association Radiance puisse me contacter") }}
-                                {{ form_errors(form.terms) }}
+                                {{ form_widget(form.name, {'attr': {'class': 'form-input'}}) }}
                             </div>
-                        </div>
 
-                        {{ form_widget(form.submit, {'attr': {'class': 'form-submit'}, 'label' : 'Envoyer' }) }}
-                    </div>
+                            <div class="form-field">
+                                <div class="form-label">
+                                    {{ form_label(form.email) }}
+                                    {{ form_errors(form.email) }}
+                                </div>
+                                {{ form_widget(form.email, {'attr': {'class': 'form-input'}}) }}
+                            </div>
 
-                    {% for label, messages in app.flashes(['success', 'error']) %}
-                        {% for message in messages %}
-                            <div class="form-field-response">
-                                <span class="form-response flash-{{ label }}">
+                            <div class="form-field">
+                                <div class="form-label">
+                                    {{ form_label(form.telephone) }}
+                                    {{ form_errors(form.telephone) }}
+                                </div>
+                                {{ form_widget(form.telephone, {'attr': {'class': 'form-input'}}) }}
+                            </div>
+
+                            <div class="form-field">
+                                <div class="form-label">
+                                    {{ form_label(form.company) }}
+                                    {{ form_errors(form.company) }}
+                                </div>
+                                {{ form_widget(form.company, {'attr': {'class': 'form-input'}}) }}
+                            </div>
+
+                            <div class="form-field">
+                                <div class="form-label">
+                                    {{ form_label(form.subject) }}
+                                    {{ form_errors(form.subject) }}
+                                </div>
+                                {{ form_widget(form.subject, {'attr': {'class': 'form-input'}}) }}
+                            </div>
+
+                            <div class="form-field">
+                                <div class="form-label">
+                                    {{ form_label(form.message) }}
+                                    {{ form_errors(form.message) }}
+                                </div>
+                                {{ form_widget(form.message, {'attr': {'class': 'form-textarea'}}) }}
+                            </div>
+
+                            <div class="form-field">
+                                <p class="form-condition">En envoyant ce formulaire, vous acceptez que l’association Radiance stocke et
+                                    utilise vos données personnelles afin de vous contacter. Nous nous engageons à ne pas communiquer vos
+                                    coordonnées à des tiers ni à les utiliser à des fins publicitaires.
+                                </p>
+                            </div>
+
+                            <div class="form-action">
+                                {% for message in successMessages %}
+                                <span class="form-response flash-success">
                                     {{ message }}
                                 </span>
-                            </div>
-                        {% endfor %}
-                    {% endfor %}
+                                {% endfor %}
 
-                    {{ form_end(form) }}
+                                {% for message in errorMessages %}
+                                <span class="form-response flash-error">
+                                    {{ message }}
+                                </span>
+                                {% endfor %}
+
+                                {% if successMessages is empty %}
+                                <button type="submit" class="button button-accent">
+                                    Envoyer
+                                </button>
+                                {% endif %}
+                            </div>
+
+                            {{ form_end(form) }}
+                    </turbo-frame>
                 </div>
             </div>
-
         </div>
     </section>
 {% endblock %}

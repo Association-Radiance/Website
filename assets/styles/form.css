@@ -6,6 +6,21 @@
     height: 100%;
 }
 
+.form-field {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    justify-content: start;
+}
+
+.form-label {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 4px 8px;
+}
+
 .form-input {
     height: 32px;
 }
@@ -47,11 +62,6 @@
     outline: none;
 }
 
-/**NEED MODIFICATION*/
-/**NEED MODIFICATION*/
-/**NEED MODIFICATION*/
-/**NEED MODIFICATION*/
-
 .form-container {
     display: flex;
     flex-direction: column;
@@ -63,91 +73,17 @@
     box-shadow: 2px 2px 8px var(--shadow-color);
 }
 
-.form-field {
+.form-action {
     display: flex;
-    flex-direction: column;
-    width: 100%;
-    justify-content: start;
-}
-
-.form-label {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    padding: 4px 8px;
-}
-
-.form-label > ul > li {
-    font-size: 12px;
-    display: flex;
-    justify-content: center;
-    color: var(--accent-color);
-
-    @media screen and (max-width: 896px) {
-        font-size: 10px;
-    }
-}
-
-.form-condition,
-.form-response {
-    padding: 0 8px;
-
-    @media screen and (max-width: 896px) {
-        font-size: 14px;
-    }
-}
-
-input[type="checkbox"] {
-    -webkit-appearance: none;
-    appearance: none;
-    width: 32px;
-    height: 32px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-input[type="checkbox"]::before {
-    content: "";
-    width: 16px;
-    height: 16px;
-    clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
-    transform: scale(0);
-    transform-origin: center;
-    transition: 120ms transform ease-in-out;
-    box-shadow: inset 1em 1em var(--text-color-1);
-}
-
-input[type="checkbox"]:checked::before {
-    transform: scale(1);
-}
-
-.form-terms {
-    display: flex;
-    flex-direction: row;
-    width: 100%;
-}
-
-.form-submit {
-    width: 160px;
-    height: 40px;
-}
-
-.form-field-submit {
-    flex-direction: row;
-    justify-content: center;
+    justify-content: flex-end;
     align-items: center;
     gap: 16px;
-
-    @media screen and (max-width: 896px) {
-        flex-direction: column;
-    }
 }
 
 .form-response {
+    height: 32px;
     display: flex;
-    justify-content: right;
+    justify-content: flex-end;
     align-items: center;
 }
 
