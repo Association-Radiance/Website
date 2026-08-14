@@ -8,13 +8,12 @@
     max-height: calc(100% - 64px);
 
     @media screen and (max-width: 640px) {
-        margin: 16px;
-        width: calc(100% - 32px);
+        width: calc(100% - 16px);
     }
 }
 
 .dialog::backdrop {
-    background: rgb(0 0 0 / 50%);
+    background: color-mix(in oklab, var(--background-color) 95%, transparent);
 }
 
 .dialog-header {
@@ -38,7 +37,11 @@
 .dialog-body {
     display: flex;
     height: 100%;
-    padding: 16px 8px;
+    padding: 16px;
+
+    @media screen and (max-width: 640px) {
+        padding: 8px;
+    }
 }
 
 .dialog-footer {

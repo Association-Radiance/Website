@@ -9,8 +9,9 @@ body {
     position: fixed;
     z-index: 100;
     background-color: var(--background-color);
-    width: 100%;
+    border-bottom: 1px solid var(--border-color);
     box-shadow: 0 2px 8px var(--shadow-color);
+    width: 100vw;
 }
 
 .navbar {
@@ -41,19 +42,47 @@ body {
     height: 100%;
     gap: 32px;
 
-    @media screen and (max-width: 1024px) {
-        display: none;
-        flex-direction: column;
-        height: auto;
+    @media screen and (max-width: 896px) {
+        opacity: 0;
+        visibility: hidden;
         position: absolute;
-        top: 64px;
+        top: 100%;
+        left: 0;
         right: 0;
-        box-shadow: 0 2px 8px var(--shadow-color);
+        display: flex;
+        flex-direction: column;
+        height: fit-content;
+        gap: 0;
+        background-color: var(--background-color);
+        border-bottom: 1px solid var(--border-color);
     }
+}
+
+.navbar-menu.navbar-menu-open {
+    @media screen and (max-width: 896px) {
+        opacity: 1;
+        visibility: visible;
+    }
+}
+
+.navbar-menu-control {
+    display: none;
+    cursor: pointer;
 
     @media screen and (max-width: 896px) {
-        top: 48px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 32px;
+        width: 32px;
+        background-color: transparent;
+        border: none;
     }
+}
+
+.navbar-menu-control > svg {
+    height: 24px;
+    width: 24px;
 }
 
 .navbar-link {
@@ -62,6 +91,12 @@ body {
     align-items: center;
     height: 40px;
     padding: 4px 12px;
+
+    @media screen and (max-width: 896px) {
+        border-top: 1px solid var(--border-color);
+        height: 56px;
+        padding: 8px;
+    }
 }
 
 .navbar-link:hover,
@@ -78,11 +113,13 @@ body {
 }
 
 .base-main > :not(:last-child) {
-    border-bottom: 1px solid var(--foreground-color);
+    border-bottom: 1px solid var(--background-color-muted);
 }
 
 .base-footer {
     margin: auto 0 0;
+    background-color: color-mix(in oklab, var(--background-color) 98%, var(--foreground-color));
+    border-top: 1px solid var(--border-color);
 }
 
 .footer-container {
@@ -110,6 +147,12 @@ body {
 .footer-link > svg {
     height: 24px;
     width: 24px;
+}
+
+.footer-link > span {
+    @media screen and (max-width: 640px) {
+        display: none;
+    }
 }
 
 .footer-link:hover {
