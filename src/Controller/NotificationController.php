@@ -2,8 +2,7 @@
 
 namespace App\Controller;
 
-use App\DTO\HelloAsso\DonationDataDTO;
-use App\DTO\HelloAsso\WebhookDTO;
+use App\DTO\HelloAsso\PaymentWebhookDTO;
 use App\Entity\Donation;
 use App\Repository\DonationRepository;
 use Doctrine\ORM\EntityManagerInterface;
@@ -18,34 +17,33 @@ final class NotificationController extends AbstractController
 {
     public function __construct(
         private readonly SerializerInterface $serializer,
-        private readonly DenormalizerInterface $denormalizer,
         private readonly EntityManagerInterface $entityManager,
-        private readonly DonationRepository $donationRepository,
+        private readonly DonationRepository $donationRepository
     ) {}
 
     #[Route("/notification", name: "app_notification", methods: ["POST"])]
     public function index(Request $request): Response
     {
-        $webhook = $this->serializer->deserialize($request->getContent(), WebhookDTO::class, "json");
+        $webhook = $this->serializer->deserialize($request->getContent(), PaymentWebhookDTO::class, "json");
 
-        if ($webhook->eventType !== "Payment") {
-            return $this->json("not a donation");
+        if (!$webhook->isPayment()) {
+            return $this->json("not a payment");
         }
 
-        $data = $this->denormalizer->denormalize($webhook->data, DonationDataDTO::class);
+        $donationData = $webhook->getDonation();
 
-        if ($data->order->formType !== "Donation") {
-            return $this->json("not a donation");
+        if ($donationData === null) {
+            return $this->json("no donation in items");
         }
 
-        if ($this->donationRepository->findOneBy(["helloAssoId" => $data->id])) {
-            return $this->json("donation already registered");
+        if ($this->donationRepository->findOneBy(["helloAssoId" => $donationData->id])) {
+            return $this->json("donation already exist");
         }
 
         $donation = new Donation();
-        $donation->setHelloAssoId($data->id);
-        $donation->setAmount($data->amount);
-        $donation->setDate($data->date);
+        $donation->setHelloAssoId($donationData->id);
+        $donation->setAmount($donationData->amount);
+        $donation->setDate($webhook->data->date);
 
         $this->entityManager->persist($donation);
         $this->entityManager->flush();
