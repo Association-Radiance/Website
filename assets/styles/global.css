@@ -6,9 +6,10 @@
     --background-color-muted: oklch(0.2 0.02 252.19);
     --foreground-color: oklch(1 0.02 252.19);
     --foreground-color-muted: oklch(0.9 0.05 252.19);
-    --border-color: color-mix(in oklab, var(--foreground-color) 10%);
+    --border-color: color-mix(in oklab, var(--foreground-color) 15%);
     --success-color: oklch();
     --error-color: oklch();
+    --shadow-color: oklch(0 0 0);
 }
 
 * {
