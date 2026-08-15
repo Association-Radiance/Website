@@ -3,23 +3,32 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta name="description" content="Organisateur de tournoi en physique sur le jeu Dota 2" />
+        <meta name="description" content="Organisateur de LANs sur le jeu Dota 2" />
         <meta name="author" content="Association Radiance" />
 
-        <link rel="apple-touch-icon" sizes="180x180" href="{{ absolute_url('/favicon/apple-touch-icon.png') }}" />
-        <link rel="icon" type="image/png" sizes="32x32" href="{{ absolute_url('/favicon/favicon-32x32.png') }}" />
-        <link rel="icon" type="image/png" sizes="16x16" href="{{ absolute_url('/favicon/favicon-16x16.png') }}" />
-        <link rel="manifest" href="{{ absolute_url('/favicon/site.webmanifest') }}" />
+        <link rel="apple-touch-icon" sizes="57x57" href="{{ asset('favicon/apple-icon-57x57.png') }}" />
+        <link rel="apple-touch-icon" sizes="60x60" href="{{ asset('favicon/apple-icon-60x60.png') }}" />
+        <link rel="apple-touch-icon" sizes="72x72" href="{{ asset('favicon/apple-icon-72x72.png') }}" />
+        <link rel="apple-touch-icon" sizes="76x76" href="{{ asset('favicon/apple-icon-76x76.png') }}" />
+        <link rel="apple-touch-icon" sizes="114x114" href="{{ asset('favicon/apple-icon-114x114.png') }}" />
+        <link rel="apple-touch-icon" sizes="120x120" href="{{ asset('favicon/apple-icon-120x120.png') }}" />
+        <link rel="apple-touch-icon" sizes="144x144" href="{{ asset('favicon/apple-icon-144x144.png') }}" />
+        <link rel="apple-touch-icon" sizes="152x152" href="{{ asset('favicon/apple-icon-152x152.png') }}" />
+        <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('favicon/apple-icon-180x180.png') }}" />
+        <link rel="icon" type="image/png" sizes="192x192" href="{{ asset('favicon/android-icon-192x192.png') }}" />
+        <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('favicon/favicon-32x32.png') }}" />
+        <link rel="icon" type="image/png" sizes="96x96" href="{{ asset('favicon/favicon-96x96.png') }}" />
+        <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('favicon/favicon-16x16.png') }}" />
+        <link rel="manifest" href="{{ asset('favicon/') }}/manifest.json" />
+        <meta name="msapplication-TileColor" content="#ffffff" />
+        <meta name="msapplication-TileImage" content="{{ asset('favicon/') }}/ms-icon-144x144.png" />
+        <meta name="theme-color" content="#ffffff" />
 
         <title>
             {% block title %}
                 Association Radiance
             {% endblock %}
         </title>
-
-        {% block stylesheets %}
-
-        {% endblock %}
 
         {% block javascripts %}
             {% block importmap %}
@@ -29,71 +38,14 @@
     </head>
 
     <body>
-        <header class="base-header">
-            <nav class="navbar" data-controller="navbar" data-navbar-open-class="navbar-menu-open">
-                <a href="/" class='navbar-logo'>
-                    <img src="{{ asset('images/logo.webp') }}" alt="Association Radiance" />
-                </a>
+        {{ include('_header.html.twig') }}
 
-                <div class="navbar-menu" data-navbar-target="menu">
-                    <a href="{{ path(name: 'public_edition2026') }}" class="navbar-link">Radiance LAN 2026</a>
-                    <a href="{{ path(name: 'public_previous_editions') }}" class="navbar-link">Éditions précédentes</a>
-                    <a href="{{ path(name: 'public_donation') }}" class="navbar-link">Nous soutenir</a>
-                    <a href="{{ path(name: 'public_contact') }}" class="navbar-link">Nous contacter</a>
-                </div>
-
-                <button
-                    id="menu-button"
-                    class="navbar-menu-control"
-                    type="button"
-                    aria-label="Ouvrir le menu"
-                    aria-expanded="false"
-                    aria-controls="menu"
-                    data-navbar-target="button"
-                    data-action="click->navbar#toggle"
-                >
-                    {{ include('svg/icons/menu-line.svg.twig') }}
-                </button>
-            </nav>
-        </header>
-
-        <main id="main" class="base-main">
+        <main class="base-main">
             {% block main %}
 
             {% endblock %}
         </main>
 
-        <footer class="base-footer">
-            <div class="footer-container">
-                <a href="https://www.instagram.com/association_radiance" class="footer-link" target="_blank">
-                    {{ include('svg/socials/instagram-fill.svg.twig') }}
-                    <span>Instagram</span>
-                </a>
-
-                <a href="https://discord.com/invite/mcdVebJYXb" class="footer-link" target="_blank">
-                    {{ include('svg/socials/discord-fill.svg.twig') }}
-                    <span>Discord</span>
-                </a>
-
-                <a href="https://www.twitch.tv/association_radiance" class="footer-link" target="_blank">
-                    {{ include('svg/socials/twitch-fill.svg.twig') }}
-                    <span>Twitch</span>
-                </a>
-
-                <a href="https://www.youtube.com/@AssoRadiance" class="footer-link" target="_blank">
-                    {{ include('svg/socials/youtube-fill.svg.twig') }}
-                    <span>Youtube</span>
-                </a>
-
-                <a
-                    href="https://dota2france.fr/communautes/29f9264a-27dc-4e2f-90ba-f39269c6280c"
-                    class="footer-link"
-                    target="_blank"
-                >
-                    {{ include('svg/socials/dota2france.svg.twig') }}
-                    <span>Dota2France</span>
-                </a>
-            </div>
-        </footer>
+        {{ include('_footer.html.twig') }}
     </body>
 </html>

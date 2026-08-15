@@ -9,7 +9,7 @@ body {
     position: fixed;
     z-index: 100;
     background-color: var(--background-color);
-    border-bottom: 1px solid var(--border-color);
+    border-bottom: 1px solid color-mix(in oklab, var(--foreground-color) 25%, var(--background-color));
     box-shadow: 0 2px 8px var(--shadow-color);
     width: 100vw;
 }
@@ -113,13 +113,13 @@ body {
 }
 
 .base-main > :not(:last-child) {
-    border-bottom: 1px solid var(--background-color-muted);
+    border-bottom: 1px solid color-mix(in oklab, var(--foreground-color) 50%, var(--background-color) 100%);
 }
 
 .base-footer {
     margin: auto 0 0;
     background-color: color-mix(in oklab, var(--background-color) 98%, var(--foreground-color));
-    border-top: 1px solid var(--border-color);
+    border-top: 1px solid color-mix(in oklab, var(--foreground-color) 25%, var(--background-color));
 }
 
 .footer-container {

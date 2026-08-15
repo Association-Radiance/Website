@@ -13,3 +13,4 @@ import "./styles/style.css";
 import "./styles/button.css";
 import "./styles/dialog.css";
 import "./styles/form.css";
+import "./styles/admin.css";

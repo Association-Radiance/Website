@@ -6,22 +6,10 @@
     --background-color-muted: oklch(0.2 0.02 252.19);
     --foreground-color: oklch(1 0.02 252.19);
     --foreground-color-muted: oklch(0.9 0.05 252.19);
-
-    --border-color: color-mix(in oklab, var(--foreground-color) 10%);
-
+    --border-color: color-mix(in oklab, var(--foreground-color) 15%);
     --success-color: oklch();
     --error-color: oklch();
-
-    --accent-color-light: #f6ad33;
-    --accent-color-dark: #543c00;
-    --background-color-light: #18191f;
-    --background-color-lighter: #16273b;
-    --text-color-1: #ffffff;
-    --text-color-2: #abbed1;
-    --text-color-3: #000000;
-
-    --destructive: oklch(0.704 0.191 22.22);
-    --color-alternate: #1e1e1e;
+    --shadow-color: oklch(0 0 0);
 }
 
 * {

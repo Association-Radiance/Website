@@ -22,7 +22,7 @@
     background-color: var(--background-color);
     gap: 16px;
     padding: 16px 64px;
-    border: 1px solid var(--border-color);
+    border: 1px solid color-mix(in oklab, var(--foreground-color) 50%, var(--background-color) 100%);
     border-radius: 8px;
 
     @media screen and (max-width: 640px) {
@@ -31,7 +31,7 @@
 }
 
 .announcement > li,
-p {
+.announcement > p {
     list-style: none;
     font-size: 20px;
     font-weight: 600;
