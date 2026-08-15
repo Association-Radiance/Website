@@ -38,71 +38,14 @@
     </head>
 
     <body>
-        <header class="base-header">
-            <nav class="navbar" data-controller="navbar" data-navbar-open-class="navbar-menu-open">
-                <a href="/" class='navbar-logo'>
-                    <img src="{{ asset('images/logo.webp') }}" alt="Association Radiance" />
-                </a>
+        {{ include('_header.html.twig') }}
 
-                <div class="navbar-menu" data-navbar-target="menu">
-                    <a href="{{ path(name: 'public_edition2026') }}" class="navbar-link">Radiance LAN 2026</a>
-                    <a href="{{ path(name: 'public_previous_editions') }}" class="navbar-link">Éditions précédentes</a>
-                    <a href="{{ path(name: 'public_donation') }}" class="navbar-link">Nous soutenir</a>
-                    <a href="{{ path(name: 'public_contact') }}" class="navbar-link">Nous contacter</a>
-                </div>
-
-                <button
-                    id="menu-button"
-                    class="navbar-menu-control"
-                    type="button"
-                    aria-label="Ouvrir le menu"
-                    aria-expanded="false"
-                    aria-controls="menu"
-                    data-navbar-target="button"
-                    data-action="click->navbar#toggle"
-                >
-                    {{ include('svg/icons/menu-line.svg.twig') }}
-                </button>
-            </nav>
-        </header>
-
-        <main id="main" class="base-main">
+        <main class="base-main">
             {% block main %}
 
             {% endblock %}
         </main>
 
-        <footer class="base-footer">
-            <div class="footer-container">
-                <a href="https://www.instagram.com/association_radiance" class="footer-link" target="_blank">
-                    {{ include('svg/socials/instagram-fill.svg.twig') }}
-                    <span>Instagram</span>
-                </a>
-
-                <a href="https://discord.com/invite/mcdVebJYXb" class="footer-link" target="_blank">
-                    {{ include('svg/socials/discord-fill.svg.twig') }}
-                    <span>Discord</span>
-                </a>
-
-                <a href="https://www.twitch.tv/association_radiance" class="footer-link" target="_blank">
-                    {{ include('svg/socials/twitch-fill.svg.twig') }}
-                    <span>Twitch</span>
-                </a>
-
-                <a href="https://www.youtube.com/@AssoRadiance" class="footer-link" target="_blank">
-                    {{ include('svg/socials/youtube-fill.svg.twig') }}
-                    <span>Youtube</span>
-                </a>
-
-                <a
-                    href="https://dota2france.fr/communautes/29f9264a-27dc-4e2f-90ba-f39269c6280c"
-                    class="footer-link"
-                    target="_blank"
-                >
-                    {{ include('svg/socials/dota2france.svg.twig') }}
-                    <span>Dota2France</span>
-                </a>
-            </div>
-        </footer>
+        {{ include('_footer.html.twig') }}
     </body>
 </html>

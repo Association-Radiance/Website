@@ -1,0 +1,25 @@
+<header class="base-header">
+    <nav class="navbar" data-controller="navbar" data-navbar-open-class="navbar-menu-open">
+        <a href="/" class='navbar-logo'><img src="{{ asset('images/logo.webp') }}" alt="Association Radiance" /></a>
+
+        <div class="navbar-menu" data-navbar-target="menu">
+            <a href="{{ path(name: 'public_edition2026') }}" class="navbar-link">Radiance LAN 2026</a>
+            <a href="{{ path(name: 'public_previous_editions') }}" class="navbar-link">Éditions précédentes</a>
+            <a href="{{ path(name: 'public_donation') }}" class="navbar-link">Nous soutenir</a>
+            <a href="{{ path(name: 'public_contact') }}" class="navbar-link">Nous contacter</a>
+        </div>
+
+        <button
+            id="menu-button"
+            class="navbar-menu-control"
+            type="button"
+            aria-label="Ouvrir le menu"
+            aria-expanded="false"
+            aria-controls="menu"
+            data-navbar-target="button"
+            data-action="click->navbar#toggle"
+        >
+            {{ include('svg/icons/menu-line.svg.twig') }}
+        </button>
+    </nav>
+</header>
