@@ -1,0 +1,19 @@
+<div class="player-card">
+    {% if hero_name is defined and hero_name %}
+        <div class="player-image">
+            <img src="{{ asset('images/heroes/' ~ hero_name ~ '.webp') }}" alt="{{ hero_name }}" />
+        </div>
+    {% endif %}
+
+    {{
+        include(
+            'public/editions/components/player_info.html.twig',
+            {
+                player_name: player_name,
+                role: role,
+                role_svg: role_svg,
+                orientation: 'vertical'
+            }
+        )
+    }}
+</div>
