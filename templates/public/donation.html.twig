@@ -6,6 +6,55 @@
 
 {% block main %}
     <section class="section">
-        <div class="section-container"></div>
+        <div class="section-container">
+            <p>
+                Total donations:
+                {{ (total / 100)|number_format(2) }} €
+            </p>
+
+            <div data-controller="donation-goal" data-donation-goal-total-value="{{ total }}">
+                {% set previous_goal_amount = 0 %}
+
+                {% for donation_goal in donationGoals %}
+                    <div
+                        class="donation-goal"
+                        data-donation-goal-target="goal"
+                        data-amount="{{ donation_goal.amount }}"
+                    >
+                        <div class="donation-goal-border" data-donation-goal-target="border"></div>
+                        <div class="donation-goal-border-progress" data-donation-goal-target="borderProgress"></div>
+
+                        <header class="donation-goal-header">
+                            <h2 class="donation-goal-title">{{ donation_goal.title }}</h2>
+
+                            <span class="donation-goal-amount">
+                                {{ (donation_goal.amount / 100)|number_format(2) }} €
+                            </span>
+                        </header>
+
+                        {% if total >= previous_goal_amount %}
+                            <div class="donation-goal-progress">
+                                <div class="donation-goal-progress-bar">
+                                    <div
+                                        class="donation-goal-progress-indicator"
+                                        data-donation-goal-target="indicator"
+                                    ></div>
+                                </div>
+
+                                <span class="donation-goal-progress-percentage" data-donation-goal-target="percentage">
+
+                                </span>
+                            </div>
+                        {% endif %}
+
+                        <p>
+                            {{ donation_goal.description }}
+                        </p>
+                    </div>
+
+                    {% set previous_goal_amount = donation_goal.amount %}
+                {% endfor %}
+            </div>
+        </div>
     </section>
 {% endblock %}
