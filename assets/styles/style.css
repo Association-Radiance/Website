@@ -108,11 +108,13 @@
 .event-resume {
     display: flex;
     flex-direction: row;
+    justify-content: center;
     height: 100%;
     gap: 32px;
 
     @media screen and (max-width: 896px) {
         flex-wrap: wrap;
+        gap: 16px;
     }
 }
 
@@ -127,241 +129,18 @@
     font-size: 20px;
     font-weight: 700;
     color: var(--background-color);
+
+    @media screen and (max-width: 896px) {
+        font-size: 14px;
+        gap: 8px;
+        padding: 4px 12px;
+    }
 }
 
 .event-item > svg {
     width: 24px;
     height: 24px;
     fill: var(--background-color);
-}
-
-.team-container {
-    display: flex;
-    flex-direction: row;
-    gap: 32px;
-    border-radius: 8px;
-    padding: 16px;
-    width: 100%;
-    box-shadow: 2px 2px 8px var(--shadow-color);
-    border: 1px solid var(--border-color);
-
-    @media screen and (max-width: 1280px) {
-        gap: 24px;
-        padding: 12px;
-    }
-
-    @media screen and (max-width: 1024px) {
-        gap: 16px;
-        padding: 8px;
-    }
-}
-
-.team-first {
-    background-color: var(--accent-color);
-
-    @media screen and (max-width: 896px) {
-        max-width: 500px;
-    }
-}
-
-.team-other {
-    background-color: var(--background-color-muted);
-
-    @media screen and (max-width: 1024px) {
-        max-width: 500px;
-    }
-}
-
-.team-recap,
-.team-detail {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-}
-
-.team-recap {
-    width: 256px;
-
-    @media screen and (max-width: 1280px) {
-        width: 192px;
-    }
-
-    @media screen and (max-width: 1024px) {
-        width: 160px;
-    }
-
-    @media screen and (max-width: 896px) {
-        width: 140px;
-    }
-}
-
-.team-detail {
-    flex: 1 1 50%;
-}
-
-.team-placement,
-.team-name {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 44px;
-    text-transform: uppercase;
-    font-weight: 700;
-
-    @media screen and (max-width: 1280px) {
-        height: 32px;
-    }
-}
-
-.team-placement {
-    background-color: var(--background-color);
-    border-radius: 8px;
-    font-size: 24px;
-    color: var(--foreground-color);
-    box-shadow: 2px 2px 8px var(--shadow-color);
-    border: 1px solid var(--border-color);
-
-    @media screen and (max-width: 1280px) {
-        font-size: 16px;
-    }
-}
-
-.team-name {
-    font-size: 36px;
-    font-family: Jaro, sans-serif;
-
-    @media screen and (max-width: 1280px) {
-        font-size: 28px;
-    }
-
-    @media screen and (max-width: 1024px) {
-        font-size: 24px;
-    }
-
-    @media screen and (max-width: 896px) {
-        font-size: 20px;
-    }
-}
-
-.team-logo {
-    aspect-ratio: 1/1;
-    border-radius: 8px;
-    box-shadow: 2px 2px 8px var(--shadow-color);
-    border: 1px solid var(--border-color);
-}
-
-.team-composition {
-    display: flex;
-    width: 100%;
-    gap: 16px;
-
-    @media screen and (max-width: 1280px) {
-        gap: 12px;
-    }
-
-    @media screen and (max-width: 1024px) {
-        gap: 8px;
-    }
-}
-
-.team-first > .team-detail > .team-composition {
-    flex-direction: row;
-
-    @media screen and (max-width: 896px) {
-        flex-direction: column;
-    }
-}
-
-.team-other > .team-detail > .team-composition {
-    flex-direction: column;
-}
-
-.player-card {
-    display: flex;
-    flex-direction: column;
-    width: 20%;
-    gap: 4px;
-
-    @media screen and (max-width: 896px) {
-        width: 100%;
-    }
-}
-
-.player-image {
-    aspect-ratio: 1/1;
-    background-color: color-mix(in oklab, var(--accent-color) 90%, oklch(1 0 0));
-    border: 1px solid var(--border-color);
-    border-radius: 8px;
-    overflow: hidden;
-    display: flex;
-
-    @media screen and (max-width: 896px) {
-        display: none;
-    }
-}
-
-.player-image > img {
-    width: 100%;
-}
-
-.player-info {
-    display: flex;
-    width: 100%;
-}
-
-.player-info-vertical {
-    align-items: center;
-    flex-direction: column;
-
-    @media screen and (max-width: 896px) {
-        flex-direction: row;
-        gap: 8px;
-        justify-content: space-between;
-    }
-}
-
-.player-info-horizontal {
-    flex-direction: row;
-    gap: 8px;
-    justify-content: space-between;
-}
-
-.player-name {
-    text-transform: uppercase;
-    font-weight: 700;
-    font-size: 18px;
-
-    @media screen and (max-width: 1280px) {
-        font-size: 14px;
-    }
-}
-
-.player-info-vertical > .player-role {
-    justify-content: center;
-}
-
-.player-info-horizontal > .player-role {
-    justify-content: left;
-}
-
-.player-role {
-    display: flex;
-    align-items: center;
-    width: 140px;
-    gap: 8px;
-
-    @media screen and (max-width: 1280px) {
-        width: 120px;
-    }
-
-    @media screen and (max-width: 896px) {
-        width: fit-content;
-    }
-}
-
-.player-role > img {
-    height: 24px;
-    width: 24px;
 
     @media screen and (max-width: 896px) {
         height: 16px;
@@ -369,13 +148,72 @@
     }
 }
 
-.player-role > span {
-    font-size: 16px;
-    @media screen and (max-width: 1280px) {
-        font-size: 12px;
-    }
+.donation-goal {
+    display: flex;
+    flex-direction: column;
+    padding: 16px;
+    gap: 16px;
+    position: relative;
+    background-color: var(--background-color);
+    background-clip: padding-box;
+    border: 1px solid transparent;
+    border-radius: 8px;
+}
 
-    @media screen and (max-width: 400px) {
-        display: none;
-    }
+.donation-goal-border {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    background-color: var(--accent-color);
+    border-top-left-radius: 8px;
+    border-bottom-left-radius: 8px;
+    margin: -1px;
+    z-index: -1;
+}
+
+.donation-goal-border-progress {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    background-color: var(--border-color);
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
+    margin: -1px;
+    z-index: -1;
+}
+
+.donation-goal-header {
+    display: flex;
+    justify-content: space-between;
+}
+
+.donation-goal-title,
+.donation-goal-amount {
+    font-size: 24px;
+    font-weight: 600;
+}
+
+.donation-goal-progress {
+    display: flex;
+    gap: 8px;
+    padding: 0 32px;
+    align-items: center;
+}
+
+.donation-goal-progress-bar {
+    width: 100%;
+    height: 12px;
+    background: var(--foreground-color);
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.donation-goal-progress-indicator {
+    height: 100%;
+    width: 0;
+    background-color: var(--accent-color);
 }

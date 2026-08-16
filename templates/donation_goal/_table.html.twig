@@ -19,17 +19,34 @@
                 <td class="table-cell text-right table-cell-fixed">
                     <div class="table-action">
                         <a
-                            href="{{ path('donation_goal_edit', { id: donation_goal.id }) }}"
+                            href="{{
+                            path(
+                                'donation_goal_edit',
+                                {
+                                    id: donation_goal.id
+                                }
+                            )
+                            }}"
                             data-turbo-frame="donation_goal_modal"
                             class="button button-primary button-outline"
                         >
                             {{ include('svg/icons/pencil-line.svg.twig') }}
                         </a>
-                        <form method="delete" action="{{ path('donation_goal_delete', { id: donation_goal.id }) }}">
+                        <form
+                            method="delete"
+                            action="{{
+                            path(
+                                'donation_goal_delete',
+                                {
+                                    id: donation_goal.id
+                                }
+                            )
+                            }}"
+                        >
                             <button
                                 type="submit"
                                 class="button button-primary button-outline"
-                                data-turbo-confirm="Supprimer cette donation ?"
+                                data-turbo-confirm="Supprimer ce pallier de donation ?"
                             >
                                 {{ include('svg/icons/delete-bin-line.svg.twig') }}
                             </button>

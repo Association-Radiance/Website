@@ -14,3 +14,4 @@ import "./styles/button.css";
 import "./styles/dialog.css";
 import "./styles/form.css";
 import "./styles/admin.css";
+import "./styles/team.css";

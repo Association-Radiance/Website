@@ -24,6 +24,14 @@ final class NotificationController extends AbstractController
     #[Route("/notification", name: "app_notification", methods: ["POST"])]
     public function index(Request $request): Response
     {
+        $allowedIps = ["51.138.206.200", "4.233.135.234"];
+
+        $clientIp = $request->getClientIp();
+
+        if (!in_array($clientIp, $allowedIps, true)) {
+            return $this->json("access forbidden", 403);
+        }
+
         $webhook = $this->serializer->deserialize($request->getContent(), PaymentWebhookDTO::class, "json");
 
         if (!$webhook->isPayment()) {

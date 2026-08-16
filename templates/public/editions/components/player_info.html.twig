@@ -1,0 +1,8 @@
+<div class="player-info player-info-{{ orientation }}">
+    <h5 class="player-name">{{ player_name }}</h5>
+
+    <div class="player-role">
+        {{ include('svg/dota2roles/' ~ role_svg ~ '.svg.twig') }}
+        <span>{{ role }}</span>
+    </div>
+</div>
