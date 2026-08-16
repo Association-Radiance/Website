@@ -17,6 +17,8 @@ export default class extends Controller {
 
             const indicator = goal.querySelector('[data-donation-goal-target="indicator"]');
             const percentageElement = goal.querySelector('[data-donation-goal-target="percentage"]');
+            const border = goal.querySelector('[data-donation-goal-target="border"]');
+            const borderProgress = goal.querySelector('[data-donation-goal-target="borderProgress"]');
 
             if (!indicator || !percentageElement) {
                 previousTarget = target;
@@ -29,13 +31,19 @@ export default class extends Controller {
 
             const progress = Math.min((goalAmount / goalSize) * 100, 100);
 
-            this.borderTarget.style.width = `calc(${progress}% + 1px)`;
-            this.borderProgressTarget.style.width = `calc(${100 - progress}% + 1px)`;
+            border.style.width = `calc(${progress}% + 1px)`;
+            borderProgress.style.width = `calc(${100 - progress}% + 1px)`;
 
             if (progress === 0) {
-                this.borderTarget.style.width = 0;
-                this.borderProgressTarget.style.width = "calc(100% + 2px)";
-                this.borderProgressTarget.style.borderRadius = "8px";
+                border.style.width = 0;
+                borderProgress.style.width = "calc(100% + 2px)";
+                borderProgress.style.borderRadius = "8px";
+            }
+
+            if (progress === 100) {
+                borderProgress.style.width = 0;
+                border.style.width = "calc(100% + 2px)";
+                border.style.borderRadius = "8px";
             }
 
             indicator.style.width = `${progress}%`;

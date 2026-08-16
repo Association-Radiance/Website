@@ -12,7 +12,7 @@
                 {{ (total / 100)|number_format(2) }} €
             </p>
 
-            <div data-controller="donation-goal" data-donation-goal-total-value="{{ total }}">
+            <div data-controller="donation-goal" data-donation-goal-total-value="{{ total }}" class="section-content">
                 {% set previous_goal_amount = 0 %}
 
                 {% for donation_goal in donationGoals %}
