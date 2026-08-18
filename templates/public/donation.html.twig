@@ -4,6 +4,10 @@
     Donation - Association Radiance
 {% endblock %}
 
+{% block stylesheet %}
+    <link rel="stylesheet" href="{{ asset('styles/donation.css') }}" />
+{% endblock %}
+
 {% block main %}
     <section class="section">
         <div class="section-container">
@@ -21,31 +25,27 @@
                         data-donation-goal-target="goal"
                         data-amount="{{ donation_goal.amount }}"
                     >
+                        <div class="donation-goal-progress" data-donation-goal-target="progress"></div>
                         <div class="donation-goal-border" data-donation-goal-target="border"></div>
-                        <div class="donation-goal-border-progress" data-donation-goal-target="borderProgress"></div>
 
                         <header class="donation-goal-header">
                             <h2 class="donation-goal-title">{{ donation_goal.title }}</h2>
 
-                            <span class="donation-goal-amount">
-                                {{ (donation_goal.amount / 100)|number_format(2) }} €
-                            </span>
-                        </header>
+                            <div class="test">
+                                {%- if total >= previous_goal_amount -%}
+                                    <span
+                                        class="donation-goal-amount donation-goal-amount-current"
+                                        data-donation-goal-target="amount"
+                                    >
 
-                        {% if total >= previous_goal_amount %}
-                            <div class="donation-goal-progress">
-                                <div class="donation-goal-progress-bar">
-                                    <div
-                                        class="donation-goal-progress-indicator"
-                                        data-donation-goal-target="indicator"
-                                    ></div>
-                                </div>
+                                    </span>
 
-                                <span class="donation-goal-progress-percentage" data-donation-goal-target="percentage">
+                                    <span class="donation-goal-amount">&sol;</span>
+                                {%- endif -%}
 
-                                </span>
+                                <span class="donation-goal-amount">{{ donation_goal.amount / 100 }} €</span>
                             </div>
-                        {% endif %}
+                        </header>
 
                         <p>
                             {{ donation_goal.description }}

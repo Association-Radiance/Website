@@ -19,13 +19,30 @@
                 <td class="table-cell text-right table-cell-fixed">
                     <div class="table-action">
                         <a
-                            href="{{ path('donation_edit', { id: donation.id }) }}"
+                            href="{{
+                            path(
+                                'donation_edit',
+                                {
+                                    id: donation.id
+                                }
+                            )
+                            }}"
                             data-turbo-frame="donation_modal"
                             class="button button-primary button-outline"
                         >
                             {{ include('svg/icons/pencil-line.svg.twig') }}
                         </a>
-                        <form method="delete" action="{{ path('donation_delete', { id: donation.id }) }}">
+                        <form
+                            method="delete"
+                            action="{{
+                            path(
+                                'donation_delete',
+                                {
+                                    id: donation.id
+                                }
+                            )
+                            }}"
+                        >
                             <button
                                 type="submit"
                                 class="button button-primary button-outline"
@@ -43,7 +60,7 @@
     <tfoot>
         <tr class="table-row">
             <td class="table-cell text-left" colspan="2">Total</td>
-            <td class="table-cell text-right">{{ (total / 100)|number_format(2) }} €</td>
+            <td class="table-cell text-right table-cell-fixed">{{ (total / 100)|number_format(2) }} €</td>
             <td class="table-cell"></td>
         </tr>
     </tfoot>

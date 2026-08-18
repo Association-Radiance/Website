@@ -30,6 +30,10 @@
             {% endblock %}
         </title>
 
+        {% block stylesheet %}
+
+        {% endblock %}
+
         {% block javascripts %}
             {% block importmap %}
                 {{ importmap('app') }}
