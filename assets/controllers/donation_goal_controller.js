@@ -22,9 +22,9 @@ export default class extends Controller {
             if (!amount) {
                 previousTarget = target;
 
-                border.style.width = 0;
-                progress.style.width = "calc(100% + 2px)";
-                progress.style.borderRadius = "8px";
+                progress.style.width = 0;
+                border.style.width = "calc(100% + 2px)";
+                border.style.borderRadius = "8px";
 
                 return;
             }
