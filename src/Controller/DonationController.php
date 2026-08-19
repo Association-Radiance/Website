@@ -38,6 +38,7 @@ final class DonationController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $donation->setCreatedBy("ADMIN");
             $this->entityManager->persist($donation);
             $this->entityManager->flush();
 

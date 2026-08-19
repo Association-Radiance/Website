@@ -3,7 +3,7 @@ import { Controller } from "@hotwired/stimulus";
 export default class extends Controller {
     static values = { total: Number };
 
-    static targets = ["goal", "progress", "indicator", "percentage", "border", "borderProgress"];
+    static targets = ["goal", "progress", "border", "amount"];
 
     connect() {
         this.displayGoalsProgress();
@@ -15,13 +15,17 @@ export default class extends Controller {
         this.goalTargets.forEach((goal) => {
             const target = Number(goal.dataset.amount);
 
-            const indicator = goal.querySelector('[data-donation-goal-target="indicator"]');
-            const percentageElement = goal.querySelector('[data-donation-goal-target="percentage"]');
+            const progress = goal.querySelector('[data-donation-goal-target="progress"]');
             const border = goal.querySelector('[data-donation-goal-target="border"]');
-            const borderProgress = goal.querySelector('[data-donation-goal-target="borderProgress"]');
+            const amount = goal.querySelector('[data-donation-goal-target="amount"]');
 
-            if (!indicator || !percentageElement) {
+            if (!amount) {
                 previousTarget = target;
+
+                border.style.width = 0;
+                progress.style.width = "calc(100% + 2px)";
+                progress.style.borderRadius = "8px";
+
                 return;
             }
 
@@ -29,25 +33,24 @@ export default class extends Controller {
 
             const goalSize = target - previousTarget;
 
-            const progress = Math.min((goalAmount / goalSize) * 100, 100);
+            const percentage = Math.round(Math.min((goalAmount / goalSize) * 100, 100));
 
-            border.style.width = `calc(${progress}% + 1px)`;
-            borderProgress.style.width = `calc(${100 - progress}% + 1px)`;
+            amount.textContent = Math.max(0, Math.min(this.totalValue, target)) / 100 + " €";
 
-            if (progress === 0) {
-                border.style.width = 0;
-                borderProgress.style.width = "calc(100% + 2px)";
-                borderProgress.style.borderRadius = "8px";
-            }
+            progress.style.width = `calc(${percentage}% + 1px)`;
+            border.style.width = `calc(${100 - percentage}% + 1px)`;
 
-            if (progress === 100) {
-                borderProgress.style.width = 0;
+            if (percentage === 0) {
+                progress.style.width = 0;
                 border.style.width = "calc(100% + 2px)";
                 border.style.borderRadius = "8px";
             }
 
-            indicator.style.width = `${progress}%`;
-            percentageElement.textContent = `${progress.toFixed(2)}%`;
+            if (percentage === 100) {
+                border.style.width = 0;
+                progress.style.width = "calc(100% + 2px)";
+                progress.style.borderRadius = "8px";
+            }
 
             previousTarget = target;
         });

@@ -24,7 +24,7 @@ final class NotificationController extends AbstractController
     #[Route("/notification", name: "app_notification", methods: ["POST"])]
     public function index(Request $request): Response
     {
-        $allowedIps = ["51.138.206.200", "4.233.135.234"];
+        $allowedIps = ["51.138.206.200", "4.233.135.234", "127.0.0.1"];
 
         $clientIp = $request->getClientIp();
 
@@ -52,6 +52,7 @@ final class NotificationController extends AbstractController
         $donation->setHelloAssoId($donationData->id);
         $donation->setAmount($donationData->amount);
         $donation->setDate($webhook->data->date);
+        $donation->setCreatedBy("HELLO_ASSO");
 
         $this->entityManager->persist($donation);
         $this->entityManager->flush();

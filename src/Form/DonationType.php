@@ -20,19 +20,20 @@ class DonationType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add("helloAssoId", IntegerType::class, ["required" => false, "label" => "HelloAsso ID"])
-
             ->add("amount", NumberType::class, [
                 "label" => "Montant (€)",
                 "html5" => true,
                 "scale" => 2,
                 "attr" => ["min" => 0.01, "step" => "0.01", "inputmode" => "decimal"],
-                "constraints" => [new NotBlank(["message" => "Le montant est requis."]), new Positive(["message" => "Le montant doit être supérieur à 0."])],
+                "constraints" => [
+                    new NotBlank(["message" => "Le montant est requis."]),
+                    new Positive(["message" => "Le montant doit être supérieur à 0."])
+                ]
             ])
 
             ->add("date", DateTimeType::class, [
                 "label" => "Date",
-                "constraints" => [new NotBlank(["message" => "Ce champ est requis."])],
+                "constraints" => [new NotBlank(["message" => "Ce champ est requis."])]
             ]);
 
         $builder->get("amount")->addModelTransformer($this->eurosToCentsTransformer);
@@ -41,7 +42,7 @@ class DonationType extends AbstractType
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
-            "data_class" => Donation::class,
+            "data_class" => Donation::class
         ]);
     }
 }
