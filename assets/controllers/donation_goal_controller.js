@@ -12,6 +12,25 @@ export default class extends Controller {
     displayGoalsProgress() {
         let previousTarget = 0;
 
+        const setProgressState = (progress, border, percentage) => {
+            if (percentage === 0) {
+                progress.style.width = 0;
+                border.style.width = "calc(100% + 2px)";
+                border.style.borderRadius = "8px";
+                return;
+            }
+
+            if (percentage === 100) {
+                border.style.width = 0;
+                progress.style.width = "calc(100% + 2px)";
+                progress.style.borderRadius = "8px";
+                return;
+            }
+
+            progress.style.width = `calc(${percentage}% + 1px)`;
+            border.style.width = `calc(${100 - percentage}% + 1px)`;
+        };
+
         this.goalTargets.forEach((goal) => {
             const target = Number(goal.dataset.amount);
 
@@ -21,36 +40,18 @@ export default class extends Controller {
 
             if (!amount) {
                 previousTarget = target;
-
-                progress.style.width = 0;
-                border.style.width = "calc(100% + 2px)";
-                border.style.borderRadius = "8px";
-
+                setProgressState(progress, border, 0);
                 return;
             }
 
-            const goalAmount = Math.max(0, Math.min(this.totalValue, target) - previousTarget);
-
+            const currentAmount = Math.max(0, Math.min(this.totalValue, target));
+            const goalAmount = currentAmount - previousTarget;
             const goalSize = target - previousTarget;
-
             const percentage = Math.round(Math.min((goalAmount / goalSize) * 100, 100));
 
-            amount.textContent = Math.max(0, Math.min(this.totalValue, target)) / 100 + " €";
+            amount.textContent = `${currentAmount / 100} €`;
 
-            progress.style.width = `calc(${percentage}% + 1px)`;
-            border.style.width = `calc(${100 - percentage}% + 1px)`;
-
-            if (percentage === 0) {
-                progress.style.width = 0;
-                border.style.width = "calc(100% + 2px)";
-                border.style.borderRadius = "8px";
-            }
-
-            if (percentage === 100) {
-                border.style.width = 0;
-                progress.style.width = "calc(100% + 2px)";
-                progress.style.borderRadius = "8px";
-            }
+            setProgressState(progress, border, percentage);
 
             previousTarget = target;
         });
