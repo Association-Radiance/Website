@@ -132,6 +132,10 @@ body {
     align-items: center;
     gap: 32px;
     padding: 8px;
+
+    @media screen and (max-width: 896px) {
+        gap: 8px;
+    }
 }
 
 .footer-link {
@@ -151,7 +155,7 @@ body {
 }
 
 .footer-link > span {
-    @media screen and (max-width: 640px) {
+    @media screen and (max-width: 896px) {
         display: none;
     }
 }
