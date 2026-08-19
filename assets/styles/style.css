@@ -1,3 +1,11 @@
+.text-center {
+    text-align: center;
+}
+
+.text-accent {
+    color: var(--accent-color);
+}
+
 .banner-title {
     font-size: 64px;
     font-weight: 700;

@@ -12,6 +12,7 @@ body {
     border-bottom: 1px solid color-mix(in oklab, var(--foreground-color) 25%, var(--background-color));
     box-shadow: 0 2px 8px var(--shadow-color);
     width: 100vw;
+    height: 56px;
 }
 
 .navbar {

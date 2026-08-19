@@ -2,7 +2,7 @@
     <thead class="table-head">
         <tr class="table-row">
             <th class="table-cell text-left table-cell-fixed">Date</th>
-            <th class="table-cell text-left table-cell-flexible">Id HelloAsso</th>
+            <th class="table-cell text-left table-cell-flexible">Créé par</th>
             <th class="table-cell text-right table-cell-fixed">Montant</th>
             <th class="table-cell text-right"></th>
         </tr>
@@ -14,7 +14,7 @@
                 <td class="table-cell text-left table-cell-fixed">
                     {{ donation.date|date('d/m/Y H:i', timezone: 'Europe/Paris') }}
                 </td>
-                <td class="table-cell text-left table-cell-flexible">{{ donation.helloAssoId }}</td>
+                <td class="table-cell text-left table-cell-flexible">{{ donation.createdBy }}</td>
                 <td class="table-cell text-right table-cell-fixed">{{ (donation.amount / 100)|number_format(2) }} €</td>
                 <td class="table-cell text-right table-cell-fixed">
                     <div class="table-action">

@@ -8,52 +8,29 @@
     <link rel="stylesheet" href="{{ asset('styles/donation.css') }}" />
 {% endblock %}
 
+{% block javascripts %}
+    {{ parent() }}
+    <script src="{{ asset('hello_asso_iframe.js') }}"></script>
+{% endblock %}
+
 {% block main %}
     <section class="section">
-        <div class="section-container">
-            <p>
-                Total donations:
-                {{ (total / 100)|number_format(2) }} €
-            </p>
+        <div class="section-container section-container-1fr-auto">
+            <div class="section-content">
+                {{ include('/public/donation/_presentation.html.twig') }}
 
-            <div data-controller="donation-goal" data-donation-goal-total-value="{{ total }}" class="section-content">
-                {% set previous_goal_amount = 0 %}
+                {{ include('/public/donation/_donation-goal.html.twig') }}
+            </div>
 
-                {% for donation_goal in donationGoals %}
-                    <div
-                        class="donation-goal"
-                        data-donation-goal-target="goal"
-                        data-amount="{{ donation_goal.amount }}"
-                    >
-                        <div class="donation-goal-progress" data-donation-goal-target="progress"></div>
-                        <div class="donation-goal-border" data-donation-goal-target="border"></div>
-
-                        <header class="donation-goal-header">
-                            <h2 class="donation-goal-title">{{ donation_goal.title }}</h2>
-
-                            <div class="test">
-                                {%- if total >= previous_goal_amount -%}
-                                    <span
-                                        class="donation-goal-amount donation-goal-amount-current"
-                                        data-donation-goal-target="amount"
-                                    >
-
-                                    </span>
-
-                                    <span class="donation-goal-amount">&sol;</span>
-                                {%- endif -%}
-
-                                <span class="donation-goal-amount">{{ donation_goal.amount / 100 }} €</span>
-                            </div>
-                        </header>
-
-                        <p>
-                            {{ donation_goal.description }}
-                        </p>
-                    </div>
-
-                    {% set previous_goal_amount = donation_goal.amount %}
-                {% endfor %}
+            <div class="section-content">
+                <iframe
+                    class="donation-form"
+                    id="haWidgetLight"
+                    allowtransparency="true"
+                    allow="payment"
+                    scrolling="no"
+                    src="https://www.helloasso-sandbox.com/associations/association-culturelle-radiance-radiance/formulaires/1/widget?view=form"
+                ></iframe>
             </div>
         </div>
     </section>
