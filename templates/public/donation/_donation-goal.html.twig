@@ -10,7 +10,7 @@
                 <header class="donation-goal-header">
                     <h3 class="donation-goal-title">{{ donation_goal.title }}</h3>
 
-                    <div class="test">
+                    <div class="donation-goal-value">
                         {%- if total >= previous_goal_amount -%}
                             <span
                                 class="donation-goal-amount donation-goal-amount-current"
@@ -20,7 +20,7 @@
                             </span>
 
                             <span class="donation-goal-amount">&sol;</span>
-                        {%- endif -%}
+                        {% endif %}
 
                         <span class="donation-goal-amount">{{ donation_goal.amount / 100 }} €</span>
                     </div>
